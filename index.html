@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="main.js">
+
+    </script>
     <title></title>
   </head>
   <body>
     <nav>
       <button type="button" name="button">Introduksjon</button>
       <button type="button" name="button">Oversikt</button>
-      <button type="button" name="button">Detaljer</button>
+      <button type="button" name="button" onclick="detaljer()">Detaljer</button>
       <button type="button" name="button">Sammenligning</button>
     </nav>
 
@@ -28,8 +31,9 @@
     </div>
 
     <div class="detaljer">
-      <input type="text" name="" value="">
-      <button type="button" name="button"></button>
+      <input type="text" name="" value="0101" id="kommuneNr">
+      <br>
+      <button type="button" name="button" id="getKommune"> Få informasjon </button>
 
     </div>
 
