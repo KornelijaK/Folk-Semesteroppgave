@@ -40,7 +40,8 @@ function detaljer(kommuner){
   var kommuneNr = document.getElementById("kommuneNr").value
   var informasjon = document.getElementById("getKommune");
   informasjon.onclick = function() {
-    if(kommuner.hasOwnProperty(kommuneNr)){
+    konst.getNames(kommuner);
+    if(konst.getNames(kommuner).hasOwnProperty(kommuneNr)){
       console.log("Kommune finnes");
     }
   }
