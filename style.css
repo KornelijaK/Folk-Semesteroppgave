@@ -7,8 +7,22 @@
 .oversikt {
   display: flex;
   justify-content: space-around;
-
 }
-/* .oversikt div {
-  justify-content: space-between;
-} */
+
+.oversikt li {
+  list-style: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+button {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding: 1em;
+}

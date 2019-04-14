@@ -28,6 +28,7 @@ function getMostResentTotal(liste){
 
 function getDetails(kommune,data) {
   var dataMenn = Object.entries(data[1][kommune]["Menn"]);
+  console.log(dataMenn);
   var dataKvinner = Object.entries(data[1][kommune]["Kvinner"]);
   var totalMenn =getMostResentTotal(dataMenn);
   var totalKvinner = getMostResentTotal(dataKvinner);
@@ -71,4 +72,17 @@ function Befolkning(url) {
         var valgtKommune = komunelist[k];
         // totalMenn.push(getDetails(valgtKommune,all));
         return getDetails(valgtKommune,all);
-    }}}}
+    }
+  }
+  }
+  // console.log(totalMenn);
+}
+
+
+// ------------------------------Starter-----------------------------------
+
+let konst;
+window.onload = function() {
+  konst = new Befolkning(url,input)
+  konst.load()
+}

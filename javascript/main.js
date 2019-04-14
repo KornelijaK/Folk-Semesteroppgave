@@ -1,3 +1,10 @@
+// ------------------Make constructon-----------------
+
+
+
+
+
+
 
 // --------------------------------------Oversikt------------------------------
 
@@ -23,9 +30,6 @@ function displayData(liste,clas,text){
 
 function makeHeader(text) {
 
-
-
-
 }
 
 
@@ -34,10 +38,10 @@ function oversikt(){
     var komuneliste = konst.getNames()
     displayData(komuneliste,"oversikt","Komuner")
     var idliste = konst.getIDs()
-    displayData(idliste,"oversikt","Komunenummer")
+    displayData(idliste,"oversikt","Komunernummer")
     var totalBefolknign = []
     for(var i=0;i<idliste.length;i++){
       totalBefolknign.push(konst.getInfo(idliste,komuneliste,idliste[i]))
     }
-    displayData(totalBefolknign,"oversikt","Befolkning");
+    displayData(totalBefolknign,"oversikt","Befolknign");
 }
