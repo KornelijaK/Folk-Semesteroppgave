@@ -1,8 +1,16 @@
 // ------------------Make constructon-----------------
 
+let konst
+let syss
+function lagerKonstruktør(){
+  console.log("ASJDBKABSDKAB");
+  syss = new Sysselsatte(urlSysselsatte);
+  syss.load();
+  konst = new Befolkning(url,input)
+  konst.load()
+}
 
-
-
+window.onload = lagerKonstruktør;
 
 
 
@@ -44,4 +52,23 @@ function oversikt(){
       totalBefolknign.push(konst.getInfo(idliste,komuneliste,idliste[i]))
     }
     displayData(totalBefolknign,"oversikt","Befolknign");
+}
+
+
+// ------------------------------------fra Korneija --------------
+
+function start(){
+  syss.getNames();
+  syss.getIDs();
+}
+
+
+function detaljer(kommuner){
+  var eleDetaljer = document.getElementsByClassName("detaljer")
+  eleDetaljer[0].style.display = "block";
+  var kommuneNr = document.getElementById("kommuneNr").value
+  var getKommune = document.getElementById("getKommune")
+  getKommune.onclick = function() {
+    syss.getInfo(idList,kommuneList,kommuneNr);  //kaller på konstruktør for å hente id
+  } // hvilke konstruktør skal jeg kalle på?
 }

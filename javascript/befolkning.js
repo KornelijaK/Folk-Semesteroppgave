@@ -20,20 +20,24 @@ function getMostResentTotal(liste){
   total = 0;
   for(var i=0;i<liste.length;i++){
     var tall = liste[i][1];
+
     total = tall;
 
   }
+
   return total;
+
 }
 
 function getDetails(kommune,data) {
+  // Gør dette på din Getinfo
   var dataMenn = Object.entries(data[1][kommune]["Menn"]);
   console.log(dataMenn);
   var dataKvinner = Object.entries(data[1][kommune]["Kvinner"]);
   var totalMenn =getMostResentTotal(dataMenn);
   var totalKvinner = getMostResentTotal(dataKvinner);
-  var report = totalKvinner+totalMenn
-  return report
+  var totalBefolkning = totalKvinner+totalMenn;
+  return totalBefolkning;
 }
 
 
@@ -81,8 +85,9 @@ function Befolkning(url) {
 
 // ------------------------------Starter-----------------------------------
 
-let konst;
-window.onload = function() {
-  konst = new Befolkning(url,input)
-  konst.load()
-}
+// let konst;
+// window.onload = function() {
+//   console.log("lager befokning");
+//   konst = new Befolkning(url,input)
+//   konst.load()
+// }

@@ -7,7 +7,6 @@ function getData(url, obj) {
     if(xhr.readyState === 4 && xhr.status === 200) {
       var jtext = JSON.parse(xhr.responseText);
       obj.data = jtext;
-      console.log(jtext);
     }
   }
   xhr.send();
@@ -48,32 +47,17 @@ function Sysselsatte(url) {
         var valgtKommune = kommuneList[k];
         console.log(valgtKommune);
         console.log(idList[k]);
+        var valgtKommuneData = this.data["elementer"][valgtKommune];
+        console.log(valgtKommuneData);
       }
     }
   }
 };
 
 
-
-let konst;
-window.onload = function() {
-  konst = new Sysselsatte(urlSysselsatte);
-  konst.load();
-}
-
-
-function start(){
-  konst.getNames();
-  konst.getIDs();
-}
-
-
-function detaljer(kommuner){
-  var eleDetaljer = document.getElementsByClassName("detaljer")
-  eleDetaljer[0].style.display = "block";
-  var kommuneNr = document.getElementById("kommuneNr").value
-  var getKommune = document.getElementById("getKommune")
-  getKommune.onclick = function() {
-    konst.getInfo(idList,kommuneList,kommuneNr);  //kaller på konstruktør for å hente id
-  } // hvilke konstruktør skal jeg kalle på?
-}
+// let syss;
+// window.onload = function() {
+//   console.log("lager syss");
+//   syss = new Sysselsatte(urlSysselsatte);
+//   syss.load();
+// }

@@ -4,17 +4,20 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="javascript/befolkning.js"></script>
+    <script type="text/javascript" src="javascript/sysselsatte.js"></script>
     <script type="text/javascript" src="javascript/main.js"></script>
+
   <title>Komuneoversikt</title>
   </head>
   <body>
     <header>
       <h1>Komuneoversikt i Norge</h1>
     </header>
+    <button onclick="start()" type="button" name="button"></button>
     <nav>
       <button type="button" name="button">Introduksjon</button>
       <button id="oversikt" onclick="oversikt()" type="button" name="button">Oversikt</button>
-      <button type="button" name="button">Detaljer</button>
+      <button onclick="detaljer()" type="button" name="button">Detaljer</button>
       <button type="button" name="button">Sammenligning</button>
     </nav>
 
