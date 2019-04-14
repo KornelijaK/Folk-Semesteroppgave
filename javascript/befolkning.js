@@ -2,7 +2,6 @@
 var url = "http://wildboy.uib.no/~tpe056/folk/104857.json"
 var input = "0101"
 
-
 // ------------------------------HjelpeFunksjoner------------------------
 
 function getData(url,obj) {
@@ -17,28 +16,24 @@ function getData(url,obj) {
   xhr.send(null);
 }
 
+function getMostResentTotal(liste){
+  total = 0;
+  for(var i=0;i<liste.length;i++){
+    var tall = liste[i][1];
+    total = tall;
+
+  }
+  return total;
+}
+
 function getDetails(kommune,data) {
   var dataMenn = Object.entries(data[1][kommune]["Menn"]);
   var dataKvinner = Object.entries(data[1][kommune]["Kvinner"]);
-  console.log(dataMenn)
-  console.log(dataKvinner)
+  var totalMenn =getMostResentTotal(dataMenn);
+  var totalKvinner = getMostResentTotal(dataKvinner);
+  var report = totalKvinner+totalMenn
+  return report
 }
-
-
-function displayData(liste){
-  var ele = document.getElementsByClassName('oversikt')
-  var lis = document.createElement("ul");
-  for(var i = 0;i<liste.length;i++){
-    var text = document.createTextNode(liste[i]);
-    var lisItem = document.createElement("li");
-    lisItem.appendChild(text);
-    lis.appendChild(lisItem)
-
-  }
-  ele[0].appendChild(lis);
-}
-
-
 
 
 // ------------------------------ Main ----------------------
@@ -70,29 +65,10 @@ function Befolkning(url) {
   }
 
   this.getInfo = function(idlist,komunelist,input){
+    var totalMenn = []
     for(var k = 0;k<idlist.length;k++){
       if(idlist[k] === input){
         var valgtKommune = komunelist[k];
-        getDetails(valgtKommune,all)
-    }}
-  }
-}
-
-
-befolkning.onload = function() {
-  // enableNavigationButtons();
-  // removeLoadingMessage()
-};
-
-// ------------------------------Starter-----------------------------------
-
-let konst;
-window.onload = function() {
-  konst = new Befolkning(url,input)
-  konst.load()
-}
-function noe() {
-  var komuneliste = konst.getNames()
-  var idliste = konst.getIDs()
-  konst.getInfo(idliste,komuneliste,input)
-}
+        // totalMenn.push(getDetails(valgtKommune,all));
+        return getDetails(valgtKommune,all);
+    }}}}

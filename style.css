@@ -3,3 +3,12 @@
 .detaljer {display: none}
 
 .sammenligning {display: none}
+
+.oversikt {
+  display: flex;
+  justify-content: space-around;
+
+}
+/* .oversikt div {
+  justify-content: space-between;
+} */
