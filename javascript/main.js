@@ -1,13 +1,16 @@
 // ------------------Make constructon-----------------
 
-let konst
-let syss
+let konst;
+let syss;
+let utdan;
+
 function lagerKonstruktør(){
-  console.log("ASJDBKABSDKAB");
   syss = new Sysselsatte(urlSysselsatte);
   syss.load();
-  konst = new Befolkning(url,input)
+  konst = new Befolkning(url)
   konst.load()
+  utdan = new Utdanning(urlUtdanning,)
+  utdan.load()
 }
 
 window.onload = lagerKonstruktør;
@@ -43,13 +46,14 @@ function makeHeader(text) {
 
 // ----------------main---------------------
 function oversikt(){
-    var komuneliste = konst.getNames()
-    displayData(komuneliste,"oversikt","Komuner")
+    konst.getNames()
+    displayData(konst.komunelist,"oversikt","Komuner")
+    konst.getIDs()
     var idliste = konst.getIDs()
-    displayData(idliste,"oversikt","Komunernummer")
+    displayData(konst.idsList,"oversikt","Komunernummer")
     var totalBefolknign = []
-    for(var i=0;i<idliste.length;i++){
-      totalBefolknign.push(konst.getInfo(idliste,komuneliste,idliste[i]))
+    for(var i=0;i<konst.idsList.length;i++){
+      totalBefolknign.push(konst.getInfo(konst.idsList,komuneliste,idliste[i]))
     }
     displayData(totalBefolknign,"oversikt","Befolknign");
 }
