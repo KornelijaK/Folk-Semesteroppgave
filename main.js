@@ -14,39 +14,42 @@ function getData(url, obj) {
 }
 
 
-idInput = "5047"
+
 function Sysselsatte(url) {
   this.load = function (){
     getData(url,this)
   },
   this.data = undefined;
   this.getNames = function(){
+    kommuneList = []
     var names = Object.values(this.data);
     var kommuner = Object.keys(names[0])
-    console.log(kommuner);
-    //detaljer(kommuner);
+    for(var k=0; k < kommuner.length;k++) {
+      kommuneList.push(kommuner[k])
+    }
+
+    return kommuneList
   },
   this.getIDs = function() {
     idList = [];
     var names = Object.values(this.data);
-    for(var x in names[0]) {
-      for(var y in names[0][x]){
-        var kommunenummer = names[0][x]["kommunenummer"];
-        idList.push(kommunenummer)
-      }
+    var kommuner = Object.values(names[0])
+    console.log(kommuner);
+    for(var k =0; k<kommuner.length;k++){
+      var id = kommuner[k]["kommunenummer"];
+      idList.push(id);
     }
+    console.log(idList);
     return idList
   },
-  this.getInfo = function(idInput){
-    for(x in idList){
-      console.log(idList[x]);
-      if(idList[x] === idInput) {
-        console.log("Finnes i listen");
+  this.getInfo = function(idList,kommuneList,kommuneNr){
+    for(var k = 0; k < idList.length;k++){
+      if(idList[k] === kommuneNr) {
+        var valgtKommune = kommuneList[k];
+        console.log(valgtKommune);
+        console.log(idList[k]);
       }
     }
-    //sjekk om kommunenummer er riktig i idlisten
-    //om riktig -- hent ut index på der den ligger og bruk den på den andre idlisten
-    //kommunenavnet brukes som key for å hente ut all informasjon om den spesifikke kommunen
   }
 };
 
@@ -62,23 +65,15 @@ window.onload = function() {
 function start(){
   konst.getNames();
   konst.getIDs();
-  konst.getInfo(idInput)
 }
 
 
-/*
 function detaljer(kommuner){
   var eleDetaljer = document.getElementsByClassName("detaljer")
   eleDetaljer[0].style.display = "block";
   var kommuneNr = document.getElementById("kommuneNr").value
-  informasjon.onclick = function() {}
+  var getKommune = document.getElementById("getKommune")
+  getKommune.onclick = function() {
+    konst.getInfo(idList,kommuneList,kommuneNr);  //kaller på konstruktør for å hente id
+  } // hvilke konstruktør skal jeg kalle på?
 }
-
-/*
-for(x in this.data.elementer){
-  IDs.push({
-    key: x,   //kommunenavn
-    value: this.data.elementer[x]["kommunenummer"] //kommunenummer
-  })
-
-*/
