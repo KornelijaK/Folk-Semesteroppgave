@@ -43,9 +43,9 @@ function makeHeader(text) {
 
 }
 
-
 // ----------------main---------------------
 function oversikt(){
+    var totalBefolknign = []
     konst.getNames()
     displayData(konst.komunelist,"oversikt","Komuner")
     konst.getIDs()
@@ -53,7 +53,9 @@ function oversikt(){
     displayData(konst.idsList,"oversikt","Komunernummer")
     var totalBefolknign = []
     for(var i=0;i<konst.idsList.length;i++){
-      totalBefolknign.push(konst.getInfo(konst.idsList,komuneliste,idliste[i]))
+      input = konst.idsList[i]
+      konst.getInfo()
+      totalBefolknign.push(konst.detaljer);
     }
     displayData(totalBefolknign,"oversikt","Befolknign");
 }

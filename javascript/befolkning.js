@@ -1,6 +1,6 @@
 
 var url = "http://wildboy.uib.no/~tpe056/folk/104857.json"
-var input = "0101"
+var input;
 
 // ------------------------------HjelpeFunksjoner------------------------
 
@@ -31,22 +31,29 @@ function getIDs(data,obj){
 obj.idsList = idList;
 }
 
+function getInfo(komunelist,idlist,input,obj){
+  var totalMenn = []
+  for(var k = 0;k<idlist.length;k++){
+    if(idlist[k] === input){
+      var valgtKommune = komunelist[k];
+      var detaljer = getDetails(valgtKommune,obj.data);
+      obj.detaljer = detaljer;
+    }
+  }
+}
 function getMostResentTotal(liste){
   total = 0;
-  for(var i=0;i<liste.length;i++){
+  for(var i =0;i<liste.length;i++){
     var tall = liste[i][1];
     total = tall;
-
   }
-
   return total;
 
 }
 
 function getDetails(kommune,data) {
-  // Gør dette på din Getinfo
-  var dataMenn = Object.entries(data[1][kommune]["Menn"]);
-  var dataKvinner = Object.entries(data[1][kommune]["Kvinner"]);
+  var dataMenn = Object.entries(data["elementer"][kommune]["Menn"]);
+  var dataKvinner = Object.entries(data["elementer"][kommune]["Kvinner"]);
   var totalMenn =getMostResentTotal(dataMenn);
   var totalKvinner = getMostResentTotal(dataKvinner);
   var totalBefolkning = totalKvinner+totalMenn;
@@ -56,41 +63,56 @@ function getDetails(kommune,data) {
 
 // ------------------------------ Main ----------------------
 
+
 function Befolkning(url) {
   this.data = undefined;
   this.komunelist = undefined;
   this.idsList = undefined;
+  this.detaljer = undefined;
   this.load = function() {getData(url,this)};
   this.getNames = function() {getNames2(this.data,this)}
-  // this.getNames = function(){
-  //    all = Object.values(this.data);
-  //    // kankje ikke br adet der, å lage den globalt
-  //   var komuner = Object.keys(all[1]);
-  //   return komuner
-  this.getIDs = function() {getIDs(this.data,this)
-    // var idList = []
-    // for(var i =0;i<all.length;i++){
-    //   var kom = all[i]
-    //   var test = Object.values(kom)
-    //   for(var j =0;j<test.length;j++){
-    //     var info = test[j];
-    //     var close = Object.values(info);
-    //     var id = close[0];
-    //     idList.push(id);
-    //   }
-    // }
-    // idList.shift()
-    // idList.shift()
-    // return idList;
+  this.getIDs = function() {getIDs(this.data,this)}
+  this.getInfo = function() {getInfo(this.komunelist,this.idsList,input,this)}
+
+  // this.getInfo = function(idlist,komunelist,input){
+  //   var totalMenn = []
+  //   for(var k = 0;k<idlist.length;k++){
+  //     if(idlist[k] === input){
+  //       var valgtKommune = komunelist[k];
+  //       return getDetails(valgtKommune,all);
+
   }
 
-  this.getInfo = function(idlist,komunelist,input){
-    var totalMenn = []
-    for(var k = 0;k<idlist.length;k++){
-      if(idlist[k] === input){
-        var valgtKommune = komunelist[k];
-        return getDetails(valgtKommune,all);
-    }
-  }
- }
-}
+
+
+// ---------------------------backup------------------------------
+
+
+// this.getNames = function(){
+//    all = Object.values(this.data);
+//    // kankje ikke br adet der, å lage den globalt
+//   var komuner = Object.keys(all[1]);
+//   return komuner
+
+// this.getIDs = function() {getIDs(this.data,this)
+  // var idList = []
+  // for(var i =0;i<all.length;i++){
+  //   var kom = all[i]
+  //   var test = Object.values(kom)
+  //   for(var j =0;j<test.length;j++){
+  //     var info = test[j];
+  //     var close = Object.values(info);
+  //     var id = close[0];
+  //     idList.push(id);
+  //   }
+  // }
+  // idList.shift()
+  // idList.shift()
+  // return idList;
+
+
+// this.getNames = function(){
+//    all = Object.values(this.data);
+//    // kankje ikke br adet der, å lage den globalt
+//   var komuner = Object.keys(all[1]);
+//   return komuner
