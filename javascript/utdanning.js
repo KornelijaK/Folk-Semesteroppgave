@@ -15,23 +15,26 @@ function getData(url,obj) {
   xhr.send(null);
 }
 
-function getNames(data) {
-  console.log(data)
+function getNames3(data,obj) {
   var komuneListe = Object.keys(data["elementer"]);
-  console.log(komuneListe)
-
+  obj.komunelist = komuneListe;
 }
 
 // ------------------------------Main------------------------
 
 function Utdanning() {
   this.data = undefined;
-  this.load = function() {getData(url,this)}
-  this.getNames = function() {getNames(this.data)}
+  this.komunelist = undefined;
+  this.idsList = undefined;
+  this.detaljer = undefined;
+  this.load = function() {getData(urlUtdanning,this)}
+  this.getNames = function() {getNames3(this.data,this)}
 }
 
 // ------------------------------runner------------------------
 
 function runner() {
-  utdan.getNames(utdan.data);
+  console.log(utdan.data);
+  utdan.getNames();
+  console.log(utdan.komunelist)
 }
