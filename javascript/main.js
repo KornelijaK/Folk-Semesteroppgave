@@ -1,8 +1,8 @@
 // ------------------Make constructon-----------------
-
 let konst;
 let syss;
 let utdan;
+let input;
 
 function lagerKonstruktør(){
   syss = new Sysselsatte(urlSysselsatte);
@@ -39,26 +39,99 @@ function displayData(liste,clas,text){
   ele.appendChild(div);
 }
 
-function makeHeader(text) {
-
+function makeHeader(text){
 }
 
 // ----------------main---------------------
 function oversikt(){
+  konst.getNames()
+  konst.getIDs()
+  console.log(totalBefolkning(konst));
+  displayData(konst.komunelist,"oversikt","Komuner")
+  displayData(konst.idsList,"oversikt","Komunernummer")
+
+  }
+
+
+
+  function totalBefolkning(obj) {
     var totalBefolknign = []
-    konst.getNames()
-    displayData(konst.komunelist,"oversikt","Komuner")
-    konst.getIDs()
-    var idliste = konst.getIDs()
-    displayData(konst.idsList,"oversikt","Komunernummer")
-    var totalBefolknign = []
-    for(var i=0;i<konst.idsList.length;i++){
-      input = konst.idsList[i]
+
+    for(var i=0;i<obj.idsList.length;i++){
+      kommuneNr = obj.idsList[i]
+      input = kommuneNr;
       konst.getInfo()
-      totalBefolknign.push(konst.detaljer);
-    }
-    displayData(totalBefolknign,"oversikt","Befolknign");
+      konst.informasjon
+
+      // console.log(konst.informasjon);
+      // getDetails(kommune,obj.data);
+      // console.log(konst.informasjon);
+
+      // totalBefolknign.push(konst.informasjon);
+
+  }
+
+  console.log(konst.informasjon);
+  return totalBefolknign;
 }
+
+ function getMostResentTotal(liste){
+  total = 0;
+  for(var i =0;i<liste.length;i++){
+    var tall = liste[i][1];
+    total = tall;
+  }
+  return total;
+
+}
+
+function getDetails(kommune,data) {
+  var dataMenn = Object.entries(data["elementer"][kommune]["Menn"]);
+  var dataKvinner = Object.entries(data["elementer"][kommune]["Kvinner"]);
+  var totalMenn =getMostResentTotal(dataMenn);
+  var totalKvinner = getMostResentTotal(dataKvinner);
+  var totalBefolkning = totalKvinner+totalMenn;
+  return totalBefolkning;
+}
+
+    // var totalBefolknign = []
+    // konst.getNames()
+    // displayData(konst.komunelist,"oversikt","Komuner")
+    // konst.getIDs()
+    // var idliste = konst.getIDs()
+    // displayData(konst.idsList,"oversikt","Komunernummer")
+    // var totalBefolknign = []
+    // for(var i=0;i<konst.idsList.length;i++){
+    //   input = konst.idsList[i]
+    //   konst.getInfo()
+    //   totalBefolknign.push(konst.detaljer);
+    // }
+    // displayData(totalBefolknign,"oversikt","Befolknign");
+
+
+
+
+//-------------------------------Detaljer-------------------------------------
+
+
+function getHøyereUtdannning(data,kommune) {
+  var kortUtdaningMenn = Object.values(data["elementer"][kommune]["03a"]["Menn"])
+  var kortUtdaningKvinner = Object.values(data["elementer"][kommune]["03a"]["Kvinner"])
+  var langUtdaningMenn = Object.values(data["elementer"][kommune]["04a"]["Menn"])
+  var langUtdaningKvinner = Object.values(data["elementer"][kommune]["04a"]["Kvinner"])
+  var sisteMåling = kortUtdaningMenn.pop();
+  var sisteMålingK = kortUtdaningKvinner.pop();
+  var sisteMålingL = langUtdaningMenn.pop();
+  var sisteMålingKL = langUtdaningKvinner.pop();
+  console.log("siste Måling Menn kort "+sisteMåling);
+  console.log("siste Måling Kvinner kort "+sisteMålingK);
+  console.log("siste Måling Menn lang: "+sisteMålingL);
+  console.log("siste Måling Kvinner lang "+sisteMålingKL);
+}
+
+
+
+
 
 
 // ------------------------------------fra Korneija --------------

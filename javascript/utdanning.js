@@ -31,31 +31,27 @@ obj.idsList = idList;
 }
 
 function getInfo3(obj,input){
-  var høyereUt;
-  var utdanningProsent;
   for(var i=0;i<obj.idsList.length;i++){
     if(obj.idsList[i]===input){
       var valgtKommune = obj.komunelist[i]
     }
-  }
-  høyereUt = getHøyereUtdannning(obj.data,valgtKommune);
-  obj.informasjon = høyereUt;
-}
+    obj.informasjon = obj.data["elementer"][valgtKommune];
 
-function getHøyereUtdannning(data,kommune) {
-  var kortUtdaningMenn = Object.values(data["elementer"][kommune]["03a"]["Menn"])
-  var kortUtdaningKvinner = Object.values(data["elementer"][kommune]["03a"]["Kvinner"])
-  var langUtdaningMenn = Object.values(data["elementer"][kommune]["04a"]["Menn"])
-  var langUtdaningKvinner = Object.values(data["elementer"][kommune]["04a"]["Kvinner"])
-  var sisteMåling = kortUtdaningMenn.pop();
-  var sisteMålingK = kortUtdaningKvinner.pop();
-  var sisteMålingL = langUtdaningMenn.pop();
-  var sisteMålingKL = langUtdaningKvinner.pop();
-  console.log("siste Måling Menn kort "+sisteMåling);
-  console.log("siste Måling Kvinner kort "+sisteMålingK);
-  console.log("siste Måling Menn lang: "+sisteMålingL);
-  console.log("siste Måling Kvinner lang "+sisteMålingKL);
+  }
 }
+// function getInfo3(obj,input){
+//   var høyereUt;
+//   var utdanningProsent;
+//   for(var i=0;i<obj.idsList.length;i++){
+//     if(obj.idsList[i]===input){
+//       var valgtKommune = obj.komunelist[i]
+//     }
+//   }
+//
+//   høyereUt = getHøyereUtdannning(obj.data,valgtKommune);
+//   obj.informasjon = høyereUt;
+// }
+
 
 
       // var detaljer = getDetails(valgtKommune,obj.data);
@@ -76,6 +72,7 @@ function Utdanning() {
 // ------------------------------runner------------------------
 
 function runner() {
+  console.log(utdan.komunelist);
   console.log(utdan.data);
   utdan.getNames();
   console.log(utdan.komunelist)
