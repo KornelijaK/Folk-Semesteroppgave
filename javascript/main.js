@@ -68,13 +68,13 @@ function start(){
   syss.getIDs();
 }
 
-
-function detaljer(kommuner){
-  var eleDetaljer = document.getElementsByClassName("detaljer")
-  eleDetaljer[0].style.display = "block";
-  var kommuneNr = document.getElementById("kommuneNr").value
+function detaljer() {
+  var ele = document.getElementsByClassName("detaljer")[0];
+  ele.style.display = "block";
   var getKommune = document.getElementById("getKommune")
+  var kommuneNr = document.getElementById("kommuneNr").value;
   getKommune.onclick = function() {
-    syss.getInfo(idList,kommuneList,kommuneNr);  //kaller på konstruktør for å hente id
-  } // hvilke konstruktør skal jeg kalle på?
+    input = kommuneNr
+    syss.getInfo();
+  }
 }
