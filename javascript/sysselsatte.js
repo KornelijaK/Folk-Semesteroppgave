@@ -33,17 +33,30 @@ function getIDs2(obj) {
 
 
 function getInfo2(obj,input){
+  var sisteSyssel;
   for(var i=0; i<obj.idList.length;i++){
     if(obj.idList[i] == input){
-      var valgtKommune = obj.kommuneList[i]
-      console.log(valgtKommune);
+      valgtKommune = obj.kommuneList[i]
+      idNr = obj.idList[i]
+      detaljer(valgtKommune)
     }
   }
-  // funksjon som henter sysseldata
-  obj.informasjon = valgtKommune;
+  sisteSyssel = getSisteSyssel(obj,valgtKommune)
+  obj.informasjon = sisteSyssel;
 }
 
+function getSisteSyssel(obj,valgtKommune) {
+  var sysselMenn = Object.values(obj.data["elementer"][valgtKommune]["Menn"])
+  var sysselKvinner = Object.values(obj.data["elementer"][valgtKommune]["Kvinner"])
+  var sysselBeggeKjønn = Object.values(obj.data["elementer"][valgtKommune]["Begge kjønn"])
+  var sisteSysselMenn = sysselMenn.pop();
+  var sisteSysselKvinner = sysselKvinner.pop();
+  var sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
 
+  console.log("Siste måling menn", sisteSysselMenn);
+  console.log("Siste måling kvinner", sisteSysselKvinner);
+  console.log("Siste måling begge kjønn", sisteSysselBeggeKjønn);
+}
 
 // function Sysselsatte(url) {
 //   this.load = function (){

@@ -69,12 +69,25 @@ function start(){
 }
 
 function detaljer() {
+  var div = document.createElement("div")
   var ele = document.getElementsByClassName("detaljer")[0];
+  var list = document.createElement("ul")
   ele.style.display = "block";
   var getKommune = document.getElementById("getKommune")
   var kommuneNr = document.getElementById("kommuneNr").value;
   getKommune.onclick = function() {
     input = kommuneNr
     syss.getInfo();
+    var kommuneNavn = document.createTextNode(valgtKommune)
+    var idNummer = document.createTextNode(idNr)
+    var kNavnList = document.createElement("li");
+    var idNavnList = document.createElement("li")
+    kNavnList.appendChild(kommuneNavn);
+    idNavnList.appendChild(idNummer)
+    list.appendChild(kNavnList);
+    list.appendChild(idNavnList,kNavnList)
+
   }
+  div.appendChild(list)
+  ele.appendChild(div)
 }
