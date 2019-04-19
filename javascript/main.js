@@ -78,16 +78,24 @@ function detaljer() {
   getKommune.onclick = function() {
     input = kommuneNr
     syss.getInfo();
-    console.log(syss.informasjon);
-    console.log(sisteSysselBeggeKjønn);
+    konst.getInfo();
+    console.log(konst.informasjon);
     var kommuneNavn = document.createTextNode(valgtKommune)
     var idNummer = document.createTextNode(idNr)
+    var sysselProsent = document.createTextNode(sisteSysselBeggeKjønn)
     var kNavnList = document.createElement("li");
     var idNavnList = document.createElement("li")
+    var sysselList = document.createElement("li")
+
+    sysselList.innerHTML = "Siste sysselmåling for begge kjønn: "
+    kNavnList.innerHTML = "Kommunenavn: "
+    idNavnList.innerHTML = "KommuneId: "
     kNavnList.appendChild(kommuneNavn);
     idNavnList.appendChild(idNummer)
+    sysselList.appendChild(sysselProsent)
     list.appendChild(kNavnList);
-    list.appendChild(idNavnList,kNavnList)
+    list.appendChild(idNavnList);
+    list.appendChild(sysselList);
 
   }
   div.appendChild(list)

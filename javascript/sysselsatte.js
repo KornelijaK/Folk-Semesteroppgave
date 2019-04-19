@@ -53,9 +53,10 @@ function getSisteSyssel(obj,valgtKommune) {
   var sisteSysselKvinner = sysselKvinner.pop();
   sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
 
-  console.log("Siste måling menn", sisteSysselMenn);
-  console.log("Siste måling kvinner", sisteSysselKvinner);
-  console.log("Siste måling begge kjønn", sisteSysselBeggeKjønn);
+  // console.log("Siste måling menn", sisteSysselMenn);
+  // console.log("Siste måling kvinner", sisteSysselKvinner);
+  // console.log("Siste måling begge kjønn", sisteSysselBeggeKjønn);
+  return sisteSysselBeggeKjønn
 }
 
 // function Sysselsatte(url) {

@@ -47,6 +47,7 @@ function getHøyereUtdannning(data,kommune) {
   var kortUtdaningKvinner = Object.values(data["elementer"][kommune]["03a"]["Kvinner"])
   var langUtdaningMenn = Object.values(data["elementer"][kommune]["04a"]["Menn"])
   var langUtdaningKvinner = Object.values(data["elementer"][kommune]["04a"]["Kvinner"])
+  //var totalUtdanningProsent = parseInt(kortUtdaningMenn + kortUtdaningKvinner + langUtdaningMenn + langUtdaningKvinner)
   var sisteMåling = kortUtdaningMenn.pop();
   var sisteMålingK = kortUtdaningKvinner.pop();
   var sisteMålingL = langUtdaningMenn.pop();
@@ -55,6 +56,7 @@ function getHøyereUtdannning(data,kommune) {
   console.log("siste Måling Kvinner kort "+sisteMålingK);
   console.log("siste Måling Menn lang: "+sisteMålingL);
   console.log("siste Måling Kvinner lang "+sisteMålingKL);
+  return totalUtdanningProsent
 }
 
 
