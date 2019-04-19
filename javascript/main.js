@@ -75,7 +75,7 @@ function displayData(liste,clas,text){
   ele.appendChild(div);
 }
 
-function totalBefolkning(obj) {
+function totalBefolkninger(obj) {
     var totalBefolknign = []
     for(var i=0;i<obj.idsList.length;i++){
       kommuneNr = obj.idsList[i]
@@ -90,25 +90,6 @@ function totalBefolkning(obj) {
   }
   return totalBefolknign;
 }
-
-//  function getMostResentTotal(liste){
-//   total = 0;
-//   for(var i =0;i<liste.length;i++){
-//     var tall = liste[i][1];
-//     total = tall;
-//   }
-//   return total;
-//
-// }
-//
-// function getDetails(obj) {
-//   var dataMenn = Object.entries(obj["Menn"]);
-//   var dataKvinner = Object.entries(dobj["Kvinner"]);
-//   var totalMenn =getMostResentTotal(dataMenn);
-//   var totalKvinner = getMostResentTotal(dataKvinner);
-//   var totalBefolkning = totalKvinner+totalMenn;
-//   return totalBefolkning;
-// }
 
 
 // ----------------main---------------------
@@ -127,6 +108,8 @@ function oversikt(){
 
 
 //-------------------------------Detaljer-------------------------------------
+
+
 
 
 function getHøyereUtdannning(data,kommune) {
