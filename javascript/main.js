@@ -99,9 +99,8 @@ function oversikt(){
   velgSynlighet("over","oversikt")
   displayData(konst.komunelist,"oversikt","Kommune")
   displayData(konst.idsList,"oversikt","Nummer")
-  var befolkningTotalList = totalBefolkning(konst)
+  var befolkningTotalList = totalBefolkninger(konst)
   displayData(befolkningTotalList,"oversikt","Befolkning")
-
   }
 
 
