@@ -16,14 +16,14 @@ function getData(url,obj) {
   xhr.send(null);
 }
 
-function getNames(data,obj) {
-  var komuneListe = Object.keys(data["elementer"]);
+function getNames(obj) {
+  var komuneListe = Object.keys(obj.data["elementer"]);
   obj.komunelist = komuneListe;
 }
 
-function getIDs(data,obj){
+function getIDs(obj){
   var idList = []
-  var list = Object.values(data["elementer"])
+  var list = Object.values(obj.data["elementer"])
   for(var i = 0;i<list.length;i++){
     var id = list[i]["kommunenummer"];
     idList.push(id)
@@ -32,6 +32,7 @@ obj.idsList = idList;
 }
 
 function getInfo(obj,input){
+  console.log(obj.idsList);
   for(var k = 0;k<obj.idsList.length;k++){
     if(obj.idsList[k] === input){
       var valgtKommune = obj.komunelist[k];
@@ -52,8 +53,8 @@ function Befolkning(url) {
   this.informasjon = undefined;
   this.onload = null;
   this.load = function() {getData(url,this)};
-  this.getNames = function() {getNames(this.data,this)}
-  this.getIDs = function() {getIDs(this.data,this)}
+  this.getNames = function() {getNames(this)}
+  this.getIDs = function() {getIDs(this)}
   this.getInfo = function() {getInfo(this,input)}
   }
 
