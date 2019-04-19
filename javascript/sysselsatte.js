@@ -53,51 +53,8 @@ function getSisteSyssel(obj,valgtKommune) {
   var sisteSysselKvinner = sysselKvinner.pop();
   sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
 
-  // console.log("Siste måling menn", sisteSysselMenn);
-  // console.log("Siste måling kvinner", sisteSysselKvinner);
-  // console.log("Siste måling begge kjønn", sisteSysselBeggeKjønn);
   return sisteSysselBeggeKjønn
 }
-
-// function Sysselsatte(url) {
-//   this.load = function (){
-//     getData(url,this)
-//   },
-//   this.data = undefined;
-//   this.getNames = function(){
-//     kommuneList = []
-//     var names = Object.values(this.data);
-//     var kommuner = Object.keys(names[0])
-//     for(var k=0; k < kommuner.length;k++) {
-//       kommuneList.push(kommuner[k])
-//     }
-//
-//     return kommuneList
-//   },
-//   this.getIDs = function() {
-//     idList = [];
-//     var names = Object.values(this.data);
-//     var kommuner = Object.values(names[0])
-//     console.log(kommuner);
-//     for(var k =0; k<kommuner.length;k++){
-//       var id = kommuner[k]["kommunenummer"];
-//       idList.push(id);
-//     }
-//     console.log(idList);
-//     return idList
-//   },
-//   this.getInfo = function(idList,kommuneList,kommuneNr){
-//     for(var k = 0; k < idList.length;k++){
-//       if(idList[k] === kommuneNr) {
-//         var valgtKommune = kommuneList[k];
-//         console.log(valgtKommune);
-//         console.log(idList[k]);
-//         var valgtKommuneData = this.data["elementer"][valgtKommune];
-//         console.log(valgtKommuneData);
-//       }
-//     }
-//   }
-// };
 
 function Sysselsatte(urlSysselsatte) {
   this.data = undefined;
@@ -109,11 +66,3 @@ function Sysselsatte(urlSysselsatte) {
   this.getIDs = function(){getIDs2(this)}
   this.getInfo = function(){getInfo2(this,input)}
 }
-
-
-// let syss;
-// window.onload = function() {
-//   console.log("lager syss");
-//   syss = new Sysselsatte(urlSysselsatte);
-//   syss.load();
-// }
