@@ -1,6 +1,6 @@
 
 var urlUtdanning = "http://wildboy.uib.no/~tpe056/folk/85432.json"
-
+// masse tull
 // ------------------------------HjelpeFunksjoner------------------------
 
 function getData3(url,obj) {
@@ -31,15 +31,13 @@ obj.idsList = idList;
 }
 
 function getInfo3(obj,input){
-  var høyereUt;
-  var utdanningProsent;
   for(var i=0;i<obj.idsList.length;i++){
     if(obj.idsList[i]===input){
       var valgtKommune = obj.komunelist[i]
     }
+    obj.informasjon = obj.data["elementer"][valgtKommune];
+
   }
-  høyereUt = getHøyereUtdannning(obj.data,valgtKommune);
-  obj.informasjon = høyereUt;
 }
 
 function getHøyereUtdannning(data,kommune) {
