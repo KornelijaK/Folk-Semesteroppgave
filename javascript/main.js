@@ -78,6 +78,8 @@ function detaljer() {
   getKommune.onclick = function() {
     input = kommuneNr
     syss.getInfo();
+    console.log(syss.informasjon);
+    console.log(sisteSysselBeggeKjønn);
     var kommuneNavn = document.createTextNode(valgtKommune)
     var idNummer = document.createTextNode(idNr)
     var kNavnList = document.createElement("li");

@@ -51,7 +51,7 @@ function getSisteSyssel(obj,valgtKommune) {
   var sysselBeggeKjønn = Object.values(obj.data["elementer"][valgtKommune]["Begge kjønn"])
   var sisteSysselMenn = sysselMenn.pop();
   var sisteSysselKvinner = sysselKvinner.pop();
-  var sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
+  sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
 
   console.log("Siste måling menn", sisteSysselMenn);
   console.log("Siste måling kvinner", sisteSysselKvinner);
