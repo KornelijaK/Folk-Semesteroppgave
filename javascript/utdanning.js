@@ -52,6 +52,25 @@ function getInfo3(obj,input){
 //   obj.informasjon = høyereUt;
 // }
 
+<<<<<<< HEAD
+=======
+function getHøyereUtdannning(data,kommune) {
+  var kortUtdaningMenn = Object.values(data["elementer"][kommune]["03a"]["Menn"])
+  var kortUtdaningKvinner = Object.values(data["elementer"][kommune]["03a"]["Kvinner"])
+  var langUtdaningMenn = Object.values(data["elementer"][kommune]["04a"]["Menn"])
+  var langUtdaningKvinner = Object.values(data["elementer"][kommune]["04a"]["Kvinner"])
+  //var totalUtdanningProsent = parseInt(kortUtdaningMenn + kortUtdaningKvinner + langUtdaningMenn + langUtdaningKvinner)
+  var sisteMåling = kortUtdaningMenn.pop();
+  var sisteMålingK = kortUtdaningKvinner.pop();
+  var sisteMålingL = langUtdaningMenn.pop();
+  var sisteMålingKL = langUtdaningKvinner.pop();
+  console.log("siste Måling Menn kort "+sisteMåling);
+  console.log("siste Måling Kvinner kort "+sisteMålingK);
+  console.log("siste Måling Menn lang: "+sisteMålingL);
+  console.log("siste Måling Kvinner lang "+sisteMålingKL);
+  return totalUtdanningProsent
+}
+>>>>>>> 49566ef225046cfed6bd3c1ca9562c9d57b46fa0
 
 
       // var detaljer = getDetails(valgtKommune,obj.data);

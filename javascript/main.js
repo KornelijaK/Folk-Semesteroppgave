@@ -162,13 +162,36 @@ function start(){
   syss.getIDs();
 }
 
-
-function detaljer(kommuner){
-  var eleDetaljer = document.getElementsByClassName("detaljer")
-  eleDetaljer[0].style.display = "block";
-  var kommuneNr = document.getElementById("kommuneNr").value
+function detaljer() {
+  var div = document.createElement("div")
+  var ele = document.getElementsByClassName("detaljer")[0];
+  var list = document.createElement("ul")
+  ele.style.display = "block";
   var getKommune = document.getElementById("getKommune")
+  var kommuneNr = document.getElementById("kommuneNr").value;
   getKommune.onclick = function() {
-    syss.getInfo(idList,kommuneList,kommuneNr);  //kaller på konstruktør for å hente id
-  } // hvilke konstruktør skal jeg kalle på?
+    input = kommuneNr
+    syss.getInfo();
+    konst.getInfo();
+    console.log(konst.informasjon);
+    var kommuneNavn = document.createTextNode(valgtKommune)
+    var idNummer = document.createTextNode(idNr)
+    var sysselProsent = document.createTextNode(sisteSysselBeggeKjønn)
+    var kNavnList = document.createElement("li");
+    var idNavnList = document.createElement("li")
+    var sysselList = document.createElement("li")
+
+    sysselList.innerHTML = "Siste sysselmåling for begge kjønn: "
+    kNavnList.innerHTML = "Kommunenavn: "
+    idNavnList.innerHTML = "KommuneId: "
+    kNavnList.appendChild(kommuneNavn);
+    idNavnList.appendChild(idNummer)
+    sysselList.appendChild(sysselProsent)
+    list.appendChild(kNavnList);
+    list.appendChild(idNavnList);
+    list.appendChild(sysselList);
+
+  }
+  div.appendChild(list)
+  ele.appendChild(div)
 }
