@@ -1,4 +1,3 @@
-input;
 
 var urlSysselsatte = "http://wildboy.uib.no/~tpe056/folk/100145.json"
 function getData2(url, obj) {
