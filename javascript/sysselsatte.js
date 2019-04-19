@@ -14,20 +14,6 @@ function getData2(url, obj) {
   xhr.send();
 }
 
-<<<<<<< HEAD
-function Sysselsatte(url) {
-  this.load = function(){
-    getData(url,this)
-  },
-  this.data = undefined;
-  this.getNames = function(){
-    kommuneList = []
-    var names = Object.values(this.data);
-    var kommuner = Object.keys(names[0])
-    for(var k=0; k < kommuner.length;k++) {
-      kommuneList.push(kommuner[k])
-    }
-=======
 function getNames2(obj) {
   var kommuner = Object.keys(obj.data["elementer"]);
   obj.kommuneList = kommuner;
@@ -45,7 +31,6 @@ function getIDs2(obj) {
   console.log(obj.idList);
 }
 
->>>>>>> 49566ef225046cfed6bd3c1ca9562c9d57b46fa0
 
 function getInfo2(obj,input){
   var sisteSyssel;

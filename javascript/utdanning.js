@@ -52,8 +52,6 @@ function getInfo3(obj,input){
 //   obj.informasjon = høyereUt;
 // }
 
-<<<<<<< HEAD
-=======
 function getHøyereUtdannning(data,kommune) {
   var kortUtdaningMenn = Object.values(data["elementer"][kommune]["03a"]["Menn"])
   var kortUtdaningKvinner = Object.values(data["elementer"][kommune]["03a"]["Kvinner"])
@@ -70,7 +68,6 @@ function getHøyereUtdannning(data,kommune) {
   console.log("siste Måling Kvinner lang "+sisteMålingKL);
   return totalUtdanningProsent
 }
->>>>>>> 49566ef225046cfed6bd3c1ca9562c9d57b46fa0
 
 
       // var detaljer = getDetails(valgtKommune,obj.data);
