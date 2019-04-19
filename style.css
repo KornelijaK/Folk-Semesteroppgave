@@ -1,4 +1,11 @@
-.introduksjon { display: none}
+.introduksjon h3 {
+  text-align: center;
+  margin: 2em;
+}
+
+p {
+  text-align: center;
+}
 
 .detaljer {display: none}
 
@@ -13,16 +20,22 @@
   list-style: none;
 }
 
+.hidden {
+  display: none;
+}
 h1 {
   text-align: center;
 }
 
 nav {
   display: flex;
-  justify-content: space-around;
+  background-color: black;
+  color: white;
 }
+
 button {
-  margin-top: 2em;
-  margin-bottom: 2em;
-  padding: 1em;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  padding: 2vw;
+  width: 25%
 }

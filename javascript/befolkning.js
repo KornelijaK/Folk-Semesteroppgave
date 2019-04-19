@@ -1,6 +1,6 @@
 
 var url = "http://wildboy.uib.no/~tpe056/folk/104857.json"
-var input;
+
 
 // ------------------------------HjelpeFunksjoner------------------------
 
@@ -16,7 +16,7 @@ function getData(url,obj) {
   xhr.send(null);
 }
 
-function getNames2(data,obj) {
+function getNames(data,obj) {
   var komuneListe = Object.keys(data["elementer"]);
   obj.komunelist = komuneListe;
 }
@@ -31,34 +31,15 @@ function getIDs(data,obj){
 obj.idsList = idList;
 }
 
-function getInfo(komunelist,idlist,input,obj){
-  var totalMenn = []
-  for(var k = 0;k<idlist.length;k++){
-    if(idlist[k] === input){
-      var valgtKommune = komunelist[k];
-      var detaljer = getDetails(valgtKommune,obj.data);
-      obj.detaljer = detaljer;
+function getInfo(obj,input){
+  for(var k = 0;k<obj.idsList.length;k++){
+    if(obj.idsList[k] === input){
+      var valgtKommune = obj.komunelist[k];
+      obj.informasjon = obj.data["elementer"][valgtKommune];
     }
   }
 }
-function getMostResentTotal(liste){
-  total = 0;
-  for(var i =0;i<liste.length;i++){
-    var tall = liste[i][1];
-    total = tall;
-  }
-  return total;
 
-}
-
-function getDetails(kommune,data) {
-  var dataMenn = Object.entries(data["elementer"][kommune]["Menn"]);
-  var dataKvinner = Object.entries(data["elementer"][kommune]["Kvinner"]);
-  var totalMenn =getMostResentTotal(dataMenn);
-  var totalKvinner = getMostResentTotal(dataKvinner);
-  var totalBefolkning = totalKvinner+totalMenn;
-  return totalBefolkning;
-}
 
 
 // ------------------------------ Main ----------------------
@@ -68,20 +49,14 @@ function Befolkning(url) {
   this.data = undefined;
   this.komunelist = undefined;
   this.idsList = undefined;
-  this.detaljer = undefined;
+  this.informasjon = undefined;
+  this.onload = null;
   this.load = function() {getData(url,this)};
-  this.getNames = function() {getNames2(this.data,this)}
+  this.getNames = function() {getNames(this.data,this)}
   this.getIDs = function() {getIDs(this.data,this)}
-  this.getInfo = function() {getInfo(this.komunelist,this.idsList,input,this)}
-
-  // this.getInfo = function(idlist,komunelist,input){
-  //   var totalMenn = []
-  //   for(var k = 0;k<idlist.length;k++){
-  //     if(idlist[k] === input){
-  //       var valgtKommune = komunelist[k];
-  //       return getDetails(valgtKommune,all);
-
+  this.getInfo = function() {getInfo(this,input)}
   }
+
 
 
 
