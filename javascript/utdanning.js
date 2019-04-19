@@ -72,7 +72,6 @@ function Utdanning() {
 // ------------------------------runner------------------------
 
 function runner() {
-  console.log(utdan.komunelist);
   console.log(utdan.data);
   utdan.getNames();
   console.log(utdan.komunelist)
@@ -81,6 +80,4 @@ function runner() {
   input = "0101";
   utdan.getInfo()
   console.log(utdan.informasjon);
-
-
 }

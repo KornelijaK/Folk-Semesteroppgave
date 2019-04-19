@@ -2,28 +2,28 @@
 <html lang="nb" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="javascript/befolkning.js"></script>
     <script type="text/javascript" src="javascript/sysselsatte.js"></script>
     <script type="text/javascript" src="javascript/utdanning.js"></script>
     <script type="text/javascript" src="javascript/main.js"></script>
-
-  <title>Komuneoversikt</title>
+    <title>Kommunert</title>
   </head>
   <body>
     <header>
       <h1>Komuneoversikt i Norge</h1>
     </header>
-    <button onclick="runner()" type="button" name="button">Utdanning Test</button>
-    <button onclick="start()" type="button" name="button"></button>
+    <!-- <button onclick="runner()" type="button" name="button">Utdanning Test</button>
+    <button onclick="start()" type="button" name="button"></button> -->
+    <!-- -->
     <nav>
-      <button type="button" name="button">Introduksjon</button>
-      <button id="oversikt" onclick="oversikt()" type="button" name="button">Oversikt</button>
+      <button onclick="introduksjon()" type="button" name="button">Introduksjon</button>
+      <button onclick="oversikt()" type="button" name="button">Oversikt</button>
       <button onclick="detaljer()" type="button" name="button">Detaljer</button>
       <button type="button" name="button">Sammenligning</button>
     </nav>
-
-    <div class="introduksjon">
+    <div id="int" class="hidden">
       <h3>Introduksjon</h3>
       <p>Dette er en emnebesvarelse i INFO 134</p>
       <h3>Lenker til SSB offisielle sider</h3>
@@ -33,26 +33,24 @@
       <p>Data kan inneholde feil.</p>
     </div>
 
-    <div class="oversikt">
+    <div id="over" class="oversikt">
+
 
     </div>
 
-    <div class="detaljer">
+    <div id="detal" class="detaljer">
       <input type="text" name="" value="0101" id="kommuneNr">
       <br>
       <button type="button" name="button" id="getKommune"> Få informasjon </button>
 
     </div>
-
-    <div class="sammenligning">
+    <div id="sammen" class="sammenligning">
       <input type="text" name="" value="">
       <input type="text" name="" value="">
       <button type="button" name="button"></button>
-
     </div>
     <footer>
       <p>Dette er en oppgavebesvarelse i INFO134</p>
     </footer>
-
   </body>
 </html>

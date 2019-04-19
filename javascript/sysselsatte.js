@@ -12,10 +12,8 @@ function getData(url, obj) {
   xhr.send();
 }
 
-
-
 function Sysselsatte(url) {
-  this.load = function (){
+  this.load = function(){
     getData(url,this)
   },
   this.data = undefined;

@@ -32,10 +32,7 @@ obj.idsList = idList;
 }
 
 function getInfo(obj,input){
-
   for(var k = 0;k<obj.idsList.length;k++){
-    console.log(obj.idsList[k]);
-    console.log(input);
     if(obj.idsList[k] === input){
       var valgtKommune = obj.komunelist[k];
       obj.informasjon = obj.data["elementer"][valgtKommune];
@@ -45,29 +42,21 @@ function getInfo(obj,input){
 
 
 
-
 // ------------------------------ Main ----------------------
 
 
 function Befolkning(url) {
-  console.log("jlnjkln "+ input)
   this.data = undefined;
   this.komunelist = undefined;
   this.idsList = undefined;
   this.informasjon = undefined;
+  this.onload = null;
   this.load = function() {getData(url,this)};
   this.getNames = function() {getNames(this.data,this)}
   this.getIDs = function() {getIDs(this.data,this)}
   this.getInfo = function() {getInfo(this,input)}
-
-  // this.getInfo = function(idlist,komunelist,input){
-  //   var totalMenn = []
-  //   for(var k = 0;k<idlist.length;k++){
-  //     if(idlist[k] === input){
-  //       var valgtKommune = komunelist[k];
-  //       return getDetails(valgtKommune,all);
-
   }
+
 
 
 
