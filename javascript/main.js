@@ -161,7 +161,6 @@ function detaljer() {
   getKommune.onclick = function() {
     input = kommuneNr
     syss.getInfo();
-
     var kommuneNavn = document.createTextNode(valgtKommune)
     var idNummer = document.createTextNode(idNr)
     var sysselProsent = document.createTextNode(sisteSysselBeggeKjønn)
