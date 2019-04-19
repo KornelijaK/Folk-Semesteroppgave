@@ -31,26 +31,16 @@ obj.idsList = idList;
 }
 
 function getInfo3(obj,input){
+  var høyereUt;
+  var utdanningProsent;
   for(var i=0;i<obj.idsList.length;i++){
     if(obj.idsList[i]===input){
       var valgtKommune = obj.komunelist[i]
     }
-    obj.informasjon = obj.data["elementer"][valgtKommune];
-
   }
+  høyereUt = getHøyereUtdannning(obj.data,valgtKommune);
+  obj.informasjon = høyereUt;
 }
-// function getInfo3(obj,input){
-//   var høyereUt;
-//   var utdanningProsent;
-//   for(var i=0;i<obj.idsList.length;i++){
-//     if(obj.idsList[i]===input){
-//       var valgtKommune = obj.komunelist[i]
-//     }
-//   }
-//
-//   høyereUt = getHøyereUtdannning(obj.data,valgtKommune);
-//   obj.informasjon = høyereUt;
-// }
 
 function getHøyereUtdannning(data,kommune) {
   var kortUtdaningMenn = Object.values(data["elementer"][kommune]["03a"]["Menn"])
@@ -96,4 +86,6 @@ function runner() {
   input = "0101";
   utdan.getInfo()
   console.log(utdan.informasjon);
+
+
 }
