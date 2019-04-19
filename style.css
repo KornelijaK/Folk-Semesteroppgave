@@ -9,7 +9,7 @@ p {
 
 .detaljer {display: none}
 
-.sammenligning {display: none}
+.sammenligning {}
 
 .oversikt {
   display: flex;

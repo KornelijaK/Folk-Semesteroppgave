@@ -16,7 +16,7 @@ function getData2(url, obj) {
 function getNames2(obj) {
   var kommuner = Object.keys(obj.data["elementer"]);
   obj.kommuneList = kommuner;
-  console.log(obj.kommuneList);
+  // console.log(obj.kommuneList);
 };
 
 function getIDs2(obj) {
@@ -27,7 +27,7 @@ function getIDs2(obj) {
     ids.push(id)
   }
   obj.idList = ids;
-  console.log(obj.idList);
+  // console.log(obj.idList);
 }
 
 
