@@ -34,31 +34,13 @@ function getInfo3(obj,input){
   for(var i=0;i<obj.idsList.length;i++){
     if(obj.idsList[i]===input){
       var valgtKommune = obj.komunelist[i]
+      detaljer(valgtKommune)
     }
     obj.informasjon = obj.data["elementer"][valgtKommune];
-
   }
 }
 
-function getHøyereUtdannning(data,kommune) {
-  var kortUtdaningMenn = Object.values(data["elementer"][kommune]["03a"]["Menn"])
-  var kortUtdaningKvinner = Object.values(data["elementer"][kommune]["03a"]["Kvinner"])
-  var langUtdaningMenn = Object.values(data["elementer"][kommune]["04a"]["Menn"])
-  var langUtdaningKvinner = Object.values(data["elementer"][kommune]["04a"]["Kvinner"])
-  //var totalUtdanningProsent = parseInt(kortUtdaningMenn + kortUtdaningKvinner + langUtdaningMenn + langUtdaningKvinner)
-  var sisteMåling = kortUtdaningMenn.pop();
-  var sisteMålingK = kortUtdaningKvinner.pop();
-  var sisteMålingL = langUtdaningMenn.pop();
-  var sisteMålingKL = langUtdaningKvinner.pop();
-  console.log("siste Måling Menn kort "+sisteMåling);
-  console.log("siste Måling Kvinner kort "+sisteMålingK);
-  console.log("siste Måling Menn lang: "+sisteMålingL);
-  console.log("siste Måling Kvinner lang "+sisteMålingKL);
-  return totalUtdanningProsent
-}
 
-
-      // var detaljer = getDetails(valgtKommune,obj.data);
 
 // ------------------------------Main------------------------
 

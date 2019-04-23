@@ -40,14 +40,13 @@ function getInfo2(obj,input){
       detaljer(valgtKommune)
     }
   }
-  sisteSyssel = getSisteSyssel(obj,valgtKommune)
-  obj.informasjon = sisteSyssel;
+  obj.informasjon = obj.data["elementer"][valgtKommune]
 }
 
-function getSisteSyssel(obj,valgtKommune) {
-  var sysselMenn = Object.values(obj.data["elementer"][valgtKommune]["Menn"])
-  var sysselKvinner = Object.values(obj.data["elementer"][valgtKommune]["Kvinner"])
-  var sysselBeggeKjønn = Object.values(obj.data["elementer"][valgtKommune]["Begge kjønn"])
+function getSisteSyssel(syss) {
+  var sysselMenn = Object.values(syss.informasjon["Menn"])
+  var sysselKvinner = Object.values(syss.informasjon["Kvinner"])
+  var sysselBeggeKjønn = Object.values(syss.informasjon["Begge kjønn"])
   var sisteSysselMenn = sysselMenn.pop();
   var sisteSysselKvinner = sysselKvinner.pop();
   sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();

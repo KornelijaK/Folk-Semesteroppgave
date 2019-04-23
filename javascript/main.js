@@ -111,19 +111,23 @@ function oversikt(){
 
 
 
-function getHøyereUtdannning(data,kommune) {
-  var kortUtdaningMenn = Object.values(data["elementer"][kommune]["03a"]["Menn"])
-  var kortUtdaningKvinner = Object.values(data["elementer"][kommune]["03a"]["Kvinner"])
-  var langUtdaningMenn = Object.values(data["elementer"][kommune]["04a"]["Menn"])
-  var langUtdaningKvinner = Object.values(data["elementer"][kommune]["04a"]["Kvinner"])
+function getHøyereUtdannning(utdan) {
+  var kortUtdaningMenn = Object.values(utdan.informasjon["03a"]["Menn"])
+  var kortUtdaningKvinner = Object.values(utdan.informasjon["03a"]["Kvinner"])
+  var langUtdaningMenn = Object.values(utdan.informasjon["04a"]["Menn"])
+  var langUtdaningKvinner = Object.values(utdan.informasjon["04a"]["Kvinner"])
   var sisteMåling = kortUtdaningMenn.pop();
   var sisteMålingK = kortUtdaningKvinner.pop();
   var sisteMålingL = langUtdaningMenn.pop();
   var sisteMålingKL = langUtdaningKvinner.pop();
+  
+  totalUtdanningProsent = Number(sisteMåling + sisteMålingK + sisteMålingL + sisteMålingKL)
+  console.log(totalUtdanningProsent);
   console.log("siste Måling Menn kort "+sisteMåling);
   console.log("siste Måling Kvinner kort "+sisteMålingK);
   console.log("siste Måling Menn lang: "+sisteMålingL);
   console.log("siste Måling Kvinner lang "+sisteMålingKL);
+  return totalUtdanningProsent
 }
 
 
@@ -143,22 +147,32 @@ function detaljer() {
   getKommune.onclick = function() {
     input = kommuneNr
     syss.getInfo();
+    getSisteSyssel(syss);
+    utdan.getInfo();
+    getHøyereUtdannning(utdan)
+
+
     var kommuneNavn = document.createTextNode(valgtKommune)
     var idNummer = document.createTextNode(idNr)
-    var sysselProsent = document.createTextNode(sisteSysselBeggeKjønn)
+    var sysMåling = document.createTextNode(sisteSysselBeggeKjønn)
+    var utdanMåling = document.createTextNode(totalUtdanningProsent)
     var kNavnList = document.createElement("li");
     var idNavnList = document.createElement("li")
-    var sysselList = document.createElement("li")
+    var sysList = document.createElement("li");
+    var utdanList = document.createElement("li")
 
-    sysselList.innerHTML = "Siste sysselmåling for begge kjønn: "
+    sysList.innerHTML = "Siste sysselmåling: "
     kNavnList.innerHTML = "Kommunenavn: "
     idNavnList.innerHTML = "KommuneId: "
+    utdanList.innerHTML = "Siste utdanningmåling: "
+    sysList.appendChild(sysMåling)
+    utdanList.appendChild(utdanMåling)
     kNavnList.appendChild(kommuneNavn);
     idNavnList.appendChild(idNummer)
-    sysselList.appendChild(sysselProsent)
     list.appendChild(kNavnList);
     list.appendChild(idNavnList);
-    list.appendChild(sysselList);
+    list.appendChild(sysList)
+    list.appendChild(utdanList)
 
   }
   div.appendChild(list)
