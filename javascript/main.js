@@ -172,6 +172,7 @@ function detaljer() {
   getKommune.onclick = function() {
     input = kommuneNr
     syss.getInfo();
+<<<<<<< HEAD
     getSisteSyssel(syss);
     utdan.getInfo();
     getHøyereUtdannning(utdan);
@@ -183,6 +184,12 @@ function detaljer() {
     var idNummer = document.createTextNode(idNr)
     var sysMåling = document.createTextNode(sisteSysselBeggeKjønn)
     var utdanMåling = document.createTextNode(totalUtdanningProsent)
+=======
+    var kommuneNavn = document.createTextNode("oe")
+    // fikse det der opp
+    var idNummer = document.createTextNode(input)
+    var sysselProsent = document.createTextNode(sisteSysselBeggeKjønn)
+>>>>>>> Live
     var kNavnList = document.createElement("li");
     var idNavnList = document.createElement("li")
     var sysList = document.createElement("li");
@@ -264,9 +271,18 @@ function visKommunenavn(obj,input,id) {
 
 }
 
-function prosentPoeng(liste1){
+function prosentPoeng(liste){
   var prosentPoeng = 0;
+<<<<<<< HEAD
   var
+=======
+  var økning = 0;
+  for(var i =0;i<liste.length;i++){
+
+
+  }
+
+>>>>>>> Live
 
 
 
