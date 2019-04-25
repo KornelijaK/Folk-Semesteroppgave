@@ -3,6 +3,7 @@ let konst;
 let syss;
 let utdan;
 let input;
+let runTracker;
 
 function lagerKonstruktør(){
   syss = new Sysselsatte(urlSysselsatte);
@@ -17,8 +18,7 @@ window.onload = lagerKonstruktør;
 // --------------------------------------Felles funksjoner------------------------------
 
 
-function velgSynlighet(id,c){
-  console.log(id);
+function velgSynlighet(id,classN){
   var ele = document.getElementById("int");
   var ele2 = document.getElementById("detal");
   var ele3 = document.getElementById("over");
@@ -28,7 +28,7 @@ function velgSynlighet(id,c){
   ele2.className = "hidden";
   ele3.className = "hidden";
   ele4.className = "hidden";
-  ele5.className = c;
+  ele5.className = classN;
 }
 
 function runMethods(){
@@ -79,9 +79,9 @@ function totalBefolkninger(obj) {
     for(var i=0;i<obj.idsList.length;i++){
       kommuneNr = obj.idsList[i]
       input = kommuneNr;
-      konst.getInfo()
-      var befolkningMenn = Object.values(konst.informasjon["Menn"]);
-      var befolkningKvinner = Object.values(konst.informasjon["Kvinner"]);
+      obj.getInfo()
+      var befolkningMenn = Object.values(obj.informasjon["Menn"]);
+      var befolkningKvinner = Object.values(obj.informasjon["Kvinner"]);
       var sisteMålingM = befolkningMenn.pop();
       var sisteMålingK = befolkningKvinner.pop();
       var total = sisteMålingM + sisteMålingK;
@@ -93,13 +93,15 @@ function totalBefolkninger(obj) {
 
 // ----------------main---------------------
 function oversikt(){
-  konst.getNames();
-  konst.getIDs();
-  velgSynlighet("over","oversikt")
-  displayData(konst.komunelist,"oversikt","Kommune")
-  displayData(konst.idsList,"oversikt","Nummer")
-  var befolkningTotalList = totalBefolkninger(konst)
-  displayData(befolkningTotalList,"oversikt","Befolkning")
+  runMethods();
+  velgSynlighet("over","oversikt");
+  if(runTracker === undefined) {
+    displayData(konst.komunelist,"oversikt","Kommune")
+    displayData(konst.idsList,"oversikt","Nummer")
+    var befolkningTotalList = totalBefolkninger(konst)
+    displayData(befolkningTotalList,"oversikt","Befolkning")
+    runTracker = true;
+    }
   }
 
 
@@ -191,4 +193,21 @@ function detaljer() {
   }
   div.appendChild(list)
   ele.appendChild(div)
+}
+
+
+//-------------------------------Sammenligning-------------------------------------
+
+
+
+
+
+
+
+
+
+// ----------------------main------------------------
+
+function sammenLigning() {
+velgSynlighet("sammen","sammenligning");
 }

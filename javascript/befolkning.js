@@ -32,7 +32,6 @@ obj.idsList = idList;
 }
 
 function getInfo(obj,input){
-  console.log(obj.idsList);
   for(var k = 0;k<obj.idsList.length;k++){
     if(obj.idsList[k] === input){
       var valgtKommune = obj.komunelist[k];

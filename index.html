@@ -15,14 +15,11 @@
     <header>
       <h1>Komuneoversikt i Norge</h1>
     </header>
-    <!-- <button onclick="runner()" type="button" name="button">Utdanning Test</button>
-    <button onclick="start()" type="button" name="button"></button> -->
-    <!-- -->
     <nav>
       <button onclick="introduksjon()" type="button" name="button">Introduksjon</button>
       <button onclick="oversikt()" type="button" name="button">Oversikt</button>
       <button onclick="detaljer()" type="button" name="button">Detaljer</button>
-      <button type="button" name="button">Sammenligning</button>
+      <button onclick="sammenLigning()" type="button" name="button">Sammenligning</button>
     </nav>
     <div id="int" class="hidden">
       <h3>Introduksjon</h3>
@@ -45,9 +42,9 @@
       <button type="button" name="button" id="getKommune"> Få informasjon </button>
 
     </div>
-    <div id="sammen" class="sammenligning">
-      <input type="text" name="" value="">
-      <input type="text" name="" value="">
+    <div id="sammen" class="hidden">
+      Kommunenummer<input type="text" name="" value="">
+      kommunenummer:<input type="text" name="" value="">
       <button type="button" name="button"></button>
     </div>
     <footer>
