@@ -19,7 +19,7 @@
       <button onclick="introduksjon()" type="button" name="button">Introduksjon</button>
       <button onclick="oversikt()" type="button" name="button">Oversikt</button>
       <button onclick="detaljer()" type="button" name="button">Detaljer</button>
-      <button onclick="sammenLigning()" type="button" name="button">Sammenligning</button>
+      <button onclick="velgSynlighet('sammen','sammenligning')" type="button" name="button">Sammenligning</button>
     </nav>
     <div id="int" class="hidden">
       <h3>Introduksjon</h3>
@@ -37,15 +37,24 @@
     </div>
 
     <div id="detal" class="detaljer">
-      <input type="text" name="" value="0101" id="kommuneNr">
+      <input type="text" value="0101" id="kommuneNr">
       <br>
       <button type="button" name="button" id="getKommune"> Få informasjon </button>
 
     </div>
     <div id="sammen" class="hidden">
-      Kommunenummer<input type="text" name="" value="">
-      kommunenummer:<input type="text" name="" value="">
-      <button type="button" name="button"></button>
+      Kommune nummer:<input id="i1"  type="text" name="" value="0101">
+      kommune nummer:<input id="i2" type="text" name="" value="0805">
+      <button onclick="sammenLigning()" type="button" name="button">Sammenlign</button>
+      <div class="komunetitler">
+        <h2 id="k1"></h2>
+        <h2 id="k2"></h2>
+      </div>
+      <div class="data">
+        <table id="kommune1"></table>
+        <table id="kommune2"></table>
+      </div>
+
     </div>
     <footer>
       <p>Dette er en oppgavebesvarelse i INFO134</p>

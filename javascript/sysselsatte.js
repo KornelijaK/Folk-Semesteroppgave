@@ -26,7 +26,7 @@ function getIDs2(obj) {
     var id = list[i]["kommunenummer"];
     ids.push(id)
   }
-  obj.idList = ids;
+  obj.idsList = ids;
   // console.log(obj.idList);
 }
 
@@ -37,7 +37,7 @@ function getInfo2(obj,input){
     if(obj.idList[i] == input){
       valgtKommune = obj.kommuneList[i]
       idNr = obj.idList[i]
-      detaljer(valgtKommune)
+      // detaljer(valgtKommune)
     }
   }
   obj.informasjon = obj.data["elementer"][valgtKommune]
@@ -52,16 +52,15 @@ function getSisteSyssel(syss) {
   var sisteSysselKvinner = sysselKvinner.pop();
   sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
 
-  return sisteSysselBeggeKjønn
-}
+
 
 function Sysselsatte(urlSysselsatte) {
   this.data = undefined;
   this.kommuneList = undefined;
-  this.idList = undefined;
+  this.idsList = undefined;
   this.informasjon = undefined;
   this.load = function(){getData2(urlSysselsatte,this)};
   this.getNames = function(){getNames2(this)}
   this.getIDs = function(){getIDs2(this)}
-  this.getInfo = function(){getInfo2(this,input)}
+  this.getInfo = function(){getInfo(this,input)}
 }

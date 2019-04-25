@@ -1,6 +1,5 @@
 
 var urlUtdanning = "http://wildboy.uib.no/~tpe056/folk/85432.json"
-// masse tull
 // ------------------------------HjelpeFunksjoner------------------------
 
 function getData3(url,obj) {

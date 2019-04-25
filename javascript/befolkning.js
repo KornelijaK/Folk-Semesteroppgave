@@ -34,7 +34,7 @@ obj.idsList = idList;
 function getInfo(obj,input){
   for(var k = 0;k<obj.idsList.length;k++){
     if(obj.idsList[k] === input){
-      var valgtKommune = obj.komunelist[k];
+      var valgtKommune = obj.kommuneList[k];
       obj.informasjon = obj.data["elementer"][valgtKommune];
     }
   }
@@ -47,7 +47,7 @@ function getInfo(obj,input){
 
 function Befolkning(url) {
   this.data = undefined;
-  this.komunelist = undefined;
+  this.kommuneList = undefined;
   this.idsList = undefined;
   this.informasjon = undefined;
   this.onload = null;
