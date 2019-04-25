@@ -143,7 +143,6 @@ function table() {
     console.log(row);
   }
   tablediv.appendChild(row);
-
 }
 
 
