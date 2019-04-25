@@ -44,6 +44,7 @@ function getInfo2(obj,input){
 }
 
 function getSisteSyssel(syss) {
+  console.log(syss);
   var sysselMenn = Object.values(syss.informasjon["Menn"])
   var sysselKvinner = Object.values(syss.informasjon["Kvinner"])
   var sysselBeggeKjønn = Object.values(syss.informasjon["Begge kjønn"])

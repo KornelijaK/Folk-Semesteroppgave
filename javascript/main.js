@@ -10,12 +10,11 @@ function lagerKonstruktør(){
   konst = new Befolkning(url)
   konst.load();
   utdan = new Utdanning(urlUtdanning)
-  utdan.load()
+  utdan.load();
 }
 
 window.onload = lagerKonstruktør;
 // --------------------------------------Felles funksjoner------------------------------
-
 
 
 function velgSynlighet(id,c){
@@ -120,7 +119,7 @@ function getHøyereUtdannning(utdan) {
   var sisteMålingK = kortUtdaningKvinner.pop();
   var sisteMålingL = langUtdaningMenn.pop();
   var sisteMålingKL = langUtdaningKvinner.pop();
-  
+
   totalUtdanningProsent = Number(sisteMåling + sisteMålingK + sisteMålingL + sisteMålingKL)
   console.log(totalUtdanningProsent);
   console.log("siste Måling Menn kort "+sisteMåling);
@@ -131,7 +130,21 @@ function getHøyereUtdannning(utdan) {
 }
 
 
-
+function table() {
+  input = "0101";
+  runMethods();
+  konst.getInfo();
+  console.log(konst.informasjon);
+  var tablediv = document.createElement("div");
+  var mennBefolkning = Object.entries(konst.informasjon["Menn"]);
+  console.log(mennBefolkning);
+  for(var x =0; x < mennBefolkning.length;x++) {
+    var row = document.createElement("tr");
+    console.log(row);
+  }
+  tablediv.appendChild(row);
+  table
+}
 
 
 
@@ -149,7 +162,9 @@ function detaljer() {
     syss.getInfo();
     getSisteSyssel(syss);
     utdan.getInfo();
-    getHøyereUtdannning(utdan)
+    getHøyereUtdannning(utdan);
+    konst.getInfo()
+    console.log(konst.informasjon);
 
 
     var kommuneNavn = document.createTextNode(valgtKommune)
