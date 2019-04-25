@@ -39,3 +39,17 @@ button {
   padding: 2vw;
   width: 25%
 }
+
+table, th, td {
+  border: 1px solid black;
+}
+
+.komunetitler {
+  display: flex;
+  justify-content: space-between;
+}
+
+.data {
+  display: flex;
+  justify-content: space-between;
+}

@@ -38,8 +38,11 @@ function runMethods(){
   utdan.getIDs();
   syss.getNames();
   syss.getIDs();
-
 }
+
+
+
+
 
 // --------------------------------------Introduksjon------------------------------
 function introduksjon(){
@@ -68,8 +71,8 @@ function displayData(liste,clas,text){
     var lisItem = document.createElement("li");
     lisItem.appendChild(text);
     lis.appendChild(lisItem)
-
   }
+
   div.appendChild(lis)
   ele.appendChild(div);
 }
@@ -127,9 +130,18 @@ function getHøyereUtdannning(data,kommune) {
   console.log("siste Måling Kvinner lang "+sisteMålingKL);
 }
 
+function getSisteSyssel(obj,valgtKommune) {
+  var sysselMenn = Object.values(obj.data["elementer"][valgtKommune]["Menn"])
+  var sysselKvinner = Object.values(obj.data["elementer"][valgtKommune]["Kvinner"])
+  var sysselBeggeKjønn = Object.values(obj.data["elementer"][valgtKommune]["Begge kjønn"])
+  var sisteSysselMenn = sysselMenn.pop();
+  var sisteSysselKvinner = sysselKvinner.pop();
+  sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
+
+  return sisteSysselBeggeKjønn
 
 
-
+}
 
 
 // ------------------------------------main --------------
@@ -170,15 +182,82 @@ function detaljer() {
 //-------------------------------Sammenligning-------------------------------------
 
 
+function sysselSettingBegge(obj,id){
+  syss.getInfo()
+  console.log(obj.informasjon);
+  var sysselMenn = Object.entries(obj.informasjon["Menn"])
+  var sysselKvinner = Object.entries(obj.informasjon["Kvinner"])
+  makeTable(sysselMenn,sysselKvinner,id)
 
+}
 
+function createRow(text,text2,text3,id) {
+  var ele = document.getElementById(id);
+  var row = document.createElement("TR");
+  var cell1 = document.createElement("TD");
+  var cell2 = document.createElement("TD");
+  var cell3 = document.createElement("TD");
+  var text = document.createTextNode(text);
+  var text2 = document.createTextNode(text2);
+  var text3 = document.createTextNode(text3);
+  cell1.appendChild(text);
+  cell2.appendChild(text2);
+  cell3.appendChild(text3);
+  row.appendChild(cell1);
+  row.appendChild(cell2);
+  row.appendChild(cell3);
+  ele.appendChild(row)
+}
 
+function makeTable(liste,liste2,id){
+  createRow("År","Menn","Kvinner",id)
+  for(var i=0;i<liste.length;i++){
+    var år = liste[i][0]
+    var dataMenn = liste[i][1]
+    for(var j=0;j<liste2.length;j++){
+      if(liste2[j][0] === år){
+        var dataKvinner = liste2[j][1]
+      }
+    }
+    createRow(år,dataMenn,dataKvinner,id)
+  }
+}
 
+function visKommunenavn(obj,input,id) {
+  var ele = document.getElementById(id)
+  for(var i =0;i<obj.idsList.length;i++){
+    if(obj.idsList[i] === input){
+      var kommune = obj.kommuneList[i];
+      var text = document.createTextNode(kommune)
+      ele.appendChild(text);
+
+    }
+  }
+
+}
+
+/// skal være gyldig nummer.
+
+// historisk
+// data for utvikling av sysselsetting for kjønnskategoriene “Menn” og “Kvinner” i begge kommunene. For
+// hvert år og for hver kjønnskategori, skal dere markere hvilken av kommunene som har høyest vekst i
+// prosentpoeng.
 
 
 
 // ----------------------main------------------------
 
+// velgSynlighet("sammen","sammenligning");
+
 function sammenLigning() {
-velgSynlighet("sammen","sammenligning");
+  runMethods()
+  var kommune1 = document.getElementById("i1").value;
+  var kommune2 = document.getElementById("i2").value;
+  input = kommune1;
+  visKommunenavn(syss,input,"k1");
+  sysselSettingBegge(syss,"kommune1");
+  input = kommune2
+  visKommunenavn(syss,input,"k2");
+  sysselSettingBegge(syss,"kommune2");
+
 }
