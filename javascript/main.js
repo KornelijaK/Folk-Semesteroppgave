@@ -164,17 +164,17 @@ function getSisteSyssel(obj) {
 
 
 // ------------------------------------main --------------
-function detaljer() {
+
+function displayDetaljer() {
   velgSynlighet("detal","detaljer");
   runMethods()
   var div = document.createElement("div")
   var ele = document.getElementById('detal');
-  // var ele = document.getElementsByClassName("detaljer")[0];
   var list = document.createElement("ul")
-  // ele.style.display = "block";
   var getKommune = document.getElementById("getKommune")
   var kommuneNr = document.getElementById("kommuneNr").value;
   getKommune.onclick = function() {
+
     input = kommuneNr
     syss.getInfo();
     getSisteSyssel(syss);
