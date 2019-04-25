@@ -45,7 +45,7 @@ function getInfo3(obj,input){
 
 function Utdanning() {
   this.data = undefined;
-  this.komunelist = undefined;
+  this.kommuneList = undefined;
   this.idsList = undefined;
   this.informasjon = undefined;
   this.load = function() {getData3(urlUtdanning,this)}

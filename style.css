@@ -7,8 +7,6 @@ p {
   text-align: center;
 }
 
-.detaljer {display: none}
-
 .sammenligning {}
 
 .oversikt {
@@ -52,4 +50,8 @@ table, th, td {
 .data {
   display: flex;
   justify-content: space-between;
+}
+
+.detaljer{
+
 }

@@ -52,7 +52,7 @@ function getSisteSyssel(syss) {
   var sisteSysselKvinner = sysselKvinner.pop();
   sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
 
-
+}
 
 function Sysselsatte(urlSysselsatte) {
   this.data = undefined;

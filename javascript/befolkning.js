@@ -18,7 +18,7 @@ function getData(url,obj) {
 
 function getNames(obj) {
   var komuneListe = Object.keys(obj.data["elementer"]);
-  obj.komunelist = komuneListe;
+  obj.kommuneList = komuneListe;
 }
 
 function getIDs(obj){
@@ -32,10 +32,12 @@ obj.idsList = idList;
 }
 
 function getInfo(obj,input){
+  console.log(obj)
   for(var k = 0;k<obj.idsList.length;k++){
     if(obj.idsList[k] === input){
       var valgtKommune = obj.kommuneList[k];
       obj.informasjon = obj.data["elementer"][valgtKommune];
+      obj.informasjon.navn = valgtKommune;
     }
   }
 }

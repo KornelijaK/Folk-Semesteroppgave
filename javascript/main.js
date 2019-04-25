@@ -99,7 +99,7 @@ function oversikt(){
   runMethods();
   velgSynlighet("over","oversikt");
   if(runTracker === undefined) {
-    displayData(konst.komunelist,"oversikt","Kommune")
+    displayData(konst.kommuneList,"oversikt","Kommune")
     displayData(konst.idsList,"oversikt","Nummer")
     var befolkningTotalList = totalBefolkninger(konst)
     displayData(befolkningTotalList,"oversikt","Befolkning")
@@ -134,62 +134,58 @@ function getHøyereUtdannning(utdan) {
   return totalUtdanningProsent
 }
 
-function getSisteSyssel(obj,valgtKommune) {
-  var sysselMenn = Object.values(obj.data["elementer"][valgtKommune]["Menn"])
-  var sysselKvinner = Object.values(obj.data["elementer"][valgtKommune]["Kvinner"])
-  var sysselBeggeKjønn = Object.values(obj.data["elementer"][valgtKommune]["Begge kjønn"])
+function getSisteSyssel(obj) {
+  var sysselMenn = Object.values(obj.informasjon["Menn"])
+  var sysselKvinner = Object.values(obj.informasjon["Kvinner"])
+  var sysselBeggeKjønn = Object.values(obj.informasjon["Begge kjønn"])
   var sisteSysselMenn = sysselMenn.pop();
   var sisteSysselKvinner = sysselKvinner.pop();
   sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
 
-function table() {
-  input = "0101";
-  runMethods();
-  konst.getInfo();
-  console.log(konst.informasjon);
-  var tablediv = document.createElement("div");
-  var mennBefolkning = Object.entries(konst.informasjon["Menn"]);
-  console.log(mennBefolkning);
-  for(var x =0; x < mennBefolkning.length;x++) {
-    var row = document.createElement("tr");
-    console.log(row);
-  }
-  tablediv.appendChild(row);
-}
+  return sisteSysselBeggeKjønn
 
 }
+// function table() {
+//   input = "0101";
+//   runMethods();
+//   konst.getInfo();
+//   console.log(konst.informasjon);
+//   var tablediv = document.createElement("div");
+//   var mennBefolkning = Object.entries(konst.informasjon["Menn"]);
+//   console.log(mennBefolkning);
+//   for(var x =0; x < mennBefolkning.length;x++) {
+//     var row = document.createElement("tr");
+//     console.log(row);
+//   }
+//   tablediv.appendChild(row);
+// }
+
+
 
 
 // ------------------------------------main --------------
 function detaljer() {
+  velgSynlighet("detal","detaljer");
   runMethods()
   var div = document.createElement("div")
-  var ele = document.getElementsByClassName("detaljer")[0];
+  var ele = document.getElementById('detal');
+  // var ele = document.getElementsByClassName("detaljer")[0];
   var list = document.createElement("ul")
-  ele.style.display = "block";
+  // ele.style.display = "block";
   var getKommune = document.getElementById("getKommune")
   var kommuneNr = document.getElementById("kommuneNr").value;
   getKommune.onclick = function() {
     input = kommuneNr
     syss.getInfo();
-<<<<<<< HEAD
     getSisteSyssel(syss);
     utdan.getInfo();
     getHøyereUtdannning(utdan);
     konst.getInfo()
     console.log(konst.informasjon);
-
-
-    var kommuneNavn = document.createTextNode(valgtKommune)
-    var idNummer = document.createTextNode(idNr)
+    var kommuneNavn = document.createTextNode(syss.informasjon.navn)
+    var idNummer = document.createTextNode(input)
     var sysMåling = document.createTextNode(sisteSysselBeggeKjønn)
     var utdanMåling = document.createTextNode(totalUtdanningProsent)
-=======
-    var kommuneNavn = document.createTextNode("oe")
-    // fikse det der opp
-    var idNummer = document.createTextNode(input)
-    var sysselProsent = document.createTextNode(sisteSysselBeggeKjønn)
->>>>>>> Live
     var kNavnList = document.createElement("li");
     var idNavnList = document.createElement("li")
     var sysList = document.createElement("li");
@@ -273,16 +269,12 @@ function visKommunenavn(obj,input,id) {
 
 function prosentPoeng(liste){
   var prosentPoeng = 0;
-<<<<<<< HEAD
-  var
-=======
   var økning = 0;
   for(var i =0;i<liste.length;i++){
 
 
   }
 
->>>>>>> Live
 
 
 
