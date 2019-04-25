@@ -236,6 +236,14 @@ function visKommunenavn(obj,input,id) {
 
 }
 
+function prosentPoeng(liste1){
+  var prosentPoeng = 0;
+  var 
+
+
+
+}
+
 /// skal være gyldig nummer.
 
 // historisk
@@ -259,5 +267,4 @@ function sammenLigning() {
   input = kommune2
   visKommunenavn(syss,input,"k2");
   sysselSettingBegge(syss,"kommune2");
-
 }

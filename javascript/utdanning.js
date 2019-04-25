@@ -1,6 +1,5 @@
 
 var urlUtdanning = "http://wildboy.uib.no/~tpe056/folk/85432.json"
-// masse tull
 // ------------------------------HjelpeFunksjoner------------------------
 
 function getData3(url,obj) {
@@ -40,25 +39,7 @@ function getInfo3(obj,input){
   }
 }
 
-function getHøyereUtdannning(data,kommune) {
-  var kortUtdaningMenn = Object.values(data["elementer"][kommune]["03a"]["Menn"])
-  var kortUtdaningKvinner = Object.values(data["elementer"][kommune]["03a"]["Kvinner"])
-  var langUtdaningMenn = Object.values(data["elementer"][kommune]["04a"]["Menn"])
-  var langUtdaningKvinner = Object.values(data["elementer"][kommune]["04a"]["Kvinner"])
-  //var totalUtdanningProsent = parseInt(kortUtdaningMenn + kortUtdaningKvinner + langUtdaningMenn + langUtdaningKvinner)
-  var sisteMåling = kortUtdaningMenn.pop();
-  var sisteMålingK = kortUtdaningKvinner.pop();
-  var sisteMålingL = langUtdaningMenn.pop();
-  var sisteMålingKL = langUtdaningKvinner.pop();
-  console.log("siste Måling Menn kort "+sisteMåling);
-  console.log("siste Måling Kvinner kort "+sisteMålingK);
-  console.log("siste Måling Menn lang: "+sisteMålingL);
-  console.log("siste Måling Kvinner lang "+sisteMålingKL);
-  return totalUtdanningProsent
-}
 
-
-      // var detaljer = getDetails(valgtKommune,obj.data);
 
 // ------------------------------Main------------------------
 
