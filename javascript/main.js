@@ -156,8 +156,9 @@ function detaljer() {
   getKommune.onclick = function() {
     input = kommuneNr
     syss.getInfo();
-    var kommuneNavn = document.createTextNode(valgtKommune)
-    var idNummer = document.createTextNode(idNr)
+    var kommuneNavn = document.createTextNode("oe")
+    // fikse det der opp
+    var idNummer = document.createTextNode(input)
     var sysselProsent = document.createTextNode(sisteSysselBeggeKjønn)
     var kNavnList = document.createElement("li");
     var idNavnList = document.createElement("li")
@@ -236,9 +237,14 @@ function visKommunenavn(obj,input,id) {
 
 }
 
-function prosentPoeng(liste1){
+function prosentPoeng(liste){
   var prosentPoeng = 0;
-  var 
+  var økning = 0;
+  for(var i =0;i<liste.length;i++){
+
+
+  }
+
 
 
 
