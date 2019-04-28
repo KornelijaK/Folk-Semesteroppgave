@@ -78,7 +78,7 @@ function displayData(liste,clas,text){
 }
 
 function totalBefolkninger(obj) {
-    var totalBefolknign = []
+    totalBefolknign = []
     for(var i=0;i<obj.idsList.length;i++){
       kommuneNr = obj.idsList[i]
       input = kommuneNr;
@@ -126,11 +126,6 @@ function getHøyereUtdannning(utdan) {
   var sisteMålingKL = langUtdaningKvinner.pop();
 
   totalUtdanningProsent = Number(sisteMåling + sisteMålingK + sisteMålingL + sisteMålingKL)
-  console.log(totalUtdanningProsent);
-  console.log("siste Måling Menn kort "+sisteMåling);
-  console.log("siste Måling Kvinner kort "+sisteMålingK);
-  console.log("siste Måling Menn lang: "+sisteMålingL);
-  console.log("siste Måling Kvinner lang "+sisteMålingKL);
   return totalUtdanningProsent
 }
 
@@ -145,20 +140,6 @@ function getSisteSyssel(obj) {
   return sisteSysselBeggeKjønn
 
 }
-// function table() {
-//   input = "0101";
-//   runMethods();
-//   konst.getInfo();
-//   console.log(konst.informasjon);
-//   var tablediv = document.createElement("div");
-//   var mennBefolkning = Object.entries(konst.informasjon["Menn"]);
-//   console.log(mennBefolkning);
-//   for(var x =0; x < mennBefolkning.length;x++) {
-//     var row = document.createElement("tr");
-//     console.log(row);
-//   }
-//   tablediv.appendChild(row);
-// }
 
 
 
@@ -168,6 +149,7 @@ function getSisteSyssel(obj) {
 function displayDetaljer() {
   velgSynlighet("detal","detaljer");
   runMethods()
+  lst1 = [1,2,3]
   var div = document.createElement("div")
   var ele = document.getElementById('detal');
   var list = document.createElement("ul")
@@ -181,7 +163,6 @@ function displayDetaljer() {
     utdan.getInfo();
     getHøyereUtdannning(utdan);
     konst.getInfo()
-    console.log(konst.informasjon);
     var kommuneNavn = document.createTextNode(syss.informasjon.navn)
     var idNummer = document.createTextNode(input)
     var sysMåling = document.createTextNode(sisteSysselBeggeKjønn)
@@ -203,11 +184,12 @@ function displayDetaljer() {
     list.appendChild(idNavnList);
     list.appendChild(sysList)
     list.appendChild(utdanList)
-
   }
   div.appendChild(list)
   ele.appendChild(div)
 }
+
+
 
 
 //-------------------------------Sammenligning-------------------------------------
@@ -215,7 +197,6 @@ function displayDetaljer() {
 
 function sysselSettingBegge(obj,id){
   syss.getInfo()
-  console.log(obj.informasjon);
   var sysselMenn = Object.entries(obj.informasjon["Menn"])
   var sysselKvinner = Object.entries(obj.informasjon["Kvinner"])
   makeTable(sysselMenn,sysselKvinner,id)

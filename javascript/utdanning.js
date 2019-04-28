@@ -33,7 +33,6 @@ function getInfo3(obj,input){
   for(var i=0;i<obj.idsList.length;i++){
     if(obj.idsList[i]===input){
       var valgtKommune = obj.komunelist[i]
-      detaljer(valgtKommune)
     }
     obj.informasjon = obj.data["elementer"][valgtKommune];
   }
