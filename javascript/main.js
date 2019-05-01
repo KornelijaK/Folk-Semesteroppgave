@@ -94,6 +94,7 @@ function totalBefolkninger(obj) {
 }
 
 
+
 // ----------------main---------------------
 function oversikt(){
   runMethods();
@@ -112,39 +113,6 @@ function oversikt(){
 
 //-------------------------------Detaljer-------------------------------------
 
-
-
-
-function getHøyereUtdannning(utdan) {
-  var kortUtdaningMenn = Object.values(utdan.informasjon["03a"]["Menn"])
-  var kortUtdaningKvinner = Object.values(utdan.informasjon["03a"]["Kvinner"])
-  var langUtdaningMenn = Object.values(utdan.informasjon["04a"]["Menn"])
-  var langUtdaningKvinner = Object.values(utdan.informasjon["04a"]["Kvinner"])
-  var sisteMåling = kortUtdaningMenn.pop();
-  var sisteMålingK = kortUtdaningKvinner.pop();
-  var sisteMålingL = langUtdaningMenn.pop();
-  var sisteMålingKL = langUtdaningKvinner.pop();
-
-  totalUtdanningProsent = Number(sisteMåling + sisteMålingK + sisteMålingL + sisteMålingKL)
-  return totalUtdanningProsent
-}
-
-function getSisteSyssel(obj) {
-  var sysselMenn = Object.values(obj.informasjon["Menn"])
-  var sysselKvinner = Object.values(obj.informasjon["Kvinner"])
-  var sysselBeggeKjønn = Object.values(obj.informasjon["Begge kjønn"])
-  var sisteSysselMenn = sysselMenn.pop();
-  var sisteSysselKvinner = sysselKvinner.pop();
-  sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
-
-  return sisteSysselBeggeKjønn
-
-}
-
-
-
-
-// ------------------------------------main --------------
 
 function displayDetaljer() {
   velgSynlighet("detal","detaljer");
@@ -190,6 +158,136 @@ function displayDetaljer() {
 }
 
 
+function getHøyereUtdannning(utdan) {
+  var kortUtdaningMenn = Object.values(utdan.informasjon["03a"]["Menn"])
+  var kortUtdaningKvinner = Object.values(utdan.informasjon["03a"]["Kvinner"])
+  var langUtdaningMenn = Object.values(utdan.informasjon["04a"]["Menn"])
+  var langUtdaningKvinner = Object.values(utdan.informasjon["04a"]["Kvinner"])
+  var sisteMåling = kortUtdaningMenn.pop();
+  var sisteMålingK = kortUtdaningKvinner.pop();
+  var sisteMålingL = langUtdaningMenn.pop();
+  var sisteMålingKL = langUtdaningKvinner.pop();
+
+  totalUtdanningProsent = Number(sisteMåling + sisteMålingK + sisteMålingL + sisteMålingKL)
+  return totalUtdanningProsent
+}
+
+function getSisteSyssel(obj) {
+  var sysselMenn = Object.values(obj.informasjon["Menn"])
+  var sysselKvinner = Object.values(obj.informasjon["Kvinner"])
+  var sysselBeggeKjønn = Object.values(obj.informasjon["Begge kjønn"])
+  var sisteSysselMenn = sysselMenn.pop();
+  var sisteSysselKvinner = sysselKvinner.pop();
+  sisteSysselBeggeKjønn = sysselBeggeKjønn.pop();
+
+  return sisteSysselBeggeKjønn
+
+}
+
+function getDetails(obj){
+  var total = []
+  var kommuneNr = document.getElementById("kommuneNr").value;
+  input = kommuneNr
+  obj.getInfo()
+  var listeMenn = Object.entries(obj.informasjon["Menn"]);
+  var listeKvinner = Object.entries(obj.informasjon["Kvinner"])
+  for(var x = 0; x < listeMenn.length; x++){
+    var mennÅrstall = listeMenn[x][0]
+    for(var k = 0; k < listeKvinner.length;k++){
+      if(mennÅrstall === listeKvinner[k][0]){
+
+        var tot = listeMenn[x][1] + listeKvinner[k][1]
+        var kvinner = listeKvinner[k][1]
+        var menn = listeMenn[x][1]
+        var samlet = [mennÅrstall,menn,kvinner,tot]
+        total.push(samlet)
+      }
+    }
+  }
+  return total
+}
+
+function getUtdanning(obj){
+  var grunnskole = []
+  var videregående = []
+  var fagskole = []
+  var universitetLang = []
+  var universitetKort = []
+  var ingen = []
+  var kommuneNr = document.getElementById("kommuneNr").value;
+  input = kommuneNr
+  obj.getInfo()
+  console.log(obj.informasjon);
+  var grunnskoleNivåM = Object.entries(obj.informasjon["11"]["Menn"])
+  var grunnskoleNivåK = Object.entries(obj.informasjon["11"]["Kvinner"])
+  for(var x =0; x<grunnskoleNivåK.length;x++){
+    var år = grunnskoleNivåK[x][0];
+    var samlet = [år]
+  }
+}
+
+
+function makeT(text,text2,text3,text4){
+  var element = document.getElementById("table")
+  var rad = document.createElement("TR");
+  var cell1 = document.createElement("TD");
+  var cell2 = document.createElement("TD");
+  var cell3 = document.createElement("TD");
+  var cell4 = document.createElement("TD");
+  var text = document.createTextNode(text);
+  var text2 = document.createTextNode(text2);
+  var text3 = document.createTextNode(text3);
+  var text4 = document.createTextNode(text4);
+  cell1.appendChild(text);
+  cell2.appendChild(text2);
+  cell3.appendChild(text3);
+  cell4.appendChild(text4);
+  rad.appendChild(cell1);
+  rad.appendChild(cell2);
+  rad.appendChild(cell3);
+  rad.appendChild(cell4);
+  element.appendChild(rad);
+}
+
+/*
+function tableSyss(obj){
+  var sysselListe = []
+  var kommuneNr = document.getElementById('kommuneNr')
+  input = kommuneNr
+  syss.getInfo();
+  var listeMenn = Object.entries(obj.)
+
+}
+*/
+
+
+
+
+function tableDetaljer(befolkning) {
+  makeT("År", "Menn", "Kvinner", "Total")
+  for(var i=0; i <befolkning.length;i++){
+    var år = befolkning[i][0]
+    var menn = befolkning[i][1]
+    var kvinner = befolkning[i][2]
+    var total = befolkning[i][3]
+    makeT(år,menn, kvinner,total)
+  }
+}
+
+// ------------------------------------main --------------
+
+
+
+function detaljer(){
+  displayDetaljer()
+
+  var befolkning = getDetails(konst)
+  var syssel = getDetails(syss)
+  var utdanning = getUtdanning(utdan)
+  tableDetaljer(befolkning)
+  tableDetaljer(syssel)
+  tableDetaljer(utdanning)
+}
 
 
 //-------------------------------Sammenligning-------------------------------------
