@@ -74,6 +74,7 @@ table, th, td {
 }
 
 .row{
+  background-color: blue;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -81,6 +82,7 @@ table, th, td {
 }
 
 .column {
+  background-color: pink;
   display: flex;
   flex-direction: column;
   flex-basis:100%;
