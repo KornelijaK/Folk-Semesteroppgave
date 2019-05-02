@@ -321,7 +321,7 @@ function makeDisplay(obj,text) {
   var liste = Object.values(obj)
   makeHeader("utdan","Grunnskole")
   for(var i = 0; i < text.length; i++) {
-    makeFlexbox("utdan",liste[i],text[i])
+    makeFlexbox("grunnskole",liste[i],text[i])
   }
 
 }

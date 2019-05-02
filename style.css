@@ -1,3 +1,5 @@
+
+
 .introduksjon h3 {
   text-align: center;
   margin: 2em;
@@ -79,14 +81,23 @@ table, th, td {
 .utdanning {
   background-color: red;
   overflow-x: scroll;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+
+  /* display: grid; */
 }
 
 
+#grunnskole {
+  background-color: orange;
+  height: 15vw;
+  display: flex;
+}
 
 .row {
   background-color: yellow;
-  display: flex;
+
+
 
 }
 
@@ -94,7 +105,9 @@ table, th, td {
   background-color: green;
   border: 0.1vw solid;
   width: 60px;
+
 }
+
 
 .cell {
   background-color: grey;
@@ -107,4 +120,12 @@ table, th, td {
 .utdanning h2 {
   padding: 1vw;
   font-size: 5vw;
+}
+
+
+@media screen and (max-width: 400px){
+
+
+
+
 }
