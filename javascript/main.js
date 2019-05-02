@@ -54,20 +54,8 @@ function checkInput(id) {
   catch(err) {
     alert(input + err +"\n\n I Oversikt kan du finne kommune id");
     return null
-
   }
-
-  finally {
-    // console.log(err.meesage)
-    // console.log(ele.value);
-    // console.log(ele.innerHTML);
-    // ele.value = "";
-    // ele.innerHTML = "";
-    // Location​.reload()
-    // sammenLigning()
   }
-
-}
 
 
 
@@ -142,8 +130,7 @@ function oversikt(){
 
 
 function displayDetaljer() {
-  velgSynlighet("detal","detaljer");
-  runMethods()
+
   lst1 = [1,2,3]
   var div = document.createElement("div")
   var ele = document.getElementById('detal');
@@ -247,7 +234,6 @@ function getUtdanning(obj){
   radh.appendChild(årrad)
   for(var x = 0; x<grunnskoleNivåM.length;x++){
     var rad = document.createElement("TD")
-    console.log(grunnskoleNivåM[x]);
     var text = document.createTextNode(grunnskoleNivåM[x][0])
     rad.appendChild(text)
     radh.appendChild(rad)
@@ -255,41 +241,41 @@ function getUtdanning(obj){
   element.appendChild(rad)
 }
 
-
-function makeT(text,text2,text3,text4){
-  var element = document.getElementById("table")
-  var rad = document.createElement("TR");
-  var cell1 = document.createElement("TD");
-  var cell2 = document.createElement("TD");
-  var cell3 = document.createElement("TD");
-  var cell4 = document.createElement("TD");
-  var text = document.createTextNode(text);
-  var text2 = document.createTextNode(text2);
-  var text3 = document.createTextNode(text3);
-  var text4 = document.createTextNode(text4);
-  cell1.appendChild(text);
-  cell2.appendChild(text2);
-  cell3.appendChild(text3);
-  cell4.appendChild(text4);
-  rad.appendChild(cell1);
-  rad.appendChild(cell2);
-  rad.appendChild(cell3);
-  rad.appendChild(cell4);
-  element.appendChild(rad);
-}
-
-
-
-function tableDetaljer(befolkning) {
-  makeT("År", "Menn", "Kvinner", "Total")
-  for(var i=0; i <befolkning.length;i++){
-    var år = befolkning[i][0]
-    var menn = befolkning[i][1]
-    var kvinner = befolkning[i][2]
-    var total = befolkning[i][3]
-    makeT(år,menn, kvinner,total)
-  }
-}
+//
+// function makeT(text,text2,text3,text4){
+//   var element = document.getElementById("table")
+//   var rad = document.createElement("TR");
+//   var cell1 = document.createElement("TD");
+//   var cell2 = document.createElement("TD");
+//   var cell3 = document.createElement("TD");
+//   var cell4 = document.createElement("TD");
+//   var text = document.createTextNode(text);
+//   var text2 = document.createTextNode(text2);
+//   var text3 = document.createTextNode(text3);
+//   var text4 = document.createTextNode(text4);
+//   cell1.appendChild(text);
+//   cell2.appendChild(text2);
+//   cell3.appendChild(text3);
+//   cell4.appendChild(text4);
+//   rad.appendChild(cell1);
+//   rad.appendChild(cell2);
+//   rad.appendChild(cell3);
+//   rad.appendChild(cell4);
+//   element.appendChild(rad);
+// }
+//
+//
+//
+// function tableDetaljer(befolkning) {
+//   makeT("År", "Menn", "Kvinner", "Total")
+//   for(var i=0; i <befolkning.length;i++){
+//     var år = befolkning[i][0]
+//     var menn = befolkning[i][1]
+//     var kvinner = befolkning[i][2]
+//     var total = befolkning[i][3]
+//     makeT(år,menn, kvinner,total)
+//   }
+// }
 
 /*
 function makeTUtdanning(text,text2,text3){
@@ -321,14 +307,18 @@ function tableDetaljerUtdanning(utdanning) {
 
 
 function detaljer(){
+  velgSynlighet("detal","detaljer");
+  runMethods()
   displayDetaljer()
-
   var befolkning = getDetails(konst)
   var syssel = getDetails(syss)
   var utdanning = getUtdanning(utdan)
-  tableDetaljer(befolkning)
-  tableDetaljer(syssel)
-  getUtdanning(utdan)
+  // console.log(befolkning);
+  // console.log(syssel);
+  // console.log(utdanning);
+  // tableDetaljer(befolkning)
+  // tableDetaljer(syssel)
+  // getUtdanning(utdan)
   /*tableDetaljerUtdanning(utdanning)*/
 }
 

@@ -2,7 +2,7 @@
 <html lang="nb" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="javascript/befolkning.js"></script>
     <script type="text/javascript" src="javascript/sysselsatte.js"></script>
@@ -46,10 +46,25 @@
       <input type="text" value="0101" id="kommuneNr">
       <br>
       <button type="button" name="button" id="getKommune"> Få informasjon </button>
-      <table id="table"></table>
-      <table id="tableUtdanning"></table>
+      <div class="befokning">
+      </div>
+      <div class="sysselsetting">
+      </div>
+      <div class="utdanning">
+        <div id="head" class="header">
+          <div id="row" class="rows">
+            <div id="col" class="columm">
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
 
     </div>
+
+
     <div id="sammen" class="hidden">
       Kommune nummer:<input id="i1"  type="text" name="" value="">
       kommune nummer:<input id="i2" type="text" name="" value="1122">
@@ -62,7 +77,6 @@
         <table id="kommune1"></table>
         <table id="kommune2"></table>
       </div>
-
     </div>
     <footer>
       <p>Dette er en oppgavebesvarelse i INFO134</p>
