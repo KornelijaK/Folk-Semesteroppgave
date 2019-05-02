@@ -40,7 +40,34 @@ function runMethods(){
   syss.getIDs();
 }
 
+function checkInput(id) {
+  var  ele = document.getElementById(id);
+  var input = ele.value;
 
+  try {
+    if(input ==="") throw " er tom"
+    if(input.length != 4) throw " har feil nummer lengde";
+    if(isNaN(input)) throw " er ikke et tall";
+    if(!(input in konst.idsList)) throw " er ikke et gyldig komunenummer";
+
+  }
+  catch(err) {
+    alert(input + err +"\n\n I Oversikt kan du finne kommune id");
+    return null
+
+  }
+
+  finally {
+    // console.log(err.meesage)
+    // console.log(ele.value);
+    // console.log(ele.innerHTML);
+    // ele.value = "";
+    // ele.innerHTML = "";
+    // Location​.reload()
+    // sammenLigning()
+  }
+
+}
 
 
 
@@ -313,74 +340,181 @@ function sysselSettingBegge(obj,id){
   syss.getInfo()
   var sysselMenn = Object.entries(obj.informasjon["Menn"])
   var sysselKvinner = Object.entries(obj.informasjon["Kvinner"])
-  makeTable(sysselMenn,sysselKvinner,id)
+  var vekstMenn = prosentPoeng(sysselMenn);
+  var vekstKvinner = prosentPoeng(sysselKvinner);
+  makeTable(sysselMenn,sysselKvinner,vekstMenn,vekstKvinner,id)
 
 }
 
-function createRow(text,text2,text3,id) {
+function createRow(text,text2,text3,text4,text5,id) {
   var ele = document.getElementById(id);
   var row = document.createElement("TR");
   var cell1 = document.createElement("TD");
   var cell2 = document.createElement("TD");
   var cell3 = document.createElement("TD");
+  var cell4 = document.createElement("TD");
+  var cell5 = document.createElement("TD");
   var text = document.createTextNode(text);
   var text2 = document.createTextNode(text2);
   var text3 = document.createTextNode(text3);
+  var text4 = document.createTextNode(text4);
+  var text5 = document.createTextNode(text5);
   cell1.appendChild(text);
   cell2.appendChild(text2);
   cell3.appendChild(text3);
+  cell4.appendChild(text4);
+  cell5.appendChild(text5);
   row.appendChild(cell1);
   row.appendChild(cell2);
   row.appendChild(cell3);
+  row.appendChild(cell4);
+  row.appendChild(cell5);
   ele.appendChild(row)
 }
 
-function makeTable(liste,liste2,id){
-  createRow("År","Menn","Kvinner",id)
+function makeTable(liste,liste2,liste3,liste4,id){
+  createRow("År","Menn","vekst","Kvinner","vekst",id)
   for(var i=0;i<liste.length;i++){
     var år = liste[i][0]
     var dataMenn = liste[i][1]
     for(var j=0;j<liste2.length;j++){
       if(liste2[j][0] === år){
         var dataKvinner = liste2[j][1]
+        var vekstM = liste3[j];
+        var vekstK = liste4[j]
       }
     }
-    createRow(år,dataMenn,dataKvinner,id)
+    createRow(år,dataMenn,vekstM,dataKvinner,vekstK,id)
   }
 }
 
-function visKommunenavn(obj,input,id) {
+function visKommunenavn(obj,id) {
   var ele = document.getElementById(id)
-  for(var i =0;i<obj.idsList.length;i++){
-    if(obj.idsList[i] === input){
-      var kommune = obj.kommuneList[i];
-      var text = document.createTextNode(kommune)
-      ele.appendChild(text);
-
-    }
-  }
+  var kommune = obj.informasjon.navn;
+  var text = document.createTextNode(kommune)
+  ele.appendChild(text);
 
 }
+
 
 function prosentPoeng(liste){
-  var prosentPoeng = 0;
+  var prosentPoeng = []
+  var sistPoeng = 0;
   var økning = 0;
   for(var i =0;i<liste.length;i++){
-
-
+    var nyPoeng = liste[i][1];
+    if(sistPoeng === 0){
+      prosentPoeng.push(økning);
+    }
+    else {
+      økning = nyPoeng-sistPoeng;
+      økning = Math.round(økning*10)/10;
+      prosentPoeng.push(økning)
+    }
+    sistPoeng = nyPoeng
   }
-
-
-
-
+  return prosentPoeng;
 }
 
-/// skal være gyldig nummer.
 
-// historisk
-// data for utvikling av sysselsetting for kjønnskategoriene “Menn” og “Kvinner” i begge kommunene. For
-// hvert år og for hver kjønnskategori, skal dere markere hvilken av kommunene som har høyest vekst i
-// prosentpoeng.
+
+function høgestUtvikling() {
+  var ele2 = document.getElementById('kommune2')
+  var ele = document.getElementById('kommune1')
+  console.log(ele);
+  for(var i=0, row; row =ele.rows[i];i++){
+    row2 = ele2.rows[i]
+    var prosentP1 = row.cells[2];
+    var prosentP2 = row2.cells[2];
+
+    console.log(prosentK2)
+    if(prosentP1.innerHTML<0 && prosentP2.innerHTML<0){
+      if(prosentP1.innerHTML>prosentP2.innerHTML){
+        prosentP2.style.backgroundColor = "green";
+        prosentP2.style.color = "white";
+        }
+
+      if(prosentP1.innerHTML<prosentP2.innerHTML){
+          prosentP1.style.backgroundColor = "green";
+          prosentP1.style.color = "white";
+    }}
+    else{
+      if(prosentP1.innerHTML>prosentP2.innerHTML){
+        prosentP1.style.backgroundColor = "green";
+        prosentP1.style.color = "white";
+      }
+      if(prosentP1.innerHTML<prosentP2.innerHTML){
+        prosentP2.style.backgroundColor = "green";
+        prosentP2.style.color = "white";
+      }
+    }
+}
+}
+
+function høgestUtvikling() {
+  var ele2 = document.getElementById('kommune2')
+  var ele = document.getElementById('kommune1')
+  console.log(ele);
+  for(var i=0, row; row =ele.rows[i];i++){
+    row2 = ele2.rows[i]
+    var prosentP1 = row.cells[2];
+    var prosentP2 = row2.cells[2];
+    if(prosentP1.innerHTML<0 && prosentP2.innerHTML<0){
+      if(prosentP1.innerHTML>prosentP2.innerHTML){
+        prosentP2.style.backgroundColor = "green";
+        prosentP2.style.color = "white";
+        }
+
+      if(prosentP1.innerHTML<prosentP2.innerHTML){
+          prosentP1.style.backgroundColor = "green";
+          prosentP1.style.color = "white";
+    }}
+    else{
+      if(prosentP1.innerHTML>prosentP2.innerHTML){
+        prosentP1.style.backgroundColor = "green";
+        prosentP1.style.color = "white";
+      }
+      if(prosentP1.innerHTML<prosentP2.innerHTML){
+        prosentP2.style.backgroundColor = "green";
+        prosentP2.style.color = "white";
+      }
+    }
+}
+}
+
+function høgestUtviklingKvinner() {
+  var ele2 = document.getElementById('kommune2')
+  var ele = document.getElementById('kommune1')
+  console.log(ele);
+  for(var i=0, row; row =ele.rows[i];i++){
+    row2 = ele2.rows[i]
+    var prosentP1 = row.cells[4];
+    var prosentP2 = row2.cells[4];
+    if(prosentP1.innerHTML<0 && prosentP2.innerHTML<0){
+      if(prosentP1.innerHTML>prosentP2.innerHTML){
+        prosentP2.style.backgroundColor = "green";
+        prosentP2.style.color = "white";
+        }
+
+      if(prosentP1.innerHTML<prosentP2.innerHTML){
+          prosentP1.style.backgroundColor = "green";
+          prosentP1.style.color = "white";
+    }}
+    else{
+      if(prosentP1.innerHTML>prosentP2.innerHTML){
+        prosentP1.style.backgroundColor = "green";
+        prosentP1.style.color = "white";
+      }
+      if(prosentP1.innerHTML<prosentP2.innerHTML){
+        prosentP2.style.backgroundColor = "green";
+        prosentP2.style.color = "white";
+      }
+    }
+}
+}
+
+
+/// skal være gyldig nummer.
 
 
 
@@ -390,12 +524,20 @@ function prosentPoeng(liste){
 
 function sammenLigning() {
   runMethods()
+  checkInput("i1");
+  checkInput("i2");
+
+  if (checkInput("i1") === null || checkInput("i2") === null ){
+    return null;
+  }
   var kommune1 = document.getElementById("i1").value;
   var kommune2 = document.getElementById("i2").value;
   input = kommune1;
-  visKommunenavn(syss,input,"k1");
   sysselSettingBegge(syss,"kommune1");
+  visKommunenavn(syss,"k1");
   input = kommune2
-  visKommunenavn(syss,input,"k2");
   sysselSettingBegge(syss,"kommune2");
+  visKommunenavn(syss,"k2");
+  høgestUtvikling()
+  høgestUtviklingKvinner()
 }

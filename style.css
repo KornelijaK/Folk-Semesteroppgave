@@ -3,6 +3,22 @@
   margin: 2em;
 }
 
+.beskrivelse {
+  width: 60%;
+  margin: 50px auto;
+  padding: 1vw;
+
+}
+
+.oversikt li {
+  padding: 3vw;
+  border-style: double;
+}
+
+/* .beskrivelse p {
+  text-align: left;
+} */
+
 p {
   text-align: center;
 }
@@ -11,7 +27,8 @@ p {
 
 .oversikt {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+
 }
 
 .oversikt li {
