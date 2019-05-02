@@ -48,7 +48,7 @@ function checkInput(id) {
     if(input ==="") throw " er tom"
     if(input.length != 4) throw " har feil nummer lengde";
     if(isNaN(input)) throw " er ikke et tall";
-    if(!(input in konst.idsList)) throw " er ikke et gyldig komunenummer";
+    // if(!(input in konst.idsList)) throw " er ikke et gyldig komunenummer";
 
   }
   catch(err) {
