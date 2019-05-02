@@ -208,22 +208,24 @@ function getDetails(obj){
 }
 
 function getUtdanning(obj){
-  var grunnskole = []
-  var videregående = []
-  var fagskole = []
-  var universitetLang = []
-  var universitetKort = []
-  var ingen = []
   var kommuneNr = document.getElementById("kommuneNr").value;
+  var element = document.getElementById("tableUtdanning")
   input = kommuneNr
   obj.getInfo()
   console.log(obj.informasjon);
   var grunnskoleNivåM = Object.entries(obj.informasjon["11"]["Menn"])
   var grunnskoleNivåK = Object.entries(obj.informasjon["11"]["Kvinner"])
-  for(var x =0; x<grunnskoleNivåK.length;x++){
-    var år = grunnskoleNivåK[x][0];
-    var samlet = [år]
+  var radh = document.createElement("TR")
+  var årrad = document.createTextNode("År")
+  radh.appendChild(årrad)
+  for(var x = 0; x<grunnskoleNivåM.length;x++){
+    var rad = document.createElement("TD")
+    console.log(grunnskoleNivåM[x]);
+    var text = document.createTextNode(grunnskoleNivåM[x][0])
+    rad.appendChild(text)
+    radh.appendChild(rad)
   }
+  element.appendChild(rad)
 }
 
 
@@ -249,18 +251,6 @@ function makeT(text,text2,text3,text4){
   element.appendChild(rad);
 }
 
-/*
-function tableSyss(obj){
-  var sysselListe = []
-  var kommuneNr = document.getElementById('kommuneNr')
-  input = kommuneNr
-  syss.getInfo();
-  var listeMenn = Object.entries(obj.)
-
-}
-*/
-
-
 
 
 function tableDetaljer(befolkning) {
@@ -274,6 +264,31 @@ function tableDetaljer(befolkning) {
   }
 }
 
+/*
+function makeTUtdanning(text,text2,text3){
+  var table = document.getElementById("tableUtdanning")
+  var radÅr = document.createElement("TR");
+  var col = document.createElement("TH")
+  var text = document.createTextNode("År")
+  radÅr.appendChild(col)
+  col.appendChild(text)
+  table.appendChild(radÅr)
+}
+
+
+
+function tableDetaljerUtdanning(utdanning) {
+  makeTUtdanning("År", "Menn", "Kvinner")
+  for(var i=0; i <befolkning.length;i++){
+    var år = befolkning[i][0]
+    var menn = befolkning[i][1]
+    var kvinner = befolkning[i][2]
+    var total = befolkning[i][3]
+    makeTUtdanning(år,menn, kvinner)
+  }
+}
+*/
+
 // ------------------------------------main --------------
 
 
@@ -286,7 +301,8 @@ function detaljer(){
   var utdanning = getUtdanning(utdan)
   tableDetaljer(befolkning)
   tableDetaljer(syssel)
-  tableDetaljer(utdanning)
+  getUtdanning(utdan)
+  /*tableDetaljerUtdanning(utdanning)*/
 }
 
 
