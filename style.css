@@ -77,44 +77,33 @@ table, th, td {
 .detaljer{
 }
 
-<<<<<<< HEAD
-.row{
-  background-color: blue;
-=======
 
 .utdanning {
   background-color: red;
-  overflow-x: scroll;
->>>>>>> 44ab9735d54b1fa39593a08c90e999790d73156f
-  display: flex;
-  flex-direction: column;
-
   /* display: grid; */
 }
 
-<<<<<<< HEAD
-.column {
-  background-color: pink;
-=======
 
 #grunnskole {
-  background-color: orange;
-  height: 15vw;
->>>>>>> 44ab9735d54b1fa39593a08c90e999790d73156f
-  display: flex;
+  display: grid;
+  flex-direction: column;
+  background-color: grey;
+  overflow-x: scroll;
 }
 
 .row {
+  display: flex;
+  list-style: none;
   background-color: yellow;
-
-
-
+  flex-direction: row;
 }
 
+
+
 .kategori {
-  background-color: green;
-  border: 0.1vw solid;
-  width: 60px;
+  background: blue;
+  color: white;
+  width: 10vw;
 
 }
 
@@ -122,9 +111,9 @@ table, th, td {
 .cell {
   background-color: grey;
   border: 0.1vw solid;
-  width: 60px;
   text-align: center;
-
+  flex-direction: row;
+  width: 5vw;
 }
 
 .utdanning h2 {
@@ -135,7 +124,47 @@ table, th, td {
 
 @media screen and (max-width: 400px){
 
+  .utdanning {
+    background-color: red;
+    /* display: grid; */
+  }
 
+
+  #grunnskole {
+    display: flex;
+    flex-direction: row;
+    background-color: grey;
+  }
+
+  .row {
+    display: flex;
+    list-style: none;
+    background-color: yellow;
+    flex-direction: column;
+    padding: 2px;
+  }
+
+
+
+  .kategori {
+    background: blue;
+    color: white;
+    width: 10vw;
+
+  }
+
+
+  .cell {
+    background-color: grey;
+    border-bottom: 0.1vw solid;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .utdanning h2 {
+    padding: 1vw;
+    font-size: 5vw;
+  }
 
 
 }

@@ -330,16 +330,16 @@ function makeDisplay(obj,text) {
 
 function makeFlexbox(id1,dataListe,titel){
   var utdann = document.getElementById(id1);
-  var row = document.createElement("DIV");
+  var row = document.createElement("ul");
   row.setAttribute("class","row");
-  var cell = document.createElement("div");
+  var cell = document.createElement("li");
   cell.setAttribute("class","kategori");
   var t = document.createTextNode(titel)
   cell.appendChild(t);
   row.appendChild(cell);
   for (var j = 0; j < dataListe.length; j++) {
     var t = document.createTextNode(dataListe[j])
-    var cell = document.createElement("div");
+    var cell = document.createElement("li");
     cell.appendChild(t);
     cell.setAttribute("class","cell");
     row.appendChild(cell);
