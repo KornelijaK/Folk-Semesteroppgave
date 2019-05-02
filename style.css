@@ -1,3 +1,5 @@
+
+
 .introduksjon h3 {
   text-align: center;
   margin: 2em;
@@ -59,6 +61,9 @@ table, th, td {
   border: 1px solid black;
 }
 
+#idab td {
+
+}
 .komunetitler {
   display: flex;
   justify-content: space-between;
@@ -70,21 +75,67 @@ table, th, td {
 }
 
 .detaljer{
-
 }
 
+<<<<<<< HEAD
 .row{
   background-color: blue;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
+=======
 
-.column {
-  background-color: pink;
+.utdanning {
+  background-color: red;
+  overflow-x: scroll;
+>>>>>>> 44ab9735d54b1fa39593a08c90e999790d73156f
   display: flex;
   flex-direction: column;
-  flex-basis:100%;
-  flex:1;
+
+  /* display: grid; */
+}
+
+<<<<<<< HEAD
+.column {
+  background-color: pink;
+=======
+
+#grunnskole {
+  background-color: orange;
+  height: 15vw;
+>>>>>>> 44ab9735d54b1fa39593a08c90e999790d73156f
+  display: flex;
+}
+
+.row {
+  background-color: yellow;
+
+
+
+}
+
+.kategori {
+  background-color: green;
+  border: 0.1vw solid;
+  width: 60px;
+
+}
+
+
+.cell {
+  background-color: grey;
+  border: 0.1vw solid;
+  width: 60px;
+  text-align: center;
+
+}
+
+.utdanning h2 {
+  padding: 1vw;
+  font-size: 5vw;
+}
+
+
+@media screen and (max-width: 400px){
+
+
+
+
 }
