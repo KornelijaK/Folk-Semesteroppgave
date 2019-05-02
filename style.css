@@ -84,7 +84,7 @@ table, th, td {
 }
 
 
-#grunnskole {
+.tabell {
   display: grid;
   flex-direction: column;
   background-color: grey;
@@ -130,7 +130,7 @@ table, th, td {
   }
 
 
-  #grunnskole {
+  .tabell {
     display: flex;
     flex-direction: row;
     background-color: grey;

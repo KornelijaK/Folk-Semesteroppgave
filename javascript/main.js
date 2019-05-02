@@ -225,82 +225,36 @@ function getDetails(obj){
 
 
 
+function makeall() {
+  var skoleID = ["01","02a","11","03a","04a","09a"]
+  for (var i = 0; i < skoleID.length; i++) {
+    var handler = getUtdanEnhet(utdan,skoleID[i])
 
-function getUtdanEnhet(obj){
+  }
+  makeDisplay(handler,titler,skoleNavn)
+
+
+
+
+}
+
+
+
+function getUtdanEnhet(obj,skoleid){
   var kommuneNr = document.getElementById("kommuneNr").value;
   var element = document.getElementById("tableUtdanning")
   input = kommuneNr
   obj.getInfo()
   console.log(obj.informasjon);
-  var år = Object.keys(obj.informasjon["11"]["Menn"])
-  var grunnskoleNivåM = Object.values(obj.informasjon["11"]["Menn"])
-  var grunnskoleNivåK = Object.values(obj.informasjon["11"]["Kvinner"])
+  var år = Object.keys(obj.informasjon[skoleid]["Menn"])
+  var grunnskoleNivåM = Object.values(obj.informasjon[skoleid]["Menn"])
+  var grunnskoleNivåK = Object.values(obj.informasjon[skoleid]["Kvinner"])
   var handler = {år,grunnskoleNivåK,grunnskoleNivåM,}
   return handler;
 
 
 }
 
-//
-// function makeT(text,text2,text3,text4){
-//   var element = document.getElementById("table")
-//   var rad = document.createElement("TR");
-//   var cell1 = document.createElement("TD");
-//   var cell2 = document.createElement("TD");
-//   var cell3 = document.createElement("TD");
-//   var cell4 = document.createElement("TD");
-//   var text = document.createTextNode(text);
-//   var text2 = document.createTextNode(text2);
-//   var text3 = document.createTextNode(text3);
-//   var text4 = document.createTextNode(text4);
-//   cell1.appendChild(text);
-//   cell2.appendChild(text2);
-//   cell3.appendChild(text3);
-//   cell4.appendChild(text4);
-//   rad.appendChild(cell1);
-//   rad.appendChild(cell2);
-//   rad.appendChild(cell3);
-//   rad.appendChild(cell4);
-//   element.appendChild(rad);
-// }
-//
-//
-//
-// function tableDetaljer(befolkning) {
-//   makeT("År", "Menn", "Kvinner", "Total")
-//   for(var i=0; i <befolkning.length;i++){
-//     var år = befolkning[i][0]
-//     var menn = befolkning[i][1]
-//     var kvinner = befolkning[i][2]
-//     var total = befolkning[i][3]
-//     makeT(år,menn, kvinner,total)
-//   }
-// }
-
-/*
-function makeTUtdanning(text,text2,text3){
-  var table = document.getElementById("tableUtdanning")
-  var radÅr = document.createElement("TR");
-  var col = document.createElement("TH")
-  var text = document.createTextNode("År")
-  radÅr.appendChild(col)
-  col.appendChild(text)
-  table.appendChild(radÅr)
-}
-
-
-
-function tableDetaljerUtdanning(utdanning) {
-  makeTUtdanning("År", "Menn", "Kvinner")
-  for(var i=0; i <befolkning.length;i++){
-    var år = befolkning[i][0]
-    var menn = befolkning[i][1]
-    var kvinner = befolkning[i][2]
-    var total = befolkning[i][3]
-    makeTUtdanning(år,menn, kvinner)
-  }
-}
-*/
 
 function makeHeader(id,text) {
   var ele = document.getElementById(id);
@@ -315,14 +269,39 @@ function makeHeader(id,text) {
 
 
 var titler = ["År","Kvinner","Menn"]
+var skoleNavn = ["Grunnskolenivå","Vidergående skole-nivå","Fagskole nivå","Universitets- og høgskolenivå kort",
+"Universitets- og høgskolenivå lang","Uoppgitt eller ingen fullført utdanning"
+]
 
 
-function makeDisplay(obj,text) {
+function makeDisplay(obj,text,skoleNavn) {
   var liste = Object.values(obj)
-  makeHeader("utdan","Grunnskole")
-  for(var i = 0; i < text.length; i++) {
-    makeFlexbox("grunnskole",liste[i],text[i])
+  var ele = document.getElementById('utdan')
+  console.log("her");
+  console.log(text);
+
+  for (var i = 0; i < skoleNavn.length; i++) {
+    var skoleInndeling = document.createElement("div")
+    skoleInndeling.setAttribute("id","skole"+i)
+    skoleInndeling.setAttribute("class","tabell")
+    ele.appendChild(skoleInndeling);
   }
+
+
+for (var i = 0; i < 6; i++) {
+   makeHeader("skole"+i,skoleNavn[i])
+    for(var j = 0; j < text.length; j++) {
+      makeFlexbox("skole"+i,liste[j],text[j])
+    }
+
+  }
+  // for (var i = 0; i < skoleNavn.length; i++) {
+  //   makeHeaderader("utdan",skoleNavn[i])
+  // }
+
+
+
+
 
 }
 
@@ -337,17 +316,16 @@ function makeFlexbox(id1,dataListe,titel){
   var t = document.createTextNode(titel)
   cell.appendChild(t);
   row.appendChild(cell);
-  for (var j = 0; j < dataListe.length; j++) {
-    var t = document.createTextNode(dataListe[j])
-    var cell = document.createElement("li");
-    cell.appendChild(t);
-    cell.setAttribute("class","cell");
-    row.appendChild(cell);
+    for (var j = 0; j < dataListe.length; j++) {
+      var t = document.createTextNode(dataListe[j])
+      var cell = document.createElement("li");
+      cell.appendChild(t);
+      cell.setAttribute("class","cell");
+      row.appendChild(cell);
+      }
+      utdann.appendChild(row)
     }
 
-
-  utdann.appendChild(row)
-}
 
 
 
@@ -360,9 +338,10 @@ function detaljer(){
   velgSynlighet("detal","detaljer");
   runMethods()
   displayDetaljer()
-  var handler = getUtdanEnhet(utdan);
-  console.log("1");
-  makeDisplay(handler,titler)
+  makeall()
+  // var handler = getUtdanEnhet(utdan);
+  // console.log("1");
+  // makeDisplay(handler,titler)
   // makeFlexbox("utdan",handler["år"],"År");
 
   // console.log(befolkning);
