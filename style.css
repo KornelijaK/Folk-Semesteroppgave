@@ -17,9 +17,6 @@
   border-style: double;
 }
 
-/* .beskrivelse p {
-  text-align: left;
-} */
 
 p {
   text-align: center;
@@ -57,22 +54,12 @@ button {
   width: 25%
 }
 
-table, th, td {
-  border: 1px solid black;
-}
 
-#idab td {
-
-}
 .komunetitler {
   display: flex;
   justify-content: space-between;
 }
 
-.data {
-  display: flex;
-  justify-content: space-between;
-}
 
 .detaljer{
 }
@@ -84,36 +71,68 @@ table, th, td {
 }
 
 
-.tabell {
-  display: grid;
+
+/* ------------- tabell------------- */
+
+
+.datah {
+  display: flex;
   flex-direction: column;
-  background-color: grey;
-  overflow-x: scroll;
+  overflow: scroll;
 }
 
-.row {
+.sammenhh{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.tabell{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+}
+
+
+ul.row {
+  margin: 0;
   display: flex;
   list-style: none;
-  background-color: yellow;
   flex-direction: row;
+  border: 0.1vw solid white;
+
 }
 
 
 
-.kategori {
-  background: blue;
+li.kategori {
+  padding: 1vw;
+  background: black;
   color: white;
-  width: 10vw;
+  text-align: center;
+  width: 4vw;
+
 
 }
 
 
-.cell {
-  background-color: grey;
+li.cell {
+  padding: 1vw;
+  background-color: #B2E2F7;
+  border: 0.1vw solid;
+  text-align: center;
+  width: 4vw;
+
+}
+
+li.cellHøgestP {
+  padding: 1vw;
+  background-color: #2281AA;
   border: 0.1vw solid;
   text-align: center;
   flex-direction: row;
-  width: 5vw;
+  width: 4vw;
 }
 
 .utdanning h2 {
@@ -122,31 +141,43 @@ table, th, td {
 }
 
 
-@media screen and (max-width: 400px){
 
+.kommuneNavn{
+  order: -1;
+  color: #2281AA;
+  background-color: black;
+
+}
+
+
+@media screen and (max-width: 400px){
+/*
   .utdanning {
     background-color: red;
-    /* display: grid; */
+
   }
 
 
-  .tabell {
+
+.sammenhh{
+  display: flex;
+}
+
+.tabell {
+
+  }
+
+
+ul.row {
     display: flex;
-    flex-direction: row;
-    background-color: grey;
-  }
 
-  .row {
-    display: flex;
-    list-style: none;
-    background-color: yellow;
-    flex-direction: column;
-    padding: 2px;
   }
 
 
 
-  .kategori {
+
+
+  li.kategori {
     background: blue;
     color: white;
     width: 10vw;
@@ -154,17 +185,65 @@ table, th, td {
   }
 
 
-  .cell {
-    background-color: grey;
+  li.cell {
+    padding: 4vw;
     border-bottom: 0.1vw solid;
     text-align: center;
-    flex-direction: column;
-  }
+  } */
 
   .utdanning h2 {
-    padding: 1vw;
-    font-size: 5vw;
+
+  }
+
+  .datah {
+    flex-direction: column;
+
+  }
+
+  .sammenhh{
+
+
+
+
+
+  }
+
+  .tabell{
+    flex-direction: row;
+
+
   }
 
 
-}
+ul.row {
+    flex-direction: column;
+    padding: 0;
+    flex-grow: 1;
+
+
+  }
+
+
+  li.kategori {
+    flex-grow: 1;
+    width: auto;
+
+
+  }
+
+
+  li.cell {
+    background-color: pink;
+    flex-grow: 1;
+    width: auto;
+
+
+
+  }
+
+  li.cellHøgestP {
+    flex-grow: 1;
+    width: auto;
+
+
+  }
