@@ -225,18 +225,24 @@ function getDetails(obj){
 
 
 
-function makeall() {
+function makeall(obj,titler,skoleNavn) {
   var skoleID = ["01","02a","11","03a","04a","09a"]
+  var ele = document.getElementById('utdan')
+  console.log(obj.data);
   for (var i = 0; i < skoleID.length; i++) {
-    var handler = getUtdanEnhet(utdan,skoleID[i])
-
+    var handler = getUtdanEnhet(obj,skoleID[i])
+    var skoleInndeling = document.createElement("div")
+    skoleInndeling.setAttribute("id","skole"+i)
+    skoleInndeling.setAttribute("class","tabell")
+    ele.appendChild(skoleInndeling);
+    var lister = Object.values(handler)
+    makeHeader("skole"+i,skoleNavn[i])
+    for(var j = 0; j < titler.length; j++) {
+      makeFlexbox("skole"+i,lister[j],titler[j])
+      }
   }
-  makeDisplay(handler,titler,skoleNavn)
-
-
-
-
 }
+
 
 
 
@@ -245,7 +251,6 @@ function getUtdanEnhet(obj,skoleid){
   var element = document.getElementById("tableUtdanning")
   input = kommuneNr
   obj.getInfo()
-  console.log(obj.informasjon);
   var år = Object.keys(obj.informasjon[skoleid]["Menn"])
   var grunnskoleNivåM = Object.values(obj.informasjon[skoleid]["Menn"])
   var grunnskoleNivåK = Object.values(obj.informasjon[skoleid]["Kvinner"])
@@ -275,31 +280,11 @@ var skoleNavn = ["Grunnskolenivå","Vidergående skole-nivå","Fagskole nivå","
 ]
 
 
-function makeDisplay(obj,text,skoleNavn) {
-  var liste = Object.values(obj)
-  var ele = document.getElementById('utdan')
-  console.log("her");
-  console.log(text);
 
-  for (var i = 0; i < skoleNavn.length; i++) {
-    var skoleInndeling = document.createElement("div")
-    skoleInndeling.setAttribute("id","skole"+i)
-    skoleInndeling.setAttribute("class","tabell")
-    ele.appendChild(skoleInndeling);
-  }
-
-
-for (var i = 0; i < 6; i++) {
-   makeHeader("skole"+i,skoleNavn[i])
-    for(var j = 0; j < text.length; j++) {
-      makeFlexbox("skole"+i,liste[j],text[j])
-    }
-
-  }
   // for (var i = 0; i < skoleNavn.length; i++) {
   //   makeHeaderader("utdan",skoleNavn[i])
   // }
-}
+
 
 
 
@@ -336,7 +321,7 @@ function detaljer(){
   velgSynlighet("detal","detaljer");
   runMethods()
   displayDetaljer()
-  makeall()
+  makeall(utdan,titler,skoleNavn)
   // var handler = getUtdanEnhet(utdan);
   // console.log("1");
   // makeDisplay(handler,titler)
@@ -407,9 +392,7 @@ function sysselSettingBegge(obj){
         cell.appendChild(t);
       if(liste1[j]<0 && liste2[j]<0 ){
           if(liste1[j]>liste2[j]){
-            console.log(liste1[j]);
             cell.setAttribute("class","cellHøgestP")
-            console.log(cell.className);
           }
           else {
             cell.setAttribute("class","cell");
