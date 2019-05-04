@@ -145,6 +145,7 @@ function displayDetaljer() {
     utdan.getInfo();
     getHøyereUtdannning(utdan);
     konst.getInfo()
+    makeall(utdan,titler,skoleNavn)
     var kommuneNavn = document.createTextNode(syss.informasjon.navn)
     var idNummer = document.createTextNode(input)
     var sysMåling = document.createTextNode(sisteSysselBeggeKjønn)
@@ -321,7 +322,6 @@ function detaljer(){
   velgSynlighet("detal","detaljer");
   runMethods()
   displayDetaljer()
-  makeall(utdan,titler,skoleNavn)
   // var handler = getUtdanEnhet(utdan);
   // console.log("1");
   // makeDisplay(handler,titler)
