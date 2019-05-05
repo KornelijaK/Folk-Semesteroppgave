@@ -229,19 +229,26 @@ function getDetails(obj){
 function makeall(obj,titler,skoleNavn) {
   var skoleID = ["01","02a","11","03a","04a","09a"]
   var ele = document.getElementById('utdan')
-  console.log(obj.data);
+
+
   for (var i = 0; i < skoleID.length; i++) {
     var handler = getUtdanEnhet(obj,skoleID[i])
     var skoleInndeling = document.createElement("div")
     skoleInndeling.setAttribute("id","skole"+i)
-    skoleInndeling.setAttribute("class","tabell")
+    skoleInndeling.setAttribute("class","sammenhh")
+    var container = document.createElement("div");
+    container.setAttribute("class","tabell")
+    container.setAttribute("id","contain"+i)
+    skoleInndeling.appendChild(container);
     ele.appendChild(skoleInndeling);
     var lister = Object.values(handler)
     makeHeader("skole"+i,skoleNavn[i])
     for(var j = 0; j < titler.length; j++) {
-      makeFlexbox("skole"+i,lister[j],titler[j])
+      makeFlexbox("contain"+i,lister[j],titler[j])
       }
+
   }
+
 }
 
 
@@ -263,6 +270,7 @@ function getUtdanEnhet(obj,skoleid){
 
 
 function makeHeader(id,text) {
+  console.log(id);
   var ele = document.getElementById(id);
   var div = document.createElement("Div");
   div.setAttribute("class","kommuneNavn")

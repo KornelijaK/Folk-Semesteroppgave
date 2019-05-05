@@ -65,8 +65,7 @@ button {
 }
 
 
-.utdanning {
-}
+
 
 
 
@@ -77,6 +76,11 @@ button {
   display: flex;
   flex-direction: column;
   overflow: scroll;
+}
+
+.utdanning {
+  display: flex;
+  flex-direction: column;
 }
 
 .sammenhh{
