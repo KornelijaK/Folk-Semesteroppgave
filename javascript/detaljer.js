@@ -9,12 +9,10 @@ function infoDetaljer(input){
   var kommuneNavn = document.createTextNode(bef.informasjon.navn)
   var idNummer = document.createTextNode(input)
   var sysMåling = document.createTextNode(getSisteSyssel(syss))
-  console.log("2");
   var utdanMåling = document.createTextNode(getHøyereUtdannning(utdan))
-  console.log("3");
 
   var befolkningMåling = document.createTextNode(totalBefolkning(bef))
-  console.log("4");
+
 
   var kNavnList = document.createElement("li");
   var idNavnList = document.createElement("li")
