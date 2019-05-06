@@ -11,6 +11,7 @@ function getData(url,obj) {
     if(xhr.readyState === 4 && xhr.status === 200 ) {
       var jtext = JSON.parse(xhr.responseText);
       obj.data = jtext;
+
     }
   }
   xhr.send(null);
@@ -19,6 +20,7 @@ function getData(url,obj) {
 function getNames(obj) {
   var komuneListe = Object.keys(obj.data["elementer"]);
   obj.kommuneList = komuneListe;
+  return obj.kommuneList
 }
 
 function getIDs(obj){
@@ -41,6 +43,13 @@ function getInfo(obj,input){
   }
 }
 
+// function sjekkNedlastet(obj) {
+//   if(obj)
+//
+// }
+
+//checker at load er fullført. listeninger ..når befo
+//
 
 
 // ------------------------------ Main ----------------------
@@ -53,7 +62,7 @@ function Befolkning(url) {
   this.informasjon = undefined;
   this.onload = null;
   this.load = function() {getData(url,this)};
-  this.getNames = function() {getNames(this)}
+  this.getNames = function() {return getNames(this)}
   this.getIDs = function() {getIDs(this)}
   this.getInfo = function() {getInfo(this,input)}
   }

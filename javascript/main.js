@@ -32,7 +32,9 @@ function velgSynlighet(id,classN){
 }
 
 function runMethods(){
-  konst.getNames();
+  var l = konst.getNames();
+  console.log("HER");
+  console.log(l);
   konst.getIDs();
   utdan.getNames();
   utdan.getIDs();

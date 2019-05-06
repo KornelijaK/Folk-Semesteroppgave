@@ -1,4 +1,8 @@
 
+.loading h3{
+  text-align: center;
+  padding: 20vw;
+}
 
 .introduksjon h3 {
   text-align: center;
@@ -210,13 +214,18 @@ li.cellHøgestP {
 
     }
 
-    li.cellHøgestP {
+li.cellHøgestP {
       flex-grow: 1;
       width: auto;
 
 
 
-    }/*
+    }
+
+
+
+
+/*
   .utdanning {
     background-color: red;
 

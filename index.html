@@ -14,13 +14,16 @@
     <header>
       <h1>Komuneoversikt i Norge</h1>
     </header>
+    <div id="loadingID" class="loading">
+      <h3>Laster inn siden...</h3>
+    </div>
     <nav>
-      <button onclick="introduksjon()" type="button" name="button">Introduksjon</button>
-      <button onclick="oversikt()" type="button" name="button">Oversikt</button>
-      <button onclick="detaljer()" type="button" name="button">Detaljer</button>
-      <button onclick="velgSynlighet('sammen','sammenligning')" type="button" name="button">Sammenligning</button>
+      <button onclick="introduksjon()" class="hidden" >Introduksjon</button>
+      <button onclick="oversikt()" >Oversikt</button>
+      <button onclick="detaljer()" class="hidden">Detaljer</button>
+      <button onclick="velgSynlighet('sammen','sammenligning')" class="hidden">Sammenligning</button>
     </nav>
-    <div id="int" class="introduksjon">
+    <div id="int" class="hidden">
       <h3>Introduksjon</h3>
       <section class="beskrivelse">
         <p>Denne siden gir deg en beskrivelser av Norges kommuner.</p>
