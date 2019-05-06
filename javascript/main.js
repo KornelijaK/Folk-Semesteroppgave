@@ -48,10 +48,27 @@ function checkInput(id) {
     if(input ==="") throw " er tom"
     if(input.length != 4) throw " har feil nummer lengde";
     if(isNaN(input)) throw " er ikke et tall";
-    // if(!(input in konst.idsList)) throw " er ikke et gyldig komunenummer";
+    var x = undefined;
 
-  }
+    // if(!(input in konst.idsList)) throw " er ikke et gyldig komunenummer";
+    // if(!(input in konst.idsList))}
+    for (var i = 0; i < konst.idsList.length; i++) {
+      if(konst.idsList[i] === input){
+        x = true
+        console.log("fant");
+      }
+      // else if(!(input === konst.idsList[i]  )) {
+      //   x = false;
+      //
+      // }
+      if(x === undefined) {
+        throw " er ikke et gyldig komunenummer"
+      }
+    }}
+
+
   catch(err) {
+
     alert(input + err +"\n\n I Oversikt kan du finne kommune id");
     return null
   }
@@ -108,6 +125,15 @@ function totalBefolkninger(obj) {
   return totalBefolknign;
 }
 
+function totalBefolkning(obj) {
+  var befolkningMenn = Object.values(obj.informasjon["Menn"]);
+  var befolkningKvinner = Object.values(obj.informasjon["Kvinner"]);
+  var sisteMålingM = befolkningMenn.pop();
+  var sisteMålingK = befolkningKvinner.pop();
+  var total = sisteMålingM + sisteMålingK;
+  return total;
+}
+
 
 
 // ----------------main---------------------
@@ -133,18 +159,20 @@ function displayDetaljer() {
 
   lst1 = [1,2,3]
   var div = document.createElement("div")
-  var ele = document.getElementById('detal');
+  var ele = document.getElementById('info');
   var list = document.createElement("ul")
   var getKommune = document.getElementById("getKommune")
   var kommuneNr = document.getElementById("kommuneNr").value;
   getKommune.onclick = function() {
-
+    checkInput("kommuneNr");
     input = kommuneNr
     syss.getInfo();
     getSisteSyssel(syss);
     utdan.getInfo();
     getHøyereUtdannning(utdan);
     konst.getInfo()
+
+    makeHeader("overskriftID",konst.informasjon.navn)
     makeall(utdan,titler,skoleNavn)
     detaljeTabll(syss,"detalSyss","tabsyss","Sysselsette")
     detaljeTabll(konst,"detalBef","tabBef","Befokning")
@@ -152,23 +180,32 @@ function displayDetaljer() {
     var idNummer = document.createTextNode(input)
     var sysMåling = document.createTextNode(sisteSysselBeggeKjønn)
     var utdanMåling = document.createTextNode(totalUtdanningProsent)
+
+    var befolkningMåling = document.createTextNode(totalBefolkning(konst))
+
     var kNavnList = document.createElement("li");
     var idNavnList = document.createElement("li")
     var sysList = document.createElement("li");
     var utdanList = document.createElement("li")
+    var beflist = document.createElement("li")
 
     sysList.innerHTML = "Siste sysselmåling: "
     kNavnList.innerHTML = "Kommunenavn: "
     idNavnList.innerHTML = "KommuneId: "
     utdanList.innerHTML = "Siste utdanningmåling: "
+    beflist.innerHTML = "Siste befolkningmåling: "
+
     sysList.appendChild(sysMåling)
     utdanList.appendChild(utdanMåling)
     kNavnList.appendChild(kommuneNavn);
     idNavnList.appendChild(idNummer)
+    beflist.appendChild(befolkningMåling)
+
     list.appendChild(kNavnList);
     list.appendChild(idNavnList);
     list.appendChild(sysList)
     list.appendChild(utdanList)
+    list.appendChild(beflist);
   }
   div.appendChild(list)
   ele.appendChild(div)
@@ -272,8 +309,8 @@ function getUtdanEnhet(obj,skoleid){
 
 
 function makeHeader(id,text) {
-  console.log(id);
   var ele = document.getElementById(id);
+  console.log(ele);
   var div = document.createElement("Div");
   div.setAttribute("class","kommuneNavn")
   var h = document.createElement("h2");
@@ -475,10 +512,6 @@ function sammenLigning() {
   runMethods()
   checkInput("i1");
   checkInput("i2");
-
-  if (checkInput("i1") === null || checkInput("i2") === null ){
-    return null;
-  }
 
   sysselSettingBegge(syss);
 }
