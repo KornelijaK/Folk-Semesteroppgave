@@ -162,7 +162,11 @@ function displayDetaljer() {
   var ele = document.getElementById('info');
   var list = document.createElement("ul")
   getKommune.onclick = function() {
+
+    var getKommune = document.getElementById("getKommune")
+    var kommuneNr = document.getElementById("kommuneNr").value;
     input = kommuneNr
+    checkInput("kommuneNr")
     syss.getInfo();
     getSisteSyssel(syss);
     utdan.getInfo();
