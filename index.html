@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="javascript/befolkning.js"></script>
-    <script type="text/javascript" src="javascript/sysselsatte.js"></script>
-    <script type="text/javascript" src="javascript/utdanning.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="javascript/konstruktør.js"></script>
+    <script type="text/javascript" src="javascript/oversikt.js"></script>
+    <script type="text/javascript" src="javascript/detaljer.js"></script>
     <script type="text/javascript" src="javascript/main.js"></script>
-    <title>Kommunert</title>
+
+    <title>Kommuneoversikt i Norge</title>
   </head>
   <body>
     <header>
@@ -18,10 +19,10 @@
       <h3>Laster inn siden...</h3>
     </div>
     <nav>
-      <button onclick="introduksjon()" class="hidden" >Introduksjon</button>
+      <button onclick="introduksjon()"  >Introduksjon</button>
       <button onclick="oversikt()" >Oversikt</button>
-      <button onclick="detaljer()" class="hidden">Detaljer</button>
-      <button onclick="velgSynlighet('sammen','sammenligning')" class="hidden">Sammenligning</button>
+      <button onclick="detaljer()" >Detaljer</button>
+      <button onclick="velgSynlighet('sammen','sammenligning')" >Sammenligning</button>
     </nav>
     <div id="int" class="hidden">
       <h3>Introduksjon</h3>
@@ -48,7 +49,7 @@
     <div id="detal" class="hidden">
       <input type="text" value="0101" id="kommuneNr">
       <br>
-      <button type="button" name="button" id="getKommune"> Få informasjon </button>
+      <button onclick="displayDetaljer()" id="getKommune"> Få informasjon </button>
 
       <div id="overskriftID" class="overskrift">
       </div>
