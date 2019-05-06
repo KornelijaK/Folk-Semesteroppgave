@@ -1,5 +1,4 @@
 
-console.log("Connect");
 
 function sysselSettingBegge(obj){
   var kategori = ["År","Kvinner","Vekst","Menn","Vekst"]
