@@ -164,7 +164,6 @@ function displayDetaljer() {
   var getKommune = document.getElementById("getKommune")
   var kommuneNr = document.getElementById("kommuneNr").value;
   getKommune.onclick = function() {
-    checkInput("kommuneNr");
     input = kommuneNr
     syss.getInfo();
     getSisteSyssel(syss);
