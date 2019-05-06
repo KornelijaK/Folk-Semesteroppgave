@@ -6,7 +6,7 @@ function infoDetaljer(input){
   var ele = document.getElementById('info');
   var list = document.createElement("ul")
 
-  var kommuneNavn = document.createTextNode(bef.informasjon.navn)
+  var kommuneNavn = document.createTextNode(getName(syss,input))
   var idNummer = document.createTextNode(input)
   var sysMåling = document.createTextNode(getSisteSyssel(syss))
   var utdanMåling = document.createTextNode(getHøyereUtdannning(utdan))
@@ -56,10 +56,9 @@ function displayDetaljer() {
   utdan.getInfo();
   getHøyereUtdannning(utdan);
   bef.getInfo()
-  console.log(bef.informasjon.navn);
   infoDetaljer(input)
 
-  makeHeader("overskriftID",bef.informasjon.navn)
+  makeHeader("overskriftID",getName(syss,input))
   makeall(utdan,titler,skoleNavn)
   detaljeTabll(syss,"detalSyss","tabsyss","Sysselsette")
   detaljeTabll(bef,"detalBef","tabBef","Befokning")
@@ -78,7 +77,6 @@ function getHøyereUtdannning(obj) {
   var sisteMålingKL = langUtdaningKvinner.pop();
 
   var totalUtdanningProsent = Number(sisteMåling + sisteMålingK + sisteMålingL + sisteMålingKL)+"%";
-// totalUtdanningProsent+
 
   return totalUtdanningProsent
 
@@ -97,28 +95,28 @@ function getSisteSyssel(obj) {
 
 }
 
-function getDetails(obj){
-  var total = []
-  var kommuneNr = document.getElementById("kommuneNr").value;
-  input = kommuneNr
-  obj.getInfo()
-  var listeMenn = Object.entries(obj.informasjon["Menn"]);
-  var listeKvinner = Object.entries(obj.informasjon["Kvinner"])
-  for(var x = 0; x < listeMenn.length; x++){
-    var mennÅrstall = listeMenn[x][0]
-    for(var k = 0; k < listeKvinner.length;k++){
-      if(mennÅrstall === listeKvinner[k][0]){
-
-        var tot = listeMenn[x][1] + listeKvinner[k][1]
-        var kvinner = listeKvinner[k][1]
-        var menn = listeMenn[x][1]
-        var samlet = [mennÅrstall,menn,kvinner,tot]
-        total.push(samlet)
-      }
-    }
-  }
-  return total
-}
+// function getDetails(obj){
+//   var total = []
+//   var kommuneNr = document.getElementById("kommuneNr").value;
+//   input = kommuneNr
+//   obj.getInfo()
+//   var listeMenn = Object.entries(obj.informasjon["Menn"]);
+//   var listeKvinner = Object.entries(obj.informasjon["Kvinner"])
+//   for(var x = 0; x < listeMenn.length; x++){
+//     var mennÅrstall = listeMenn[x][0]
+//     for(var k = 0; k < listeKvinner.length;k++){
+//       if(mennÅrstall === listeKvinner[k][0]){
+//
+//         var tot = listeMenn[x][1] + listeKvinner[k][1]
+//         var kvinner = listeKvinner[k][1]
+//         var menn = listeMenn[x][1]
+//         var samlet = [mennÅrstall,menn,kvinner,tot]
+//         total.push(samlet)
+//       }
+//     }
+//   }
+//   return total
+// }
 
 
 
@@ -127,8 +125,6 @@ function getDetails(obj){
 function makeall(obj,titler,skoleNavn) {
   var skoleID = ["01","02a","11","03a","04a","09a"]
   var ele = document.getElementById('utdan')
-
-
   for (var i = 0; i < skoleID.length; i++) {
     var handler = getUtdanEnhet(obj,skoleID[i])
     var skoleInndeling = document.createElement("div")
@@ -185,12 +181,6 @@ var titler = ["År","Kvinner","Menn"]
 var skoleNavn = ["Grunnskolenivå","Vidergående skole-nivå","Fagskole nivå","Universitets- og høgskolenivå kort",
 "Universitets- og høgskolenivå lang","Uoppgitt eller ingen fullført utdanning"
 ]
-
-
-
-  // for (var i = 0; i < skoleNavn.length; i++) {
-  //   makeHeaderader("utdan",skoleNavn[i])
-  // }
 
 
 
