@@ -135,17 +135,16 @@ function displayDetaljer() {
   var div = document.createElement("div")
   var ele = document.getElementById('detal');
   var list = document.createElement("ul")
-  var getKommune = document.getElementById("getKommune")
-  var kommuneNr = document.getElementById("kommuneNr").value;
   getKommune.onclick = function() {
-
+    var getKommune = document.getElementById("getKommune")
+    var kommuneNr = document.getElementById("kommuneNr").value;
+    checkInput("kommuneNr")
     input = kommuneNr
     syss.getInfo();
     getSisteSyssel(syss);
     utdan.getInfo();
     getHøyereUtdannning(utdan);
     konst.getInfo()
-    makeall(utdan,titler,skoleNavn)
     var kommuneNavn = document.createTextNode(syss.informasjon.navn)
     var idNummer = document.createTextNode(input)
     var sysMåling = document.createTextNode(sisteSysselBeggeKjønn)
@@ -167,6 +166,8 @@ function displayDetaljer() {
     list.appendChild(idNavnList);
     list.appendChild(sysList)
     list.appendChild(utdanList)
+    makeall(utdan,titler,skoleNavn)
+
   }
   div.appendChild(list)
   ele.appendChild(div)
@@ -229,8 +230,11 @@ function getDetails(obj){
 function makeall(obj,titler,skoleNavn) {
   var skoleID = ["01","02a","11","03a","04a","09a"]
   var ele = document.getElementById('utdan')
-  console.log(obj.data);
+  var counter = 0;
   for (var i = 0; i < skoleID.length; i++) {
+    counter =+i
+    console.log(counter);
+    console.log(skoleID[i]);
     var handler = getUtdanEnhet(obj,skoleID[i])
     var skoleInndeling = document.createElement("div")
     skoleInndeling.setAttribute("id","skole"+i)
@@ -240,7 +244,7 @@ function makeall(obj,titler,skoleNavn) {
     makeHeader("skole"+i,skoleNavn[i])
     for(var j = 0; j < titler.length; j++) {
       makeFlexbox("skole"+i,lister[j],titler[j])
-      }
+    }
   }
 }
 
