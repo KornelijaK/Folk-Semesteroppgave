@@ -48,10 +48,27 @@ function checkInput(id) {
     if(input ==="") throw " er tom"
     if(input.length != 4) throw " har feil nummer lengde";
     if(isNaN(input)) throw " er ikke et tall";
-    // if(!(input in konst.idsList)) throw " er ikke et gyldig komunenummer";
+    var x = undefined;
 
-  }
+    // if(!(input in konst.idsList)) throw " er ikke et gyldig komunenummer";
+    // if(!(input in konst.idsList))}
+    for (var i = 0; i < konst.idsList.length; i++) {
+      if(konst.idsList[i] === input){
+        x = true
+        console.log("fant");
+      }
+      // else if(!(input === konst.idsList[i]  )) {
+      //   x = false;
+      //
+      // }
+      if(x === undefined) {
+        throw " er ikke et gyldig komunenummer"
+      }
+    }}
+
+
   catch(err) {
+
     alert(input + err +"\n\n I Oversikt kan du finne kommune id");
     return null
   }
@@ -108,6 +125,15 @@ function totalBefolkninger(obj) {
   return totalBefolknign;
 }
 
+function totalBefolkning(obj) {
+  var befolkningMenn = Object.values(obj.informasjon["Menn"]);
+  var befolkningKvinner = Object.values(obj.informasjon["Kvinner"]);
+  var sisteMålingM = befolkningMenn.pop();
+  var sisteMålingK = befolkningKvinner.pop();
+  var total = sisteMålingM + sisteMålingK;
+  return total;
+}
+
 
 
 // ----------------main---------------------
@@ -133,41 +159,50 @@ function displayDetaljer() {
 
   lst1 = [1,2,3]
   var div = document.createElement("div")
-  var ele = document.getElementById('detal');
+  var ele = document.getElementById('info');
   var list = document.createElement("ul")
   getKommune.onclick = function() {
-    var getKommune = document.getElementById("getKommune")
-    var kommuneNr = document.getElementById("kommuneNr").value;
-    checkInput("kommuneNr")
     input = kommuneNr
     syss.getInfo();
     getSisteSyssel(syss);
     utdan.getInfo();
     getHøyereUtdannning(utdan);
     konst.getInfo()
+
+    makeHeader("overskriftID",konst.informasjon.navn)
+    makeall(utdan,titler,skoleNavn)
+    detaljeTabll(syss,"detalSyss","tabsyss","Sysselsette")
+    detaljeTabll(konst,"detalBef","tabBef","Befokning")
     var kommuneNavn = document.createTextNode(syss.informasjon.navn)
     var idNummer = document.createTextNode(input)
     var sysMåling = document.createTextNode(sisteSysselBeggeKjønn)
     var utdanMåling = document.createTextNode(totalUtdanningProsent)
+
+    var befolkningMåling = document.createTextNode(totalBefolkning(konst))
+
     var kNavnList = document.createElement("li");
     var idNavnList = document.createElement("li")
     var sysList = document.createElement("li");
     var utdanList = document.createElement("li")
+    var beflist = document.createElement("li")
 
     sysList.innerHTML = "Siste sysselmåling: "
     kNavnList.innerHTML = "Kommunenavn: "
     idNavnList.innerHTML = "KommuneId: "
     utdanList.innerHTML = "Siste utdanningmåling: "
+    beflist.innerHTML = "Siste befolkningmåling: "
+
     sysList.appendChild(sysMåling)
     utdanList.appendChild(utdanMåling)
     kNavnList.appendChild(kommuneNavn);
     idNavnList.appendChild(idNummer)
+    beflist.appendChild(befolkningMåling)
+
     list.appendChild(kNavnList);
     list.appendChild(idNavnList);
     list.appendChild(sysList)
     list.appendChild(utdanList)
-    makeall(utdan,titler,skoleNavn)
-
+    list.appendChild(beflist);
   }
   div.appendChild(list)
   ele.appendChild(div)
@@ -230,7 +265,8 @@ function getDetails(obj){
 function makeall(obj,titler,skoleNavn) {
   var skoleID = ["01","02a","11","03a","04a","09a"]
   var ele = document.getElementById('utdan')
-  var counter = 0;
+
+
   for (var i = 0; i < skoleID.length; i++) {
     counter =+i
     console.log(counter);
@@ -238,14 +274,20 @@ function makeall(obj,titler,skoleNavn) {
     var handler = getUtdanEnhet(obj,skoleID[i])
     var skoleInndeling = document.createElement("div")
     skoleInndeling.setAttribute("id","skole"+i)
-    skoleInndeling.setAttribute("class","tabell")
+    skoleInndeling.setAttribute("class","sammenhh")
+    var container = document.createElement("div");
+    container.setAttribute("class","tabell")
+    container.setAttribute("id","contain"+i)
+    skoleInndeling.appendChild(container);
     ele.appendChild(skoleInndeling);
     var lister = Object.values(handler)
     makeHeader("skole"+i,skoleNavn[i])
     for(var j = 0; j < titler.length; j++) {
-      makeFlexbox("skole"+i,lister[j],titler[j])
-    }
+      makeFlexbox("contain"+i,lister[j],titler[j])
+      }
+
   }
+
 }
 
 
@@ -268,6 +310,7 @@ function getUtdanEnhet(obj,skoleid){
 
 function makeHeader(id,text) {
   var ele = document.getElementById(id);
+  console.log(ele);
   var div = document.createElement("Div");
   div.setAttribute("class","kommuneNavn")
   var h = document.createElement("h2");
@@ -313,6 +356,32 @@ function makeFlexbox(id1,dataListe,titel){
     }
 
 
+function detaljeTabll(obj,id,idnavn,headernavn) {
+  var kategori = ["År","Kvinner","Menn"]
+  var ele = document.getElementById(id);
+  var div = document.createElement("div");
+  div.setAttribute("class","tabell")
+  div.setAttribute("id",idnavn)
+  ele.appendChild(div);
+  var kommune1 = document.getElementById("kommuneNr").value;
+  input = kommune1;
+  syss.getInfo()
+  var år = Object.keys(obj.informasjon["Menn"])
+  var dataMenn = Object.values(obj.informasjon["Menn"])
+  var dataKvinner = Object.values(obj.informasjon["Kvinner"])
+  makeHeader(id,headernavn);
+  makeFlexbox(idnavn,år,kategori[0])
+  makeFlexbox(idnavn,dataKvinner,kategori[1])
+  makeFlexbox(idnavn,dataMenn,kategori[2])
+
+
+}
+
+
+
+
+
+
 
 
 
@@ -326,6 +395,8 @@ function detaljer(){
   velgSynlighet("detal","detaljer");
   runMethods()
   displayDetaljer()
+
+
   // var handler = getUtdanEnhet(utdan);
   // console.log("1");
   // makeDisplay(handler,titler)
@@ -441,10 +512,6 @@ function sammenLigning() {
   runMethods()
   checkInput("i1");
   checkInput("i2");
-
-  if (checkInput("i1") === null || checkInput("i2") === null ){
-    return null;
-  }
 
   sysselSettingBegge(syss);
 }
