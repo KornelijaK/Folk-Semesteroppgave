@@ -185,9 +185,12 @@ function detaljer(){
 // ----------------------main------------------------
 
 function sammenLigning() {
+  console.log(1);
   runMethods()
+  console.log(2);
   if(checkInput("i1") === null || checkInput("i2") === null ){
     return null
   }
+  console.log(3);
   sysselSettingBegge(syss);
 }
