@@ -6,21 +6,21 @@ function sysselSettingBegge(obj){
   var kommune2 = document.getElementById("i2").value;
   input = kommune1;
   obj.getInfo(input)
-  var navn = getName(obj,input);
+  var navn = getValgtKommune(obj,input);
 
 
 
   var år = Object.keys(obj.getInfo(input)["Menn"])
-  // var år = Object.keys(obj.informasjon["Menn"])
-  var sysselMenn = Object.values(obj.informasjon["Menn"])
-  var sysselKvinner = Object.values(obj.informasjon["Kvinner"])
+  // var år = Object.keys(obj.getInfo(input)["Menn"])
+  var sysselMenn = Object.values(obj.getInfo(input)["Menn"])
+  var sysselKvinner = Object.values(obj.getInfo(input)["Kvinner"])
   var vekstMenn = prosentPoeng(sysselMenn);
   var vekstKvinner = prosentPoeng(sysselKvinner);
   input = kommune2;
   syss.getInfo()
-  var navn2 = getName(obj,input);
-  var sysselMenn2 = Object.values(obj.informasjon["Menn"])
-  var sysselKvinner2 = Object.values(obj.informasjon["Kvinner"])
+  var navn2 = getValgtKommune(obj,input);
+  var sysselMenn2 = Object.values(obj.getInfo(input)["Menn"])
+  var sysselKvinner2 = Object.values(obj.getInfo(input)["Kvinner"])
   var vekstMenn2 = prosentPoeng(sysselMenn2);
   var vekstKvinner2 = prosentPoeng(sysselKvinner2);
 

@@ -25,16 +25,8 @@ function displayData(liste,clas,text){
 function totalBefolkninger(obj) {
     totalBefolknign = []
     for(var i=0;i<obj.getIDs().length;i++){
-      console.log(obj.getIDs()[i]);
-
       input = obj.getIDs()[i]
-      console.log(input);
-
-
-
       obj.getInfo()
-
-
       total = totalBefolkning(obj)
       totalBefolknign.push(total)
   }

@@ -28,16 +28,11 @@ function getData(url,obj) {
 // }
 //
 function getNames() {
-  console.log("!!!!!!!!!!!!!!!!!");
-  console.log(this.data);
   return  Object.keys(this.data["elementer"]);
 }
 
 function getIDs(){
   var idList = []
-  console.log(this.getNames())
-  console.log();
-  console.log(bef.data);
   var list = Object.values(this.data["elementer"])
   for(var i = 0;i<list.length;i++){
     var id = list[i]["kommunenummer"];
@@ -49,22 +44,22 @@ function getIDs(){
 
 //Test kommentar her
 
-function nåværendeKommune(input) {
-  for(var k = 0;k<this.getIDs().length;k++){
-    if(this.getIDs()[k] === input){
-      console.log(getNames()[k]);
-      return getNames()[k]
-
-
-
-    }
-  }
-}
+// function nåværendeKommune(input) {
+//   for(var k = 0;k<this.getIDs().length;k++){
+//     if(this.getIDs()[k] === input){
+//       console.log(getNames()[k]);
+//       return getNames()[k]
+//
+//
+//
+//     }
+//   }
+// }
 
 function getInfo(input){
-  var kommune = nåværendeKommune(input)
-  console.log(kommune);
-
+    var valgt = getValgtKommune(this,input);
+    var valgtInfo = this.data["elementer"][valgt];
+    return valgtInfo;
   //
   // this.informasjon = this.data["elementer"][valgtKommune];
   // // for(var k = 0;k<this.idsList.length;k++){
@@ -121,7 +116,7 @@ function Konstruktør(url) {
   this.data = undefined;
   // this.kommuneList = undefined;
   // this.idsList = undefined;
-  this.informasjon = undefined;
+  // this.informasjon = undefined;
   this.onload = null;
   this.load = function() {return getData(url,this)};
   this.getNames =  getNames;
