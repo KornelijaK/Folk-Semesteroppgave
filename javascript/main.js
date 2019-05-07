@@ -37,7 +37,6 @@ function getValgtKommune(obj,input){
 
 function totalBefolkning(obj) {
   var befolkningMenn = Object.values(obj.getInfo(input)["Menn"]);
-  console.log(befolkningMenn.length);
   var befolkningKvinner = Object.values(obj.getInfo(input)["Kvinner"]);
   var sisteMålingM = befolkningMenn.pop();
   var sisteMålingK = befolkningKvinner.pop();
@@ -141,16 +140,8 @@ function oversikt(){
     displayData(befolkningTotalList,"oversikt","Befolkning")
     runTracker = true;
     }
+  }
 
-
-// getNames()
-
-//
-// ----------------------------------------------------
-
-// function sjekkLastet() {
-//
-// }
 
 
 
@@ -158,31 +149,37 @@ function oversikt(){
 
 
 
+function detaljer(){
+  velgSynlighet("detal","detaljer");
+}
 
 
 // ------------------------------------main --------------
 
+function detaljeTabll(obj,id,idnavn,headernavn) {
+  var kategori = ["År","Kvinner","Menn"]
+  var ele = document.getElementById(id);
+  var div = document.createElement("div");
+  div.setAttribute("class","tabell")
+  div.setAttribute("id",idnavn)
+  ele.appendChild(div);
+  var kommune1 = document.getElementById("kommuneNr").value;
+  input = kommune1;
+  syss.getInfo()
+  var år = Object.keys(obj.informasjon["Menn"])
+  var dataMenn = Object.values(obj.informasjon["Menn"])
+  var dataKvinner = Object.values(obj.informasjon["Kvinner"])
+  makeHeader(id,headernavn);
+  makeFlexbox(idnavn,år,kategori[0])
+  makeFlexbox(idnavn,dataKvinner,kategori[1])
+  makeFlexbox(idnavn,dataMenn,kategori[2])
 
-//
-// function detaljer(){
-//   velgSynlighet("detal","detaljer");
-//   runMethods()
 
-
-
-  // var handler = getUtdanEnhet(utdan);
-  // console.log("1");
-  // makeDisplay(handler,titler)
-  // makeFlexbox("utdan",handler["år"],"År");
-
-  // console.log(befolkning);
-  // console.log(syssel);
-  // console.log(utdanning);
-  // tableDetaljer(befolkning)
-  // tableDetaljer(syssel)
-  // getUtdanning(utdan)
-  /*tableDetaljerUtdanning(utdanning)*/
 }
+
+
+
+
 
 
 //-------------------------------Sammenligning-------------------------------------
@@ -192,6 +189,17 @@ function oversikt(){
 
 // ----------------------main------------------------
 
+
+
+
+// runMethods()
+// var handler = getUtdanEnhet(utdan);
+// makeDisplay(handler,titler)
+// makeFlexbox("utdan",handler["år"],"År");
+// tableDetaljer(befolkning)
+// tableDetaljer(syssel)
+// getUtdanning(utdan)
+// tableDetaljerUtdanning(utdanning)
 // function sammenLigning() {
 //   runMethods()
 //   if(checkInput("i1") === null || checkInput("i2") === null ){
