@@ -42,7 +42,7 @@ function getIDs(){
 
 }
 
-
+//Test kommentar her
 
 // function nåværendeKommune(input,obj) {
 //   var liste = obj.getIDs();
