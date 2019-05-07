@@ -3,24 +3,30 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="javascript/befolkning.js"></script>
-    <script type="text/javascript" src="javascript/sysselsatte.js"></script>
-    <script type="text/javascript" src="javascript/utdanning.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="javascript/konstruktør.js"></script>
+    <script type="text/javascript" src="javascript/oversikt.js"></script>
+    <script type="text/javascript" src="javascript/detaljer.js"></script>
+    <script type="text/javascript" src="javascript/lol.js">
+    </script>
     <script type="text/javascript" src="javascript/main.js"></script>
-    <title>Kommunert</title>
+
+    <title>Kommuneoversikt i Norge</title>
   </head>
   <body>
     <header>
       <h1>Komuneoversikt i Norge</h1>
     </header>
+    <div id="loadingID" class="loading">
+      <h3>Laster inn siden...</h3>
+    </div>
     <nav>
-      <button onclick="introduksjon()" type="button" name="button">Introduksjon</button>
-      <button onclick="oversikt()" type="button" name="button">Oversikt</button>
-      <button onclick="detaljer()" type="button" name="button">Detaljer</button>
-      <button onclick="velgSynlighet('sammen','sammenligning')" type="button" name="button">Sammenligning</button>
+      <button onclick="introduksjon()"  >Introduksjon</button>
+      <button onclick="oversikt()" >Oversikt</button>
+      <button onclick="detaljer()" >Detaljer</button>
+      <button onclick="velgSynlighet('sammen','sammenligning')" >Sammenligning</button>
     </nav>
-    <div id="int" class="introduksjon">
+    <div id="int" class="hidden">
       <h3>Introduksjon</h3>
       <section class="beskrivelse">
         <p>Denne siden gir deg en beskrivelser av Norges kommuner.</p>
@@ -45,7 +51,7 @@
     <div id="detal" class="hidden">
       <input type="text" value="" id="kommuneNr">
       <br>
-      <button type="button" name="button" id="getKommune"> Få informasjon </button>
+      <button onclick="displayDetaljer()" id="getKommune"> Få informasjon </button>
 
       <div id="overskriftID" class="overskrift">
       </div>
