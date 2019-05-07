@@ -11,6 +11,9 @@ function getData(url,obj) {
     if(xhr.readyState === 4 && xhr.status === 200 ) {
       var jtext = JSON.parse(xhr.responseText);
       obj.data = jtext;
+      if(!(obj.onload === null)){
+        obj.onload()
+      }
       return obj.data
 
     }
@@ -23,6 +26,13 @@ function getNames(obj) {
   obj.kommuneList = komuneListe;
   return obj.kommuneList
 }
+<<<<<<< HEAD
+=======
+//
+// function getNames() {
+//   return  Object.keys(this.data["elementer"]);
+// }
+>>>>>>> Live
 
 function getIDs(obj){
   var idList = []
@@ -48,6 +58,29 @@ function getInfo(obj,input){
   }
   return obj.informasjon
 }
+
+
+// function dataKlar(obj){
+//
+//   var loadMelding = document.getElementById('loadingID');
+//   obj.onload = true
+//   console.log("NONO");
+// }
+//
+//
+// function lastData() {
+//
+//
+// }
+//
+// function.onload
+
+//dersom onlaid ikke er null - kjør.
+
+// ----------------------------------------------
+
+
+
 
 
 function Konstruktør(url) {
