@@ -7,7 +7,7 @@
     <script type="text/javascript" src="javascript/konstruktør.js"></script>
     <script type="text/javascript" src="javascript/oversikt.js"></script>
     <script type="text/javascript" src="javascript/detaljer.js"></script>
-    <script type="text/javascript" src="javascript/lol.js">
+    <script type="text/javascript" src="javascript/sammenligning.js">
     </script>
     <script type="text/javascript" src="javascript/main.js"></script>
 
@@ -26,7 +26,7 @@
       <button onclick="detaljer()" >Detaljer</button>
       <button onclick="velgSynlighet('sammen','sammenligning')" >Sammenligning</button>
     </nav>
-    <div id="int" class="hidden">
+    <div id="int" class="introduksjon">
       <h3>Introduksjon</h3>
       <section class="beskrivelse">
         <p>Denne siden gir deg en beskrivelser av Norges kommuner.</p>
@@ -49,7 +49,7 @@
     </div>
 
     <div id="detal" class="hidden">
-      <input type="text" value="" id="kommuneNr">
+      <input type="text" value="0136" id="kommuneNr">
       <br>
       <button onclick="displayDetaljer()" id="getKommune"> Få informasjon </button>
 
@@ -84,7 +84,8 @@
         <h2 id="k1"></h2>
         <h2 id="k2"></h2>
       </div>
-      <div id="data" class="datah">
+      <!-- <div id="data" class="datah"> -->
+      <div class="datah">
         <div id="kom1" class="sammenhh">
           <div id="tab1" class="tabell">
           </div>

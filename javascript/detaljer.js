@@ -6,7 +6,11 @@ function infoDetaljer(input){
   var ele = document.getElementById('info');
   var list = document.createElement("ul")
 
+<<<<<<< HEAD
   var kommuneNavn = document.createTextNode(currentKommune(syss,input))
+=======
+  var kommuneNavn = document.createTextNode(getValgtKommune(syss,input))
+>>>>>>> Live
   var idNummer = document.createTextNode(input)
   var sysMåling = document.createTextNode(getSisteSyssel(syss))
   var utdanMåling = document.createTextNode(getHøyereUtdannning(utdan))
@@ -46,24 +50,26 @@ ele.appendChild(div)
 
 
 
-function displayDetaljer() {
-  var getKommune = document.getElementById("getKommune")
-  var kommuneNr = document.getElementById("kommuneNr").value;
+function detaljeTabll(obj,id,idnavn,headernavn) {
+  var kategori = ["År","Kvinner","Menn"]
+  var ele = document.getElementById(id);
+  var div = document.createElement("div");
+  div.setAttribute("class","tabell")
+  div.setAttribute("id",idnavn)
+  ele.appendChild(div);
+  var kommune1 = document.getElementById("kommuneNr").value;
+  input = kommune1;
+  syss.getInfo()
+  var år = Object.keys(obj.getInfo(input)["Menn"])
+  var dataMenn = Object.values(obj.getInfo(input)["Menn"])
+  var dataKvinner = Object.values(obj.getInfo(input)["Kvinner"])
+  makeHeader(id,headernavn);
+  makeFlexbox(idnavn,år,kategori[0])
+  makeFlexbox(idnavn,dataKvinner,kategori[1])
+  makeFlexbox(idnavn,dataMenn,kategori[2])
 
-  input = kommuneNr
-  syss.getInfo();
-  getSisteSyssel(syss);
-  utdan.getInfo();
-  getHøyereUtdannning(utdan);
-  bef.getInfo()
-  infoDetaljer(input)
 
-  makeHeader("overskriftID",getName(syss,input))
-  makeall(utdan,titler,skoleNavn)
-  detaljeTabll(syss,"detalSyss","tabsyss","Sysselsette")
-  detaljeTabll(bef,"detalBef","tabBef","Befokning")
 }
-
 
 
 function getHøyereUtdannning(obj) {
@@ -154,9 +160,9 @@ function getUtdanEnhet(obj,skoleid){
   var element = document.getElementById("tableUtdanning")
   input = kommuneNr
   obj.getInfo()
-  var år = Object.keys(obj.informasjon[skoleid]["Menn"])
-  var grunnskoleNivåM = Object.values(obj.informasjon[skoleid]["Menn"])
-  var grunnskoleNivåK = Object.values(obj.informasjon[skoleid]["Kvinner"])
+  var år = Object.keys(obj.getInfo(input)[skoleid]["Menn"])
+  var grunnskoleNivåM = Object.values(obj.getInfo(input)[skoleid]["Menn"])
+  var grunnskoleNivåK = Object.values(obj.getInfo(input)[skoleid]["Kvinner"])
   var handler = {år,grunnskoleNivåK,grunnskoleNivåM,}
   return handler;
 
@@ -166,7 +172,6 @@ function getUtdanEnhet(obj,skoleid){
 
 function makeHeader(id,text) {
   var ele = document.getElementById(id);
-  console.log(ele);
   var div = document.createElement("Div");
   div.setAttribute("class","kommuneNavn")
   var h = document.createElement("h2");
@@ -204,25 +209,3 @@ function makeFlexbox(id1,dataListe,titel){
       }
       utdann.appendChild(row)
     }
-
-
-function detaljeTabll(obj,id,idnavn,headernavn) {
-  var kategori = ["År","Kvinner","Menn"]
-  var ele = document.getElementById(id);
-  var div = document.createElement("div");
-  div.setAttribute("class","tabell")
-  div.setAttribute("id",idnavn)
-  ele.appendChild(div);
-  var kommune1 = document.getElementById("kommuneNr").value;
-  input = kommune1;
-  syss.getInfo()
-  var år = Object.keys(obj.informasjon["Menn"])
-  var dataMenn = Object.values(obj.informasjon["Menn"])
-  var dataKvinner = Object.values(obj.informasjon["Kvinner"])
-  makeHeader(id,headernavn);
-  makeFlexbox(idnavn,år,kategori[0])
-  makeFlexbox(idnavn,dataKvinner,kategori[1])
-  makeFlexbox(idnavn,dataMenn,kategori[2])
-
-
-}

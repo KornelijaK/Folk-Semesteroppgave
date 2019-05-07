@@ -19,10 +19,13 @@ function displayData(liste,clas,text){
   ele.appendChild(div);
 }
 
+
+// -------- her er vi..nå skal vi rette opp noe getinfo her-----
+
 function totalBefolkninger(obj) {
     totalBefolknign = []
-    for(var i=0;i<obj.idsList.length;i++){
-      input = obj.idsList[i]
+    for(var i=0;i<obj.getIDs().length;i++){
+      input = obj.getIDs()[i]
       obj.getInfo()
       total = totalBefolkning(obj)
       totalBefolknign.push(total)

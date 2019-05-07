@@ -2,33 +2,46 @@
 let bef;
 let syss;
 let utdan;
-let input;
+let input = "0101"
 let runTracker;
 
 function lagerKonstruktør(){
   syss = new Konstruktør(urlSyss)
-  syss.load();
-  bef = new Konstruktør(urlBef)
-  bef.load();
+
+
   utdan = new Konstruktør(urlUtdann)
-  utdan.load();
+  bef = new Konstruktør(urlBef)
+
+  utdan.onload = function() {console.log(" utdan Data lastet inn");}
+  syss.onload = function() {console.log(" syss Data lastet inn");}
+  bef.onload = function() {console.log(" Bef Data lastet inn");}
+
+
+
+  syss.load();
+
+  utdan.load()
+  bef.load();
+
 }
 
 window.onload = lagerKonstruktør;
 
-var befolkning = new Konstruktør(urlBef);
-befolkning.onload = function() {
-  console.log("NY SKREVET ONLOAD");
-};
-befolkning.load();
 
 
 // --------------------------------------Felles funksjoner------------------------------
 
+<<<<<<< HEAD
 function currentKommune(obj,input){
   for(var i=0; i<obj.idsList.length;i++){
     if(input === obj.idsList[i]){
       var kommuneNavn = getNames()[i]
+=======
+function getValgtKommune(obj,input){
+  for(var i=0; i<obj.getIDs().length;i++){
+    if(input === obj.getIDs()[i]){
+      var kommuneNavn = obj.getNames()[i]
+>>>>>>> Live
 
     }
   }
@@ -37,8 +50,7 @@ function currentKommune(obj,input){
 
 function totalBefolkning(obj) {
   var befolkningMenn = Object.values(obj.getInfo(input)["Menn"]);
-  // var befolkningMenn = Object.values(obj.informasjon["Menn"]);
-  var befolkningKvinner = Object.values(obj.informasjon["Kvinner"]);
+  var befolkningKvinner = Object.values(obj.getInfo(input)["Kvinner"]);
   var sisteMålingM = befolkningMenn.pop();
   var sisteMålingK = befolkningKvinner.pop();
   var total = sisteMålingM + sisteMålingK;
@@ -58,16 +70,6 @@ function velgSynlighet(id,classN){
   ele5.className = classN;
 }
 
-function runMethods(){
-  var l = bef.getNames();
-  console.log("HER");
-  console.log(l);
-  bef.getIDs();
-  utdan.getNames();
-  utdan.getIDs();
-  syss.getNames();
-  syss.getIDs();
-}
 
 function checkInput(id) {
   var  ele = document.getElementById(id);
@@ -79,15 +81,11 @@ function checkInput(id) {
     if(isNaN(input)) throw " er ikke et tall";
     var x = undefined;
 
-    // if(!(input in bef.idsList)) throw " er ikke et gyldig komunenummer";
-
-    // if(!(input in bef.idsList))}
-    for (var i = 0; i < bef.idsList.length; i++) {
-      if(bef.idsList[i] === input){
+    for (var i = 0; i < bef.getIDs().length; i++) {
+      if(bef.getIDs()[i] === input){
         x = true
         break
 
-        console.log("fant");
       }
       // else if(!(input === bef.idsList[i]  )) {
       //   x = false;
@@ -129,15 +127,16 @@ function introduksjon(){
 
 // ----------------main---------------------
 function oversikt(){
-  runMethods();
-  console.log(syss);
-  console.log(utdan);
-  console.log(bef);
+  // runMethods();
   velgSynlighet("over","oversikt");
   if(runTracker === undefined) {
-    displayData(bef.kommuneList,"oversikt","Kommune")
-    displayData(bef.idsList,"oversikt","Nummer")
+
+    displayData(bef.getNames(),"oversikt","Kommune")
+
+    displayData(bef.getIDs(),"oversikt","Nummer")
+
     var befolkningTotalList = totalBefolkninger(bef)
+
     displayData(befolkningTotalList,"oversikt","Befolkning")
     runTracker = true;
     }
@@ -150,47 +149,66 @@ function oversikt(){
 
 
 
+function detaljer(){
+  velgSynlighet("detal","detaljer");
+}
 
 
 // ------------------------------------main --------------
 
+function displayDetaljer() {
+  if(checkInput("kommuneNr") === null){
+    return null
+  }
+  var getKommune = document.getElementById("getKommune")
+  var kommuneNr = document.getElementById("kommuneNr").value;
 
+  input = kommuneNr
+  syss.getInfo();
+  getSisteSyssel(syss);
+  utdan.getInfo();
+  getHøyereUtdannning(utdan);
+  bef.getInfo()
+  infoDetaljer(input)
 
-function detaljer(){
-  velgSynlighet("detal","detaljer");
-  runMethods()
-
-
-
-  // var handler = getUtdanEnhet(utdan);
-  // console.log("1");
-  // makeDisplay(handler,titler)
-  // makeFlexbox("utdan",handler["år"],"År");
-
-  // console.log(befolkning);
-  // console.log(syssel);
-  // console.log(utdanning);
-  // tableDetaljer(befolkning)
-  // tableDetaljer(syssel)
-  // getUtdanning(utdan)
-  /*tableDetaljerUtdanning(utdanning)*/
+  makeHeader("overskriftID",getValgtKommune(syss,input))
+  makeall(utdan,titler,skoleNavn)
+  detaljeTabll(syss,"detalSyss","tabsyss","Sysselsette")
+  detaljeTabll(bef,"detalBef","tabBef","Befokning")
 }
+
+
+
+
+
+
+
 
 
 //-------------------------------Sammenligning-------------------------------------
 
 
 
-
-// ----------------------main------------------------
-
 function sammenLigning() {
+<<<<<<< HEAD
   console.log(1);
   runMethods()
   console.log(2);
+=======
+>>>>>>> Live
   if(checkInput("i1") === null || checkInput("i2") === null ){
     return null
   }
   console.log(3);
   sysselSettingBegge(syss);
 }
+
+
+// runMethods()
+// var handler = getUtdanEnhet(utdan);
+// makeDisplay(handler,titler)
+// makeFlexbox("utdan",handler["år"],"År");
+// tableDetaljer(befolkning)
+// tableDetaljer(syssel)
+// getUtdanning(utdan)
+// tableDetaljerUtdanning(utdanning)
