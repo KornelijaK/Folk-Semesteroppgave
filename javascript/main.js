@@ -17,10 +17,10 @@ function lagerKonstruktør(){
 window.onload = lagerKonstruktør;
 // --------------------------------------Felles funksjoner------------------------------
 
-function getName(obj,input){
+function currentKommune(obj,input){
   for(var i=0; i<obj.idsList.length;i++){
     if(input === obj.idsList[i]){
-      var kommuneNavn = obj.kommuneList[i]
+      var kommuneNavn = getNames()[i]
 
     }
   }

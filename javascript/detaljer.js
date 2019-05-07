@@ -6,7 +6,7 @@ function infoDetaljer(input){
   var ele = document.getElementById('info');
   var list = document.createElement("ul")
 
-  var kommuneNavn = document.createTextNode(getName(syss,input))
+  var kommuneNavn = document.createTextNode(currentKommune(syss,input))
   var idNummer = document.createTextNode(input)
   var sysMåling = document.createTextNode(getSisteSyssel(syss))
   var utdanMåling = document.createTextNode(getHøyereUtdannning(utdan))
