@@ -2,7 +2,7 @@
 let bef;
 let syss;
 let utdan;
-let input;
+let input = "0101"
 let runTracker;
 
 function lagerKonstruktør(){
@@ -25,26 +25,24 @@ window.onload = lagerKonstruktør;
 
 // --------------------------------------Felles funksjoner------------------------------
 
-// function getName(obj,input){
-//   for(var i=0; i<obj.idsList.length;i++){
-//     if(input === obj.idsList[i]){
-//       var kommuneNavn = obj.kommuneList[i]
-//
-//     }
-//   }
-//   return kommuneNavn;
-// }
+function getValgtKommune(obj,input){
+  for(var i=0; i<obj.getIDs().length;i++){
+    if(input === obj.getIDs()[i]){
+      var kommuneNavn = obj.getNames()[i]
+
+    }
+  }
+  return kommuneNavn;
+}
 
 function totalBefolkning(obj) {
-  return ["one","two"];
-
-  // var befolkningMenn = Object.values(obj.getInfo(input)["Menn"]);
-  // // var befolkningMenn = Object.values(obj.informasjon["Menn"]);
-  // var befolkningKvinner = Object.values(obj.informasjon["Kvinner"]);
-  // var sisteMålingM = befolkningMenn.pop();
-  // var sisteMålingK = befolkningKvinner.pop();
-  // var total = sisteMålingM + sisteMålingK;
-  // return total;
+  var befolkningMenn = Object.values(obj.getInfo(input)["Menn"]);
+  console.log(befolkningMenn.length);
+  var befolkningKvinner = Object.values(obj.getInfo(input)["Kvinner"]);
+  var sisteMålingM = befolkningMenn.pop();
+  var sisteMålingK = befolkningKvinner.pop();
+  var total = sisteMålingM + sisteMålingK;
+  return total;
 }
 
 function velgSynlighet(id,classN){
@@ -89,7 +87,6 @@ function checkInput(id) {
         x = true
         break
 
-        console.log("fant");
       }
       // else if(!(input === bef.idsList[i]  )) {
       //   x = false;
@@ -139,16 +136,7 @@ function oversikt(){
 
     displayData(bef.getIDs(),"oversikt","Nummer")
 
-
-
-
     var befolkningTotalList = totalBefolkninger(bef)
-
-    console.log("HERE");
-
-    console.log(befolkningTotalList);
-
-
 
     displayData(befolkningTotalList,"oversikt","Befolkning")
     runTracker = true;
