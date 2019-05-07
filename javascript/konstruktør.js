@@ -26,13 +26,10 @@ function getNames(obj) {
   obj.kommuneList = komuneListe;
   return obj.kommuneList
 }
-<<<<<<< HEAD
-=======
 //
 // function getNames() {
 //   return  Object.keys(this.data["elementer"]);
 // }
->>>>>>> Live
 
 function getIDs(obj){
   var idList = []
@@ -46,19 +43,25 @@ function getIDs(obj){
 }
 
 
-function getInfo(obj,input){
-  for(var k = 0;k<obj.idsList.length;k++){
-    if(obj.idsList[k] === input){
-      var valgtKommune = obj.kommuneList[k];
-      obj.informasjon = obj.data["elementer"][valgtKommune];
-      obj.informasjon.navn = valgtKommune;
+function getInfo(input){
+  for(var k = 0;k<this.idsList.length;k++){
+    if(this.idsList[k] === input){
+      var valgtKommune = this.kommuneList[k];
+      this.informasjon = this.data["elementer"][valgtKommune];
+      this.informasjon.navn = valgtKommune;
+      break
+
+
 
 
     }
   }
-  return obj.informasjon
+  return this.informasjon
 }
 
+// obj.onload(){
+//
+// }
 
 // function dataKlar(obj){
 //
@@ -77,8 +80,9 @@ function getInfo(obj,input){
 
 //dersom onlaid ikke er null - kjør.
 
-// ----------------------------------------------
 
+
+// ----------------------------------------------
 
 
 
@@ -92,5 +96,5 @@ function Konstruktør(url) {
   this.load = function() {return getData(url,this)};
   this.getNames = function() {return getNames(this)}
   this.getIDs = function() {return getIDs(this)}
-  this.getInfo = function() {return getInfo(this,input)}
+  this.getInfo =  getInfo;
   }
