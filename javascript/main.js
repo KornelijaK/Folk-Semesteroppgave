@@ -175,6 +175,9 @@ function sammenLigning() {
   runMethods()
   checkInput("i1");
   checkInput("i2");
-  console.log("h");
+
+  if(checkInput("i1") === null || checkInput("i2") === null ){
+    return null
+  }
   sysselSettingBegge(syss);
 }

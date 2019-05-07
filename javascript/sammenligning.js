@@ -1,13 +1,23 @@
 
+console.log("Connect");
 
 function sysselSettingBegge(obj){
   var kategori = ["År","Kvinner","Vekst","Menn","Vekst"]
   var kommune1 = document.getElementById("i1").value;
   var kommune2 = document.getElementById("i2").value;
   input = kommune1;
-  obj.getInfo(input)
+  syss.getInfo()
   var navn = getName(obj,input);
+
+
+
   var år = Object.keys(obj.informasjon["Menn"])
+
+  var sysselMenn = Object.values(obj.getInfo(input)["Menn"])
+
+
+
+
   var sysselMenn = Object.values(obj.informasjon["Menn"])
   var sysselKvinner = Object.values(obj.informasjon["Kvinner"])
   var vekstMenn = prosentPoeng(sysselMenn);
