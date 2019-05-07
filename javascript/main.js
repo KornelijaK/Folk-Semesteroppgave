@@ -28,7 +28,8 @@ function getName(obj,input){
 }
 
 function totalBefolkning(obj) {
-  var befolkningMenn = Object.values(obj.informasjon["Menn"]);
+  var befolkningMenn = Object.values(obj.getInfo(input)["Menn"]);
+  // var befolkningMenn = Object.values(obj.informasjon["Menn"]);
   var befolkningKvinner = Object.values(obj.informasjon["Kvinner"]);
   var sisteMålingM = befolkningMenn.pop();
   var sisteMålingK = befolkningKvinner.pop();
@@ -71,24 +72,28 @@ function checkInput(id) {
     var x = undefined;
 
     // if(!(input in bef.idsList)) throw " er ikke et gyldig komunenummer";
+
     // if(!(input in bef.idsList))}
     for (var i = 0; i < bef.idsList.length; i++) {
       if(bef.idsList[i] === input){
         x = true
+        break
+
         console.log("fant");
       }
       // else if(!(input === bef.idsList[i]  )) {
       //   x = false;
       //
       // }
+
+      }
       if(x === undefined) {
         throw " er ikke et gyldig komunenummer"
-      }
+
     }}
 
 
   catch(err) {
-
     alert(input + err +"\n\n I Oversikt kan du finne kommune id");
     return null
   }
@@ -173,9 +178,6 @@ function detaljer(){
 
 function sammenLigning() {
   runMethods()
-  checkInput("i1");
-  checkInput("i2");
-
   if(checkInput("i1") === null || checkInput("i2") === null ){
     return null
   }

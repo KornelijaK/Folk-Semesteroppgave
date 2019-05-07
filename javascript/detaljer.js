@@ -67,10 +67,11 @@ function displayDetaljer() {
 
 
 function getHøyereUtdannning(obj) {
-  var kortUtdaningMenn = Object.values(obj.informasjon["03a"]["Menn"])
-  var kortUtdaningKvinner = Object.values(obj.informasjon["03a"]["Kvinner"])
-  var langUtdaningMenn = Object.values(obj.informasjon["04a"]["Menn"])
-  var langUtdaningKvinner = Object.values(obj.informasjon["04a"]["Kvinner"])
+
+  var kortUtdaningMenn = Object.values(obj.getInfo(input)["03a"]["Menn"])
+  var kortUtdaningKvinner = Object.values(obj.getInfo(input)["03a"]["Kvinner"])
+  var langUtdaningMenn = Object.values(obj.getInfo(input)["04a"]["Menn"])
+  var langUtdaningKvinner = Object.values(obj.getInfo(input)["04a"]["Kvinner"])
   var sisteMåling = kortUtdaningMenn.pop();
   var sisteMålingK = kortUtdaningKvinner.pop();
   var sisteMålingL = langUtdaningMenn.pop();
@@ -84,9 +85,9 @@ function getHøyereUtdannning(obj) {
 
 function getSisteSyssel(obj) {
   console.log(obj);
-  var sysselMenn = Object.values(obj.informasjon["Menn"])
-  var sysselKvinner = Object.values(obj.informasjon["Kvinner"])
-  var sysselBeggeKjønn = Object.values(obj.informasjon["Begge kjønn"])
+  var sysselMenn = Object.values(obj.getInfo(input)["Menn"])
+  var sysselKvinner = Object.values(obj.getInfo(input)["Kvinner"])
+  var sysselBeggeKjønn = Object.values(obj.getInfo(input)["Begge kjønn"])
   var sisteSysselMenn = sysselMenn.pop();
   var sisteSysselKvinner = sysselKvinner.pop();
   var sisteSysselBeggeKjønn = sysselBeggeKjønn.pop()+"%";

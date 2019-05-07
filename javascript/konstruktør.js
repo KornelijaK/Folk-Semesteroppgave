@@ -23,6 +23,10 @@ function getNames(obj) {
   obj.kommuneList = komuneListe;
   return obj.kommuneList
 }
+//
+// function getNames(obj) {
+//   return  Object.keys(obj.data["elementer"]);
+// }
 
 function getIDs(obj){
   var idList = []

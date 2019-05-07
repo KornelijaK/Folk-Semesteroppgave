@@ -7,7 +7,11 @@ function sysselSettingBegge(obj){
   input = kommune1;
   obj.getInfo(input)
   var navn = getName(obj,input);
-  var år = Object.keys(obj.informasjon["Menn"])
+
+
+
+  var år = Object.keys(obj.getInfo(input)["Menn"])
+  // var år = Object.keys(obj.informasjon["Menn"])
   var sysselMenn = Object.values(obj.informasjon["Menn"])
   var sysselKvinner = Object.values(obj.informasjon["Kvinner"])
   var vekstMenn = prosentPoeng(sysselMenn);
