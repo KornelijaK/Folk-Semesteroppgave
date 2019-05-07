@@ -31,17 +31,11 @@ window.onload = lagerKonstruktør;
 
 // --------------------------------------Felles funksjoner------------------------------
 
-<<<<<<< HEAD
-function currentKommune(obj,input){
-  for(var i=0; i<obj.idsList.length;i++){
-    if(input === obj.idsList[i]){
-      var kommuneNavn = getNames()[i]
-=======
+
 function getValgtKommune(obj,input){
   for(var i=0; i<obj.getIDs().length;i++){
     if(input === obj.getIDs()[i]){
       var kommuneNavn = obj.getNames()[i]
->>>>>>> Live
 
     }
   }
@@ -190,12 +184,6 @@ function displayDetaljer() {
 
 
 function sammenLigning() {
-<<<<<<< HEAD
-  console.log(1);
-  runMethods()
-  console.log(2);
-=======
->>>>>>> Live
   if(checkInput("i1") === null || checkInput("i2") === null ){
     return null
   }

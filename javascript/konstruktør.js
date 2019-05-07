@@ -73,10 +73,8 @@ function getInfo(input){
 
 
 
-<<<<<<< HEAD
 // obj.onload(){
 //
-=======
 // function getInfo(input){
 //   for(var k = 0;k<this.idsList.length;k++){
 //     if(this.idsList[k] === input){
@@ -91,7 +89,6 @@ function getInfo(input){
 //     }
 //   }
 //   return this.informasjon
->>>>>>> Live
 // }
 
 // function dataKlar(obj){
