@@ -1,7 +1,6 @@
 
 
-function displayData(liste,clas,te
-  xt){
+function displayData(liste,clas,text){
   var ele = document.getElementsByClassName(clas)[0]
   var div = document.createElement("div");
   var lis = document.createElement("ul");
@@ -26,16 +25,8 @@ function displayData(liste,clas,te
 function totalBefolkninger(obj) {
     totalBefolknign = []
     for(var i=0;i<obj.getIDs().length;i++){
-      console.log(obj.getIDs()[i]);
-
       input = obj.getIDs()[i]
-      console.log(input);
-
-
-
-      obj.getInfo()
-
-
+      // obj.getInfo()
       total = totalBefolkning(obj)
       totalBefolknign.push(total)
   }
