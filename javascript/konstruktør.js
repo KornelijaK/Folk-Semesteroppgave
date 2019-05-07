@@ -47,7 +47,7 @@ function getIDs(){
 
 }
 
-
+//Test kommentar her
 
 function nåværendeKommune(input) {
   for(var k = 0;k<this.getIDs().length;k++){
