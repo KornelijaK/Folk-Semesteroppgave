@@ -11,38 +11,40 @@ function lagerKonstruktør(){
   bef = new Konstruktør(urlBef)
   bef.load();
   utdan = new Konstruktør(urlUtdann)
-  utdan.load();
+  utdan.load()
 }
 
 window.onload = lagerKonstruktør;
 
-var befolkning = new Konstruktør(urlBef);
-befolkning.onload = function() {
-  console.log("NY SKREVET ONLOAD");
-};
-befolkning.load();
+// var befolkning = new Konstruktør(urlBef);
+// befolkning.onload = function() {
+//   console.log("NY SKREVET ONLOAD");
+// };
+// befolkning.load();
 
 
 // --------------------------------------Felles funksjoner------------------------------
 
-function getName(obj,input){
-  for(var i=0; i<obj.idsList.length;i++){
-    if(input === obj.idsList[i]){
-      var kommuneNavn = obj.kommuneList[i]
-
-    }
-  }
-  return kommuneNavn;
-}
+// function getName(obj,input){
+//   for(var i=0; i<obj.idsList.length;i++){
+//     if(input === obj.idsList[i]){
+//       var kommuneNavn = obj.kommuneList[i]
+//
+//     }
+//   }
+//   return kommuneNavn;
+// }
 
 function totalBefolkning(obj) {
-  var befolkningMenn = Object.values(obj.getInfo(input)["Menn"]);
-  // var befolkningMenn = Object.values(obj.informasjon["Menn"]);
-  var befolkningKvinner = Object.values(obj.informasjon["Kvinner"]);
-  var sisteMålingM = befolkningMenn.pop();
-  var sisteMålingK = befolkningKvinner.pop();
-  var total = sisteMålingM + sisteMålingK;
-  return total;
+  return ["one","two"];
+
+  // var befolkningMenn = Object.values(obj.getInfo(input)["Menn"]);
+  // // var befolkningMenn = Object.values(obj.informasjon["Menn"]);
+  // var befolkningKvinner = Object.values(obj.informasjon["Kvinner"]);
+  // var sisteMålingM = befolkningMenn.pop();
+  // var sisteMålingK = befolkningKvinner.pop();
+  // var total = sisteMålingM + sisteMålingK;
+  // return total;
 }
 
 function velgSynlighet(id,classN){
@@ -58,16 +60,16 @@ function velgSynlighet(id,classN){
   ele5.className = classN;
 }
 
-function runMethods(){
-  var l = bef.getNames();
-  console.log("HER");
-  console.log(l);
-  bef.getIDs();
-  utdan.getNames();
-  utdan.getIDs();
-  syss.getNames();
-  syss.getIDs();
-}
+// function runMethods(){
+//   var l = bef.getNames();
+//   console.log("HER");
+//   console.log(l);
+//   bef.getIDs();
+//   utdan.getNames();
+//   utdan.getIDs();
+//   syss.getNames();
+//   syss.getIDs();
+// }
 
 function checkInput(id) {
   var  ele = document.getElementById(id);
@@ -129,20 +131,38 @@ function introduksjon(){
 
 // ----------------main---------------------
 function oversikt(){
-  runMethods();
-  console.log(syss);
-  console.log(utdan);
-  console.log(bef);
+  // runMethods();
   velgSynlighet("over","oversikt");
   if(runTracker === undefined) {
-    displayData(bef.kommuneList,"oversikt","Kommune")
-    displayData(bef.idsList,"oversikt","Nummer")
+
+    displayData(bef.getNames(),"oversikt","Kommune")
+
+    displayData(bef.getIDs(),"oversikt","Nummer")
+
+
+
+
     var befolkningTotalList = totalBefolkninger(bef)
+
+    console.log("HERE");
+
+    console.log(befolkningTotalList);
+
+
+
     displayData(befolkningTotalList,"oversikt","Befolkning")
     runTracker = true;
     }
-  }
 
+
+// getNames()
+
+//
+// ----------------------------------------------------
+
+// function sjekkLastet() {
+//
+// }
 
 
 
@@ -155,10 +175,10 @@ function oversikt(){
 // ------------------------------------main --------------
 
 
-
-function detaljer(){
-  velgSynlighet("detal","detaljer");
-  runMethods()
+//
+// function detaljer(){
+//   velgSynlighet("detal","detaljer");
+//   runMethods()
 
 
 
@@ -184,10 +204,10 @@ function detaljer(){
 
 // ----------------------main------------------------
 
-function sammenLigning() {
-  runMethods()
-  if(checkInput("i1") === null || checkInput("i2") === null ){
-    return null
-  }
-  sysselSettingBegge(syss);
-}
+// function sammenLigning() {
+//   runMethods()
+//   if(checkInput("i1") === null || checkInput("i2") === null ){
+//     return null
+//   }
+//   sysselSettingBegge(syss);
+// }
