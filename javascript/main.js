@@ -15,6 +15,14 @@ function lagerKonstruktør(){
 }
 
 window.onload = lagerKonstruktør;
+
+var befolkning = new Konstruktør(urlBef);
+befolkning.onload = function() {
+  console.log("NY SKREVET ONLOAD");
+};
+befolkning.load();
+
+
 // --------------------------------------Felles funksjoner------------------------------
 
 function getName(obj,input){
