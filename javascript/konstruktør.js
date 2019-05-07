@@ -28,11 +28,16 @@ function getData(url,obj) {
 // }
 //
 function getNames() {
+  console.log("!!!!!!!!!!!!!!!!!");
+  console.log(this.data);
   return  Object.keys(this.data["elementer"]);
 }
 
 function getIDs(){
   var idList = []
+  console.log(this.getNames())
+  console.log();
+  console.log(bef.data);
   var list = Object.values(this.data["elementer"])
   for(var i = 0;i<list.length;i++){
     var id = list[i]["kommunenummer"];
@@ -44,31 +49,21 @@ function getIDs(){
 
 
 
-// function nåværendeKommune(input,obj) {
-//   var liste = obj.getIDs();
-//   for(var k = 0;k<liste.length;k++){
-//     console.log(liste);
-//     console.log(obj.getNames());
-//     if(liste[k] === input){
-//       return getNames()[k]
-//     }
-//   }
-// }
+function nåværendeKommune(input) {
+  for(var k = 0;k<this.getIDs().length;k++){
+    if(this.getIDs()[k] === input){
+      console.log(getNames()[k]);
+      return getNames()[k]
 
-function getInfo(input){
-  var valgt = getValgtKommune(this,input)
-  var valgtInfo = this.data["elementer"][valgt]
-  return valgtInfo
-  // for(var k = 0;k<liste.length;k++){
-  //   // console.log(liste);
-  //   // console.log(this.getNames());
-  //   if(liste[k] === input){
-  //     return getNames()[k]
-  //   }
-  // }
+
+
+    }
+  }
 }
 
-  // var kommune = nåværendeKommune(input,this)
+function getInfo(input){
+  var kommune = nåværendeKommune(input)
+  console.log(kommune);
 
   //
   // this.informasjon = this.data["elementer"][valgtKommune];
@@ -79,6 +74,7 @@ function getInfo(input){
   //     // this.informasjon.navn = valgtKommune;
   //
   // return this.informasjon
+}
 
 
 

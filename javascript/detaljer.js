@@ -6,7 +6,7 @@ function infoDetaljer(input){
   var ele = document.getElementById('info');
   var list = document.createElement("ul")
 
-  var kommuneNavn = document.createTextNode(getName(syss,input))
+  var kommuneNavn = document.createTextNode(getValgtKommune(syss,input))
   var idNummer = document.createTextNode(input)
   var sysMåling = document.createTextNode(getSisteSyssel(syss))
   var utdanMåling = document.createTextNode(getHøyereUtdannning(utdan))
@@ -204,25 +204,3 @@ function makeFlexbox(id1,dataListe,titel){
       }
       utdann.appendChild(row)
     }
-
-
-function detaljeTabll(obj,id,idnavn,headernavn) {
-  var kategori = ["År","Kvinner","Menn"]
-  var ele = document.getElementById(id);
-  var div = document.createElement("div");
-  div.setAttribute("class","tabell")
-  div.setAttribute("id",idnavn)
-  ele.appendChild(div);
-  var kommune1 = document.getElementById("kommuneNr").value;
-  input = kommune1;
-  syss.getInfo()
-  var år = Object.keys(obj.informasjon["Menn"])
-  var dataMenn = Object.values(obj.informasjon["Menn"])
-  var dataKvinner = Object.values(obj.informasjon["Kvinner"])
-  makeHeader(id,headernavn);
-  makeFlexbox(idnavn,år,kategori[0])
-  makeFlexbox(idnavn,dataKvinner,kategori[1])
-  makeFlexbox(idnavn,dataMenn,kategori[2])
-
-
-}
