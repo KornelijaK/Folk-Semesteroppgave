@@ -1,6 +1,7 @@
 
 
-function displayData(liste,clas,text){
+function displayData(liste,clas,te
+  xt){
   var ele = document.getElementsByClassName(clas)[0]
   var div = document.createElement("div");
   var lis = document.createElement("ul");
@@ -18,6 +19,9 @@ function displayData(liste,clas,text){
   div.appendChild(lis)
   ele.appendChild(div);
 }
+
+
+// -------- her er vi..nå skal vi rette opp noe getinfo her-----
 
 function totalBefolkninger(obj) {
     totalBefolknign = []
