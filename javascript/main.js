@@ -20,9 +20,9 @@ window.setTimeout(function(){
 
 
 function lagerKonstruktør(){
+  utdan = new Konstruktør(urlUtdann);
   bef = new Konstruktør(urlBef);
   syss = new Konstruktør(urlSyss);
-  utdan = new Konstruktør(urlUtdann);
 
   utdan.onload = function() {console.log(" utdan Data lastet inn");}  // En egendefinert onload, men denne kan overskrives dersom en bruker vil ha en annen onlaod funksjon.
   syss.onload = function() {console.log(" syss Data lastet inn");}
@@ -40,7 +40,7 @@ function sjekkOmKlar() {
   if(datasetReady.length === 3)
   datasetReady = "Yes";
   console.log("Alle datsett nedlastet");
-  
+
 }
 
 // --------------------------------------Felles hjelpefunksjoner------------------------------

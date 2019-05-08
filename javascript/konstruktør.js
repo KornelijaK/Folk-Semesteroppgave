@@ -3,7 +3,7 @@
 
 function getData(url,obj) {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET",url,true);
+  xhr.open("GET",url);
   xhr.onreadystatechange = function() {
     if(xhr.readyState === 4 && xhr.status === 200 ) {
       var jtext = JSON.parse(xhr.responseText);

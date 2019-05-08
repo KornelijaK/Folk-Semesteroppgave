@@ -42,9 +42,8 @@ function infoDetaljer(input){
   ele.appendChild(div)
 }
 
-
 function detaljeTabll(obj,id,idnavn,headernavn) {
-  var kategori = ["År","Kvinner","Menn"]
+  var kategori = ["År","Kvinner","Menn","Begge Kjønn"]
   var ele = document.getElementById(id);
   var div = document.createElement("div");
   div.setAttribute("class","tabell")
@@ -56,11 +55,20 @@ function detaljeTabll(obj,id,idnavn,headernavn) {
   var år = Object.keys(obj.getInfo(input)["Menn"])
   var dataMenn = Object.values(obj.getInfo(input)["Menn"])
   var dataKvinner = Object.values(obj.getInfo(input)["Kvinner"])
-
-  makeHeader(id,headernavn);
-  makeFlexbox(idnavn,år,kategori[0])
-  makeFlexbox(idnavn,dataKvinner,kategori[1])
-  makeFlexbox(idnavn,dataMenn,kategori[2])
+  console.log(obj.getInfo(input)["Begge kjønn"]);
+  if("Begge kjønn" in obj.getInfo(input)){
+    var beggeKjønn = Object.values(obj.getInfo(input)["Begge kjønn"])
+    makeHeader(id,headernavn);
+    makeFlexbox(idnavn,år,kategori[0])
+    makeFlexbox(idnavn,dataKvinner,kategori[1])
+    makeFlexbox(idnavn,dataMenn,kategori[2])
+    makeFlexbox(idnavn,beggeKjønn,kategori[3])
+  } else {
+    makeHeader(id,headernavn);
+    makeFlexbox(idnavn,år,kategori[0])
+    makeFlexbox(idnavn,dataKvinner,kategori[1])
+    makeFlexbox(idnavn,dataMenn,kategori[2])
+  }
 }
 
 
