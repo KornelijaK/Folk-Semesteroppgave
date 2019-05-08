@@ -2,8 +2,10 @@
 let bef;
 let syss;
 let utdan;
-let input = "0101"
+let input;
 let runTracker;
+let dataLaster = [];
+
 
 function lagerKonstruktør(){
   syss = new Konstruktør(urlSyss)
@@ -19,13 +21,46 @@ function lagerKonstruktør(){
 
 
   syss.load();
-
   utdan.load()
   bef.load();
 
 }
 
+// function test() {
+//   console.log("NOE SKJER");
+// }
+//
+// function test2() {
+//   console.log("NOE SKJER 222222");
+// }
+
 window.onload = lagerKonstruktør;
+window.setTimeout(function() {
+  console.log("kjører");
+  oversikt();}
+  ,2000
+)
+
+// window.onlaod = setTimer(function(){console.log("her er vi"),3000;})
+// window.setTimeout(function(){console.log("her er vi")},5000);
+
+//// her skal du gjøre oversikt, men at det er usynlig og knappen viser elller
+//sjuler
+
+// function kjør() {{
+//
+// }
+
+
+// document.addEventListener("load",test());
+// document.addEventListener("load",lagerKonstruktør())
+//
+
+// document.addEventListener("load",test2());
+//
+// document.addEventListener("load",function(){syss = new Konstruktør(urlSyss)})
+// document.addEventListener("load",function() {console.log(" syss!!!!! Data lastet inn");})
+
 
 
 
@@ -64,6 +99,17 @@ function velgSynlighet(id,classN){
   ele5.className = classN;
 }
 
+function lastSide() {
+  var lastText = document.getElementById('lastInn');
+  var wrapper = document.getElementById('wrapper')
+  lastText.className = "hidden";
+  wrapper.className = "wrapper";
+
+
+
+
+}
+
 
 function checkInput(id) {
   var  ele = document.getElementById(id);
@@ -98,6 +144,34 @@ function checkInput(id) {
     return null
   }
   }
+
+
+
+  function makeFlexbox(id1,dataListe,titel){
+    var utdann = document.getElementById(id1);
+    var rad = document.createElement("ul");
+    rad.setAttribute("class","rad");
+    var cell = document.createElement("li");
+    cell.setAttribute("class","kategori");
+    var t = document.createTextNode(titel)
+    cell.appendChild(t);
+    rad.appendChild(cell);
+      for (var j = 0; j < dataListe.length; j++) {
+        var t = document.createTextNode(dataListe[j])
+        var cell = document.createElement("li");
+        cell.appendChild(t);
+        cell.setAttribute("class","cell");
+        rad.appendChild(cell);
+        }
+        utdann.appendChild(rad)
+      }
+
+  // function motattData() {
+  //   console.log("data ferdig lastet");
+  //   dataLaster.push("1");
+  // }
+
+
 // -----------------------------------Avvik Sjekk av Datsett--------------
 
   function dataSjekker(liste,liste2) {
@@ -139,7 +213,7 @@ function runSjekk() {
 
 
 
-// --------------------------------------Introduksjon------------------------------
+// --------------------------------------Introduksjon---------------------------
 function introduksjon(){
   velgSynlighet("int","introduksjon");
 }
@@ -159,21 +233,14 @@ function introduksjon(){
 
 // ----------------main---------------------
 function oversikt(){
-  // runMethods();
-  velgSynlighet("over","oversikt");
-  if(runTracker === undefined) {
-
-    displayData(bef.getNames(),"oversikt","Kommune")
-    console.log("1");
-
-    displayData(bef.getIDs(),"oversikt","Nummer")
-    console.log("2");
-
+    displayData(bef.getNames(),"over","Kommune")
+    displayData(bef.getIDs(),"over","Nummer")
     var befolkningTotalList = totalBefolkninger(bef)
+    displayData(befolkningTotalList,"over","Befolkning")
+    console.log("ferdig");
+    lastSide()
 
-    displayData(befolkningTotalList,"oversikt","Befolkning")
-    runTracker = true;
-    }
+
   }
 
 
@@ -182,10 +249,10 @@ function oversikt(){
 //-------------------------------Detaljer-------------------------------------
 
 
-
-function detaljer(){
-  velgSynlighet("detal","detaljer");
-}
+//
+// function detaljer(){
+//   velgSynlighet("detal","detaljer");
+// }
 
 
 // ------------------------------------main --------------
@@ -216,11 +283,6 @@ function displayDetaljer() {
 
 
 
-
-
-
-
-
 //-------------------------------Sammenligning-------------------------------------
 
 
@@ -229,16 +291,5 @@ function sammenLigning() {
   if(checkInput("i1") === null || checkInput("i2") === null ){
     return null
   }
-  console.log(3);
   sysselSettingBegge(syss);
 }
-
-
-// runMethods()
-// var handler = getUtdanEnhet(utdan);
-// makeDisplay(handler,titler)
-// makeFlexbox("utdan",handler["år"],"År");
-// tableDetaljer(befolkning)
-// tableDetaljer(syssel)
-// getUtdanning(utdan)
-// tableDetaljerUtdanning(utdanning)

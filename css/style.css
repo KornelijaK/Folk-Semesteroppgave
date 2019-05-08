@@ -23,6 +23,15 @@ input{
   border-style: double;
 }
 
+.wrapper{
+}
+
+#lastInn{
+  text-align: center;
+  padding: 3vw;
+}
+
+
 
 p {
   text-align: center;
@@ -41,6 +50,10 @@ p {
 }
 
 .hidden {
+  display: none;
+}
+
+.sjulOversikt{
   display: none;
 }
 h1 {
@@ -87,15 +100,19 @@ nav {
 /* ------------- tabell------------- */
 
 
-.datah {
-  display: flex;
-  flex-direction: column;
-}
-
 .utdanning {
   display: flex;
   flex-direction: column;
 }
+
+
+
+.datah {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
 
 .sammenhh{
   display: flex;
@@ -112,7 +129,7 @@ nav {
 }
 
 
-ul.row {
+ul.rad {
   margin: 0;
   display: flex;
   list-style: none;
@@ -175,11 +192,29 @@ li.cellHøgestP {
   width: auto;
 }
 
+/* -----------------------------------------------Resposivt --------------- */
 
 @media screen and (max-width: 400px){
   #skole0,#skole1,#skole2,#skole3,#skole4,#skole5{
     width: 100%;
   }
+
+  .tabell{
+    flex-direction: row;
+  }
+
+  ul.rad {
+      flex-direction: column;
+      padding: 0;
+      flex-grow: 1;
+  }
+
+
+<<<<<<< HEAD
+    .sammenhh{
+      overflow-x: auto;
+=======
+>>>>>>> 30797dd1fbbcb49f332524e0dad2689caaaa721e
 
     .utdanning h2 {
     }
@@ -190,24 +225,9 @@ li.cellHøgestP {
     }
 
     .sammenhh{
-      overflow-x: auto;
-
-    }
-
-    .tabell{
-      flex-direction: row;
-
-
     }
 
 
-  ul.row {
-      flex-direction: column;
-      padding: 0;
-      flex-grow: 1;
-
-
-    }
 
 
     li.kategori {
