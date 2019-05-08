@@ -21,10 +21,10 @@
       <h3>Laster inn siden...</h3> -->
     </div>
     <nav>
-      <button onclick="introduksjon()">Introduksjon</button>
-      <button onclick="oversikt()" >Oversikt</button>
-      <button onclick="detaljer()" >Detaljer</button>
-      <button onclick="velgSynlighet('sammen','sammenligning')" >Sammenligning</button>
+      <button onclick="introduksjon()" class="nav">Introduksjon</button>
+      <button onclick="oversikt()" class="nav">Oversikt</button>
+      <button onclick="detaljer()" class="nav">Detaljer</button>
+      <button onclick="velgSynlighet('sammen','sammenligning')" class="nav">Sammenligning</button>
     </nav>
     <div id="int" class="introduksjon">
       <h3>Introduksjon</h3>
@@ -53,34 +53,41 @@
       <br>
       <button onclick="displayDetaljer()" id="getKommune"> Få informasjon </button>
 
-      <div id="overskriftID" class="overskrift">
+        <div id="overskriftID" class="overskrift">
+        </div>
+        <div id="info">
+
+        </div>
+
+        <h2 id="tabellover" class="hidden">Historisk utvikling av data i tabeller:</h2>
+
+        <div id="detalBef" class="sammenhh">
+
+        </div>
+
+        <div id="detalSyss" class="sammenhh">
+
+        </div>
+
+        <div id="utdan" class="utdanning">
+
+        </div>
       </div>
-      <div id="info">
-
-      </div>
-
-
-      <div id="detalBef" class="sammenhh">
-      </div>
-      <div id="detalSyss" class="sammenhh">
-
-      </div>
-      <div id="utdan" class="utdanning">
-      </div>
-
-          </div>
-
-
-      </div>
-
-    </div>
 
 
     <div id="sammen" class="hidden">
-      Kommune nummer:<input id="i1"  type="text" name="" value="">
-      kommune nummer:<input id="i2" type="text" name="" value="1122">
-      <button onclick="sammenLigning()" type="button" name="button">Sammenlign</button>
+      Kommune nummer 1:
+      <input id="i1"  type="text" name="" value=""><br>
+      Kommune nummer 2:
+      <input id="i2" type="text" name="" value="1122">
+      <button onclick="sammenLigning()" id="getKommune">Sammenlign</button>
+
       <div class="komunetitler">
+        <div id="tabellover2" class="hidden">
+          <h2>Historisk sammenligning av sysselsetting i tabell:</h2>
+          <p>Celler markert med grønn farge viser hvilke kommune som har hatt størst vekst i prosentpoeng for gitt årstall</p>
+
+        </div>
         <h2 id="k1"></h2>
         <h2 id="k2"></h2>
       </div>

@@ -24,14 +24,16 @@ function sysselSettingBegge(obj){
   var vekstMenn2 = prosentPoeng(sysselMenn2);
   var vekstKvinner2 = prosentPoeng(sysselKvinner2);
 
-  makeHeader("kom1",navn)
+  var over = document.getElementById("tabellover2").style.display = "block";
+
+  makeHeader("kom1",navn + " sysselsetting(%)")
   makeFlexbox("tab1",år,"År")
   makeFlexbox("tab1",sysselKvinner,"Kvinner")
   makeFlexboxProsent("tab1",vekstKvinner,vekstKvinner2,"Vekst")
   makeFlexbox("tab1",sysselMenn,"Menn")
   makeFlexboxProsent("tab1",vekstMenn,vekstMenn2,"Vekst")
 
-  makeHeader("kom2",navn2)
+  makeHeader("kom2",navn2 + " sysselsetting(%)")
   makeFlexbox("tab2",år,"År")
   makeFlexbox("tab2",sysselKvinner2,"Kvinner")
   makeFlexboxProsent("tab2",vekstKvinner2,vekstKvinner,"Vekst")

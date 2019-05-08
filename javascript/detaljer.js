@@ -58,6 +58,7 @@ function detaljeTabll(obj,id,idnavn,headernavn) {
   var år = Object.keys(obj.getInfo(input)["Menn"])
   var dataMenn = Object.values(obj.getInfo(input)["Menn"])
   var dataKvinner = Object.values(obj.getInfo(input)["Kvinner"])
+
   makeHeader(id,headernavn);
   makeFlexbox(idnavn,år,kategori[0])
   makeFlexbox(idnavn,dataKvinner,kategori[1])
@@ -179,8 +180,8 @@ function makeHeader(id,text) {
 
 
 var titler = ["År","Kvinner","Menn"]
-var skoleNavn = ["Grunnskolenivå","Vidergående skole-nivå","Fagskole nivå","Universitets- og høgskolenivå kort",
-"Universitets- og høgskolenivå lang","Uoppgitt eller ingen fullført utdanning"
+var skoleNavn = ["Grunnskolenivå (%)","Vidergående skole-nivå (%)","Fagskole nivå (%)","Universitets- og høgskolenivå kort (%)",
+"Universitets- og høgskolenivå lang (%)","Uoppgitt eller ingen fullført utdanning (%)"
 ]
 
 

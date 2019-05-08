@@ -1,4 +1,6 @@
-
+input{
+  margin: 2vw;
+}
 .loading h3{
   text-align: center;
   padding: 20vw;
@@ -51,13 +53,19 @@ nav {
   color: white;
 }
 
-button {
+.nav{
   margin-top: 2vw;
   margin-bottom: 2vw;
   padding: 2vw;
   width: 25%
 }
 
+#getKommune{
+  text-align: center;
+  width: auto;
+  margin: 2vw;
+  margin-bottom: 4vw;
+}
 
 .komunetitler {
   display: flex;
@@ -68,6 +76,9 @@ button {
 .detaljer{
 }
 
+#info{
+  padding-bottom: 2vw;
+}
 
 
 
@@ -79,7 +90,6 @@ button {
 .datah {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
 }
 
 .utdanning {
@@ -90,6 +100,7 @@ button {
 .sammenhh{
   display: flex;
   flex-direction: column;
+  overflow-x: scroll;
 
 }
 
@@ -125,7 +136,7 @@ li.kategori {
 
 li.cell {
   padding: 1vw;
-  background-color: #B2E2F7;
+  background-color: #cfd3d0;
   border: 0.1vw solid;
   text-align: center;
   width: 4vw;
@@ -134,36 +145,41 @@ li.cell {
 
 li.cellHøgestP {
   padding: 1vw;
-  background-color: #2281AA;
+  background-color: #327744;
   border: 0.1vw solid;
   text-align: center;
   flex-direction: row;
   width: 4vw;
 }
 
-.utdanning h2 {
+/* .utdanning h2 {
   padding: 1vw;
   font-size: 3vw;
+} */
+
+
+.kommuneNavn h2{
+  font-size: 23px;
 }
-
-
-
 .kommuneNavn{
   order: -1;
   color: #2281AA;
-  background-color: lightgrey;
   padding-left: 50px;
+  margin: inherit;
 
 }
 
+
 #skole0,#skole1,#skole2,#skole3,#skole4,#skole5{
-  overflow-y: scroll;
-  padding: 20px;
+  padding-top: 60px;
+  width: auto;
 }
 
 
 @media screen and (max-width: 400px){
-
+  #skole0,#skole1,#skole2,#skole3,#skole4,#skole5{
+    width: 100%;
+  }
 
     .utdanning h2 {
     }
@@ -174,6 +190,7 @@ li.cellHøgestP {
     }
 
     .sammenhh{
+      overflow-x: auto;
 
     }
 
@@ -202,7 +219,7 @@ li.cellHøgestP {
 
 
     li.cell {
-      background-color: pink;
+      background-color: #dae5ea;
       flex-grow: 1;
       width: auto;
 

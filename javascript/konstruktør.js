@@ -72,7 +72,6 @@ function getInfo(input){
 }
 
 
-
 // obj.onload(){
 //
 // }
