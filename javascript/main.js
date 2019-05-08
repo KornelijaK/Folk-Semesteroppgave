@@ -151,6 +151,8 @@ function detaljer(){
 // ------------------------------------main --------------
 
 function displayDetaljer() {
+  var overskrift = document.getElementById("tabellover").style.display = "block";
+
   if(checkInput("kommuneNr") === null){
     return null
   }
@@ -167,7 +169,7 @@ function displayDetaljer() {
 
   makeHeader("overskriftID",getValgtKommune(syss,input))
   makeall(utdan,titler,skoleNavn)
-  detaljeTabll(syss,"detalSyss","tabsyss","Sysselsette")
+  detaljeTabll(syss,"detalSyss","tabsyss","Sysselsatte (%)")
   detaljeTabll(bef,"detalBef","tabBef","Befokning")
 }
 
