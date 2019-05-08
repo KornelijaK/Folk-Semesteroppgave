@@ -16,7 +16,6 @@ function getData(url,obj) {
       return obj.data;
     }
   }
-
   xhr.send(null);
 }
 
