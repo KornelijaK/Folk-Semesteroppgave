@@ -175,10 +175,6 @@ li.cellHøgestP {
 
     .sammenhh{
 
-
-
-
-
     }
 
     .tabell{
@@ -218,49 +214,4 @@ li.cellHøgestP {
       flex-grow: 1;
       width: auto;
 
-
-
     }
-
-
-
-
-/*
-  .utdanning {
-    background-color: red;
-
-  }
-
-
-
-.sammenhh{
-  display: flex;
-}
-
-.tabell {
-
-  }
-
-
-ul.row {
-    display: flex;
-
-  }
-
-
-
-
-
-  li.kategori {
-    background: blue;
-    color: white;
-    width: 10vw;
-
-  }
-
-
-  li.cell {
-    padding: 4vw;
-    border-bottom: 0.1vw solid;
-    text-align: center;
-  } */

@@ -75,20 +75,6 @@ function getInfo(input){
 
 // obj.onload(){
 //
-// function getInfo(input){
-//   for(var k = 0;k<this.idsList.length;k++){
-//     if(this.idsList[k] === input){
-//       var valgtKommune = this.kommuneList[k];
-//       this.informasjon = this.data["elementer"][valgtKommune];
-//       this.informasjon.navn = valgtKommune;
-//       break
-//
-//
-//
-//
-//     }
-//   }
-//   return this.informasjon
 // }
 
 // function dataKlar(obj){

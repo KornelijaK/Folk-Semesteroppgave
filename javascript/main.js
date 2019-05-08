@@ -98,6 +98,44 @@ function checkInput(id) {
     return null
   }
   }
+// -----------------------------------Avvik Sjekk av Datsett--------------
+
+  function dataSjekker(liste,liste2) {
+    for (var i = 0; i < liste.length; i++) {
+       var n = liste2.includes(liste[i])
+      if( n === false ){
+        console.log("Funnet avvik "+liste[i]);
+      }
+    }
+  }
+
+
+function runSjekk() {
+  var b = bef.getNames()
+  var s = syss.getNames()
+  var u = utdan.getNames()
+
+  console.log("1 Er i Befokning men ikke i Syssel datasett");
+  console.log(dataSjekker(b,s));
+
+  console.log("2 Er i Syssel men ikke i Befolkning datasett");
+  console.log(dataSjekker(s,b));
+
+  console.log("3 Er i Befokning men ikke i utdanning datasett");
+  console.log(dataSjekker(b,u));
+
+  console.log("4 Er i  Syssel  men ikke i utdanning  datasett");
+  console.log(dataSjekker(s,u));
+
+  console.log("5 Er i utdanning  men ikke i Befokning og  datasett");
+  console.log(dataSjekker(u,b));
+
+  console.log("6 Er i utdanning men ikke i Syssel datasett");
+  console.log(dataSjekker(u,s));
+
+
+}
+
 
 
 
@@ -126,8 +164,10 @@ function oversikt(){
   if(runTracker === undefined) {
 
     displayData(bef.getNames(),"oversikt","Kommune")
+    console.log("1");
 
     displayData(bef.getIDs(),"oversikt","Nummer")
+    console.log("2");
 
     var befolkningTotalList = totalBefolkninger(bef)
 

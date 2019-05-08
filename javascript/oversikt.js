@@ -20,15 +20,14 @@ function displayData(liste,clas,text){
 }
 
 
-// -------- her er vi..nå skal vi rette opp noe getinfo her-----
 
 function totalBefolkninger(obj) {
     totalBefolknign = []
-    for(var i=0;i<obj.getIDs().length;i++){
+    var idslist = obj.getIDs()
+    // Lager denne i en variabel for å spare tid ,og ikke trenger lage ny liste hver gang.
+    for(var i =0;i<idslist.length;i++){
       input = obj.getIDs()[i]
-      obj.getInfo()
-      total = totalBefolkning(obj)
-      totalBefolknign.push(total)
+      totalBefolknign.push(totalBefolkning(obj))
   }
   return totalBefolknign;
 }
