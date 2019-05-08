@@ -7,6 +7,7 @@ var urlSyss = "http://wildboy.uib.no/~tpe056/folk/100145.json"
 var urlUtdann = "http://wildboy.uib.no/~tpe056/folk/85432.json"
 let input;
 let datasetReady = []
+let myVar;
 // let runTracker;
 // let dataLaster = [];
 
@@ -18,29 +19,42 @@ window.setTimeout(function(){
   oversikt();                      // Laster inn her ,fordi det er en tidkrevnde prosess å generere oversikt.
 },2000);
 
+// window.setInterval(function(){
+//     sjekkOmKlar()
+//   },1000);
+
 
 function lagerKonstruktør(){
+  myVar = setInterval(function(){
+      sjekkOmKlar()
+      },1000);
+  console.log(myVar);
   bef = new Konstruktør(urlBef);
   syss = new Konstruktør(urlSyss);
   utdan = new Konstruktør(urlUtdann);
-
   utdan.onload = function() {console.log(" utdan Data lastet inn");}  // En egendefinert onload, men denne kan overskrives dersom en bruker vil ha en annen onlaod funksjon.
   syss.onload = function() {console.log(" syss Data lastet inn");}
   bef.onload = function() {console.log(" Bef Data lastet inn");}
-
   utdan.load();
   syss.load();
   bef.load();
 }
 
-setInterval(alertFunc, 3000)
+
 
 
 function sjekkOmKlar() {
-  if(datasetReady.length === 3)
-  datasetReady = "Yes";
-  console.log("Alle datsett nedlastet");
-  
+  if(datasetReady.length === 3){
+    datasetReady = "Yes";
+    console.log("Alle datsett nedlastet");
+  }
+}
+
+function stopIntervall() {
+  if(datasetReady ==="Yes"){
+    console.log("stopper intervall");
+    clearInterval(myVar);
+  }
 }
 
 // --------------------------------------Felles hjelpefunksjoner------------------------------
@@ -165,12 +179,15 @@ function runSjekk() {
 // ----------------Oversikt main---------------------
 
 function oversikt(){
+    stopIntervall();
     displayData(bef.getNames(),"over","Kommune")
     displayData(bef.getIDs(),"over","Nummer")
     var befolkningTotalList = totalBefolkninger(bef)
     displayData(befolkningTotalList,"over","Befolkning")
     console.log("ferdig");
     lastSide()
+
+
   }
 
 // ------------------------------------ Detaljer main --------------
