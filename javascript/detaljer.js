@@ -182,25 +182,3 @@ var titler = ["År","Kvinner","Menn"]
 var skoleNavn = ["Grunnskolenivå","Vidergående skole-nivå","Fagskole nivå","Universitets- og høgskolenivå kort",
 "Universitets- og høgskolenivå lang","Uoppgitt eller ingen fullført utdanning"
 ]
-
-
-
-
-function makeFlexbox(id1,dataListe,titel){
-  var utdann = document.getElementById(id1);
-  var row = document.createElement("ul");
-  row.setAttribute("class","row");
-  var cell = document.createElement("li");
-  cell.setAttribute("class","kategori");
-  var t = document.createTextNode(titel)
-  cell.appendChild(t);
-  row.appendChild(cell);
-    for (var j = 0; j < dataListe.length; j++) {
-      var t = document.createTextNode(dataListe[j])
-      var cell = document.createElement("li");
-      cell.appendChild(t);
-      cell.setAttribute("class","cell");
-      row.appendChild(cell);
-      }
-      utdann.appendChild(row)
-    }

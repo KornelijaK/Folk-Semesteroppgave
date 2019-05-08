@@ -21,6 +21,15 @@
   border-style: double;
 }
 
+.wrapper{
+}
+
+#lastInn{
+  text-align: center;
+  padding: 3vw;
+}
+
+
 
 p {
   text-align: center;
@@ -39,6 +48,10 @@ p {
 }
 
 .hidden {
+  display: none;
+}
+
+.sjulOversikt{
   display: none;
 }
 h1 {
@@ -76,16 +89,19 @@ button {
 /* ------------- tabell------------- */
 
 
+.utdanning {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
 .datah {
   display: flex;
   flex-direction: column;
   overflow: scroll;
 }
 
-.utdanning {
-  display: flex;
-  flex-direction: column;
-}
 
 .sammenhh{
   display: flex;
@@ -101,7 +117,7 @@ button {
 }
 
 
-ul.row {
+ul.rad {
   margin: 0;
   display: flex;
   list-style: none;
@@ -161,8 +177,21 @@ li.cellHøgestP {
   padding: 20px;
 }
 
+/* -----------------------------------------------Resposivt --------------- */
 
 @media screen and (max-width: 400px){
+
+
+  .tabell{
+    flex-direction: row;
+  }
+
+  ul.rad {
+      flex-direction: column;
+      padding: 0;
+      flex-grow: 1;
+  }
+
 
 
     .utdanning h2 {
@@ -174,23 +203,9 @@ li.cellHøgestP {
     }
 
     .sammenhh{
-
-    }
-
-    .tabell{
-      flex-direction: row;
-
-
     }
 
 
-  ul.row {
-      flex-direction: column;
-      padding: 0;
-      flex-grow: 1;
-
-
-    }
 
 
     li.kategori {
