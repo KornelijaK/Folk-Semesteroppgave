@@ -41,13 +41,13 @@ function sysselSettingBegge(obj){
 
   function makeFlexboxProsent(id1,liste1,liste2,titel){
     var utdann = document.getElementById(id1);
-    var row = document.createElement("ul");
-    row.setAttribute("class","row");
+    var rad = document.createElement("ul");
+    rad.setAttribute("class","rad");
     var cell = document.createElement("li");
     cell.setAttribute("class","kategori");
     var t = document.createTextNode(titel)
     cell.appendChild(t);
-    row.appendChild(cell);
+    rad.appendChild(cell);
       for (var j = 0; j < liste1.length; j++) {
         var t = document.createTextNode(liste1[j])
         var cell = document.createElement("li");
@@ -67,9 +67,9 @@ function sysselSettingBegge(obj){
           cell.setAttribute("class","cell");
         }
 
-        row.appendChild(cell);
+        rad.appendChild(cell);
         }
-        utdann.appendChild(row)
+        utdann.appendChild(rad)
       }
 
 

@@ -26,7 +26,7 @@ input{
 .wrapper{
 }
 
-#lastInn{
+#lastInn {
   text-align: center;
   padding: 3vw;
 }
@@ -37,7 +37,9 @@ p {
   text-align: center;
 }
 
-.sammenligning {}
+.sammenligning {
+
+}
 
 .oversikt {
   display: flex;
@@ -56,6 +58,7 @@ p {
 .sjulOversikt{
   display: none;
 }
+
 h1 {
   text-align: center;
 }
@@ -209,11 +212,15 @@ li.cellHøgestP {
       flex-grow: 1;
   }
 
+<<<<<<< HEAD
 
     .sammenhh{
       overflow-x: auto;
 
     .utdanning h2 {
+=======
+  .utdanning h2 {
+>>>>>>> Live
     }
 
     .datah {
@@ -231,7 +238,6 @@ li.cellHøgestP {
       flex-grow: 1;
       width: auto;
 
-
     }
 
 
@@ -240,12 +246,13 @@ li.cellHøgestP {
       flex-grow: 1;
       width: auto;
 
-
-
     }
 
 li.cellHøgestP {
       flex-grow: 1;
       width: auto;
+<<<<<<< HEAD
 
+=======
+>>>>>>> Live
     }
