@@ -1,90 +1,46 @@
-// ------------------Make constructon-----------------
-let bef;
-let syss;
-let utdan;
+// // ------------------Globale Variabler----------------
+// let bef;
+// let syss;
+// let utdan;
+var urlBef = "http://wildboy.uib.no/~tpe056/folk/104857.json"
+var urlSyss = "http://wildboy.uib.no/~tpe056/folk/100145.json"
+var urlUtdann = "http://wildboy.uib.no/~tpe056/folk/85432.json"
 let input;
-let runTracker;
-let dataLaster = [];
+// let runTracker;
+// let dataLaster = [];
+
+// --------------------------------- ved load --------------
+
+window.onload = lagerKonstruktør;
+window.setTimeout(function(){
+  console.log("Genererer siden");     //Timer fordi datasettene må lastes inn først
+  oversikt();                      // Laster inn her ,fordi det er en tidkrevnde prosess å generere oversikt.
+},2000);
 
 
 function lagerKonstruktør(){
-  syss = new Konstruktør(urlSyss)
-
-
-  utdan = new Konstruktør(urlUtdann)
-  bef = new Konstruktør(urlBef)
-
-  utdan.onload = function() {console.log(" utdan Data lastet inn");}
+  syss = new Konstruktør(urlSyss);
+  utdan = new Konstruktør(urlUtdann);
+  bef = new Konstruktør(urlBef);
+  utdan.onload = function() {console.log(" utdan Data lastet inn");}  // En egendefinert onload, men denne kan overskrives dersom en bruker vil ha en annen onlaod funksjon.
   syss.onload = function() {console.log(" syss Data lastet inn");}
   bef.onload = function() {console.log(" Bef Data lastet inn");}
-
-
-
   syss.load();
-  utdan.load()
+  utdan.load();
   bef.load();
-
 }
 
-// function test() {
-//   console.log("NOE SKJER");
-// }
-//
-// function test2() {
-//   console.log("NOE SKJER 222222");
-// }
-
-window.onload = lagerKonstruktør;
-window.setTimeout(function() {
-  console.log("kjører");
-  oversikt();}
-  ,2000
-)
-
-// window.onlaod = setTimer(function(){console.log("her er vi"),3000;})
-// window.setTimeout(function(){console.log("her er vi")},5000);
-
-//// her skal du gjøre oversikt, men at det er usynlig og knappen viser elller
-//sjuler
-
-// function kjør() {{
-//
-// }
-
-
-// document.addEventListener("load",test());
-// document.addEventListener("load",lagerKonstruktør())
-//
-
-// document.addEventListener("load",test2());
-//
-// document.addEventListener("load",function(){syss = new Konstruktør(urlSyss)})
-// document.addEventListener("load",function() {console.log(" syss!!!!! Data lastet inn");})
-
-
-
-
-// --------------------------------------Felles funksjoner------------------------------
-
+// --------------------------------------Felles hjelpefunksjoner------------------------------
 
 function getValgtKommune(obj,input){
   for(var i=0; i<obj.getIDs().length;i++){
     if(input === obj.getIDs()[i]){
       var kommuneNavn = obj.getNames()[i]
-
     }
   }
   return kommuneNavn;
 }
 
-function totalBefolkning(obj) {
-  var befolkningMenn = Object.values(obj.getInfo(input)["Menn"]);
-  var befolkningKvinner = Object.values(obj.getInfo(input)["Kvinner"]);
-  var sisteMålingM = befolkningMenn.pop();
-  var sisteMålingK = befolkningKvinner.pop();
-  var total = sisteMålingM + sisteMålingK;
-  return total;
-}
 
 function velgSynlighet(id,classN){
   var ele = document.getElementById("int");
@@ -99,15 +55,12 @@ function velgSynlighet(id,classN){
   ele5.className = classN;
 }
 
+
 function lastSide() {
   var lastText = document.getElementById('lastInn');
   var wrapper = document.getElementById('wrapper')
   lastText.className = "hidden";
   wrapper.className = "wrapper";
-
-
-
-
 }
 
 
@@ -125,63 +78,51 @@ function checkInput(id) {
       if(bef.getIDs()[i] === input){
         x = true
         break
-
       }
-      // else if(!(input === bef.idsList[i]  )) {
-      //   x = false;
-      //
-      // }
-
-      }
+    }
       if(x === undefined) {
         throw " er ikke et gyldig komunenummer"
-
-    }}
-
+    }
+  }
 
   catch(err) {
     alert(input + err +"\n\n I Oversikt kan du finne kommune id");
     return null
   }
-  }
+}
 
 
 
-  function makeFlexbox(id1,dataListe,titel){
-    var utdann = document.getElementById(id1);
-    var rad = document.createElement("ul");
-    rad.setAttribute("class","rad");
+function makeFlexbox(id1,dataListe,titel){
+  var utdann = document.getElementById(id1);
+  var rad = document.createElement("ul");
+  rad.setAttribute("class","rad");
+  var cell = document.createElement("li");
+  cell.setAttribute("class","kategori");
+  var t = document.createTextNode(titel)
+  cell.appendChild(t);
+  rad.appendChild(cell);
+  for (var j = 0; j < dataListe.length; j++) {
+    var t = document.createTextNode(dataListe[j])
     var cell = document.createElement("li");
-    cell.setAttribute("class","kategori");
-    var t = document.createTextNode(titel)
     cell.appendChild(t);
+    cell.setAttribute("class","cell");
     rad.appendChild(cell);
-      for (var j = 0; j < dataListe.length; j++) {
-        var t = document.createTextNode(dataListe[j])
-        var cell = document.createElement("li");
-        cell.appendChild(t);
-        cell.setAttribute("class","cell");
-        rad.appendChild(cell);
-        }
-        utdann.appendChild(rad)
-      }
-
-  // function motattData() {
-  //   console.log("data ferdig lastet");
-  //   dataLaster.push("1");
-  // }
+  }
+  utdann.appendChild(rad)
+}
 
 
 // -----------------------------------Avvik Sjekk av Datsett--------------
 
-  function dataSjekker(liste,liste2) {
-    for (var i = 0; i < liste.length; i++) {
-       var n = liste2.includes(liste[i])
-      if( n === false ){
-        console.log("Funnet avvik "+liste[i]);
-      }
+function dataSjekker(liste,liste2) {
+  for (var i = 0; i < liste.length; i++) {
+     var n = liste2.includes(liste[i])
+    if( n === false ){
+      console.log("Funnet avvik "+liste[i]);
     }
   }
+}
 
 
 function runSjekk() {
@@ -206,32 +147,10 @@ function runSjekk() {
 
   console.log("6 Er i utdanning men ikke i Syssel datasett");
   console.log(dataSjekker(u,s));
-
-
 }
 
+// ----------------Oversikt main---------------------
 
-
-
-// --------------------------------------Introduksjon---------------------------
-function introduksjon(){
-  velgSynlighet("int","introduksjon");
-}
-
-
-
-
-
-
-
-// --------------------------------------Oversikt------------------------------
-
-
-
-
-
-
-// ----------------main---------------------
 function oversikt(){
     displayData(bef.getNames(),"over","Kommune")
     displayData(bef.getIDs(),"over","Nummer")
@@ -239,33 +158,17 @@ function oversikt(){
     displayData(befolkningTotalList,"over","Befolkning")
     console.log("ferdig");
     lastSide()
-
-
   }
 
-
-
-
-//-------------------------------Detaljer-------------------------------------
-
-
-//
-// function detaljer(){
-//   velgSynlighet("detal","detaljer");
-// }
-
-
-// ------------------------------------main --------------
+// ------------------------------------ Detaljer main --------------
 
 function displayDetaljer() {
   var overskrift = document.getElementById("tabellover").style.display = "block";
-
   if(checkInput("kommuneNr") === null){
     return null
   }
   var getKommune = document.getElementById("getKommune")
   var kommuneNr = document.getElementById("kommuneNr").value;
-
   input = kommuneNr
   syss.getInfo();
   getSisteSyssel(syss);
@@ -273,19 +176,13 @@ function displayDetaljer() {
   getHøyereUtdannning(utdan);
   bef.getInfo()
   infoDetaljer(input)
-
   makeHeader("overskriftID",getValgtKommune(syss,input))
   makeall(utdan,titler,skoleNavn)
   detaljeTabll(syss,"detalSyss","tabsyss","Sysselsatte (%)")
   detaljeTabll(bef,"detalBef","tabBef","Befokning")
 }
 
-
-
-
-//-------------------------------Sammenligning-------------------------------------
-
-
+//-------------------------------Sammenligning main-------------------------------------
 
 function sammenLigning() {
   if(checkInput("i1") === null || checkInput("i2") === null ){

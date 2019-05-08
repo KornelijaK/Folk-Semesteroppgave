@@ -48,29 +48,25 @@ function sysselSettingBegge(obj){
     var t = document.createTextNode(titel)
     cell.appendChild(t);
     rad.appendChild(cell);
-      for (var j = 0; j < liste1.length; j++) {
-        var t = document.createTextNode(liste1[j])
-        var cell = document.createElement("li");
-        cell.appendChild(t);
-      if(liste1[j]<0 && liste2[j]<0 ){
-          if(liste1[j]>liste2[j]){
-            cell.setAttribute("class","cellHøgestP")
-          }
-          else {
-            cell.setAttribute("class","cell");
-          }
-        }
-        else if(liste1[j]>liste2[j]){
-          cell.setAttribute("class","cellHøgestP")
-        }
-        else {
-          cell.setAttribute("class","cell");
-        }
-
-        rad.appendChild(cell);
-        }
-        utdann.appendChild(rad)
+    for (var j = 0; j < liste1.length; j++) {
+      var t = document.createTextNode(liste1[j])
+      var cell = document.createElement("li");
+      cell.appendChild(t);
+    if(liste1[j]<0 && liste2[j]<0 ){
+      if(liste1[j]>liste2[j]){
+        cell.setAttribute("class","cellHøgestP")
+      }else {
+        cell.setAttribute("class","cell");
       }
+    }else if(liste1[j]>liste2[j]){
+      cell.setAttribute("class","cellHøgestP")
+    }else {
+      cell.setAttribute("class","cell");
+    }
+    rad.appendChild(cell);
+    }
+    utdann.appendChild(rad)
+  }
 
 
 function prosentPoeng(liste){
@@ -81,8 +77,7 @@ function prosentPoeng(liste){
     var nyPoeng = liste[i];
     if(sistPoeng === 0){
       prosentPoeng.push(økning);
-    }
-    else {
+    }else {
       økning = nyPoeng-sistPoeng;
       økning = Math.round(økning*10)/10;
       prosentPoeng.push(økning)

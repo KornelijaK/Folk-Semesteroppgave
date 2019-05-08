@@ -1,12 +1,10 @@
 
-
 function displayData(liste,id,text){
   var ele = document.getElementById(id)
   var div = document.createElement("div");
   var lis = document.createElement("ul");
   var header = document.createElement("h2");
   var headerText = document.createTextNode(text);
-  // div.setAttribute("class","sjulOversikt");
   header.appendChild(headerText);
   div.appendChild(header);
   for(var i = 0;i<liste.length;i++){
@@ -15,19 +13,14 @@ function displayData(liste,id,text){
     lisItem.appendChild(text);
     lis.appendChild(lisItem)
   }
-
   div.appendChild(lis)
   ele.appendChild(div);
 }
 
 
-
-
 function totalBefolkninger(obj) {
     totalBefolknign = []
-    var ids = obj.getIDs();
-    // Lagrer listen til variabler for å spare tid, slik at den ikke må
-    //lage lister omigjen.
+    var ids = obj.getIDs(); // Lagrer listen til variabler for å spare tid, slik at den ikke må lage lister omigjen.
     for(var i=0;i<ids.length;i++){
       var komuneINfo = obj.getInfo(ids[i])
       total = totalBefolkning2(komuneINfo)
@@ -35,6 +28,7 @@ function totalBefolkninger(obj) {
   }
   return totalBefolknign;
 }
+
 
 function totalBefolkning2(obj) {
   var befolkningMenn = Object.values(obj["Menn"]);

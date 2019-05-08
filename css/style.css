@@ -1,66 +1,16 @@
-input{
-  margin: 2vw;
-}
-.loading h3{
-  text-align: center;
-  padding: 20vw;
-}
 
-.introduksjon h3 {
-  text-align: center;
-  margin: 2em;
-}
-
-.beskrivelse {
-  width: 60%;
-  margin: 50px auto;
-  padding: 1vw;
-
-}
-
-.oversikt li {
-  padding: 3vw;
-  border-style: double;
-}
-
-.wrapper{
-}
-
-#lastInn {
-  text-align: center;
-  padding: 3vw;
-}
-
-
+/* ---------------------------------- */
 
 p {
   text-align: center;
 }
 
-.sammenligning {
-
-}
-
-.oversikt {
-  display: flex;
-  justify-content: center;
-
-}
-
-.oversikt li {
-  list-style: none;
-}
-
-.hidden {
-  display: none;
-}
-
-.sjulOversikt{
-  display: none;
-}
-
 h1 {
   text-align: center;
+}
+
+input{
+  margin: 2vw;
 }
 
 nav {
@@ -76,6 +26,51 @@ nav {
   width: 25%
 }
 
+/* må fikse like variable navn */
+
+.hidden {
+  display: none;
+}
+
+#lastInn {
+  text-align: center;
+  padding: 3vw;
+}
+
+/* ---------------------------------- */
+
+.introduksjon h3 {
+  text-align: center;
+  margin: 2em;
+}
+
+.beskrivelse {
+  width: 60%;
+  margin: 50px auto;
+  padding: 1vw;
+}
+
+/* ---------------------------------- */
+
+.oversikt li {
+  padding: 3vw;
+  border-style: double;
+}
+
+.oversikt {
+  display: flex;
+  justify-content: center;
+}
+
+.oversikt li {
+  list-style: none;
+}
+
+/* ---------------------------------- */
+
+.detaljer{
+}
+
 #getKommune{
   text-align: center;
   width: auto;
@@ -89,48 +84,39 @@ nav {
 }
 
 
-.detaljer{
-}
-
 #info{
   padding-bottom: 2vw;
 }
 
+/* ---------------------------------- */
 
 
-
+.sammenligning {
+}
 
 /* ------------- tabell------------- */
 
+.datah {
+  display: flex;
+  flex-direction: column;
+}
 
 .utdanning {
   display: flex;
   flex-direction: column;
 }
 
-
-
-.datah {
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-}
-
-
-.sammenhh{
+.sammenhh {
   display: flex;
   flex-direction: column;
   overflow-x: scroll;
-
 }
 
 .tabell{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-
 }
-
 
 ul.rad {
   margin: 0;
@@ -138,10 +124,7 @@ ul.rad {
   list-style: none;
   flex-direction: row;
   border: 0.1vw solid white;
-
 }
-
-
 
 li.kategori {
   padding: 1vw;
@@ -149,10 +132,7 @@ li.kategori {
   color: white;
   text-align: center;
   width: 4vw;
-
-
 }
-
 
 li.cell {
   padding: 1vw;
@@ -160,7 +140,6 @@ li.cell {
   border: 0.1vw solid;
   text-align: center;
   width: 4vw;
-
 }
 
 li.cellHøgestP {
@@ -172,11 +151,6 @@ li.cellHøgestP {
   width: 4vw;
 }
 
-/* .utdanning h2 {
-  padding: 1vw;
-  font-size: 3vw;
-} */
-
 
 .kommuneNavn h2{
   font-size: 23px;
@@ -186,20 +160,25 @@ li.cellHøgestP {
   color: #2281AA;
   padding-left: 50px;
   margin: inherit;
-
 }
-
 
 #skole0,#skole1,#skole2,#skole3,#skole4,#skole5{
   padding-top: 60px;
   width: auto;
 }
 
-/* -----------------------------------------------Resposivt --------------- */
 
 @media screen and (max-width: 400px){
-  #skole0,#skole1,#skole2,#skole3,#skole4,#skole5{
-    width: 100%;
+
+  .utdanning h2 {
+  }
+
+  .datah {
+    flex-direction: column;
+  }
+
+  .sammenhh{
+    overflow-x: auto;
   }
 
   .tabell{
@@ -207,52 +186,24 @@ li.cellHøgestP {
   }
 
   ul.rad {
-      flex-direction: column;
-      padding: 0;
-      flex-grow: 1;
+    flex-direction: column;
+    padding: 0;
+    flex-grow: 1;
   }
 
-<<<<<<< HEAD
+  li.kategori {
+    flex-grow: 1;
+    width: auto;
+  }
 
-    .sammenhh{
-      overflow-x: auto;
+  li.cell {
+    background-color: #dae5ea;
+    flex-grow: 1;
+    width: auto;
+  }
 
-    .utdanning h2 {
-=======
-  .utdanning h2 {
->>>>>>> Live
-    }
-
-    .datah {
-      flex-direction: column;
-
-    }
-
-    .sammenhh{
-    }
-
-
-
-
-    li.kategori {
-      flex-grow: 1;
-      width: auto;
-
-    }
-
-
-    li.cell {
-      background-color: #dae5ea;
-      flex-grow: 1;
-      width: auto;
-
-    }
-
-li.cellHøgestP {
-      flex-grow: 1;
-      width: auto;
-<<<<<<< HEAD
-
-=======
->>>>>>> Live
-    }
+  li.cellHøgestP {
+    flex-grow: 1;
+    width: auto;
+  }
+}

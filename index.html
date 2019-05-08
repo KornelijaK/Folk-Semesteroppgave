@@ -7,106 +7,96 @@
     <script type="text/javascript" src="javascript/konstruktør.js"></script>
     <script type="text/javascript" src="javascript/oversikt.js"></script>
     <script type="text/javascript" src="javascript/detaljer.js"></script>
-    <script type="text/javascript" src="javascript/sammenligning.js">
-    </script>
+    <script type="text/javascript" src="javascript/sammenligning.js"></script>
     <script type="text/javascript" src="javascript/main.js"></script>
-
     <title>Kommuneoversikt i Norge</title>
   </head>
   <body>
     <h2 id="lastInn">Laster Inn Side...</h2>
     <div id="wrapper" class="hidden">
-    <header>
-      <h1>Komuneoversikt i Norge</h1>
-    </header>
-    <!-- <div id="loadingID" class="loading">
-      <h3>Laster inn siden...</h3> -->
 
-    <nav>
-      <button onclick="introduksjon()"  >Introduksjon</button>
-      <button onclick="velgSynlighet('over','oversikt');" >Oversikt</button>
-      <button onclick="velgSynlighet('detal','detaljer')" >Detaljer</button>
-      <button onclick="velgSynlighet('sammen','sammenligning')" >Sammenligning</button>
-    </nav>
-    <div id="int" class="introduksjon">
-      <h3>Introduksjon</h3>
-      <section class="beskrivelse">
-        <p>Denne siden gir deg en beskrivelser av Norges kommuner.</p>
-        <p>Du kan få en oversikt over alle kommunene med idnummer og total befolkning</p>
-        <p>På detaljer kan du skrive inn idnummer til den kommunen du ønsker og få ut en oversikt
-        over befolkning, sysselsetting og utdanning i denne kommunen. vist årlig og i kjønn.</p>
-        <p>Du kan også sameligne to kommunere for å se hvem som har hatt høyest veskt i sysselsetning for menn og kvinner</p>
-      </section>
+      <header>
+        <h1>Komuneoversikt i Norge</h1>
+      </header>
 
-      <h3>Lenker til SSB offisielle sider</h3>
-      <p>Befolkning Datasett nummer 104857: <a href="http://data.ssb.no/api/v0/dataset/104857?lang=no">http://data.ssb.no/api/v0/dataset/104857?lang=no</a><br>
-        Sysselsatte Datasett nummer 100145: <a href ="http://data.ssb.no/api/v0/dataset/100145?lang=no">http://data.ssb.no/api/v0/dataset/100145?lang=no</a><br>
-        Utdanning Datasett nummer 85432: <a href ="http://data.ssb.no/api/v0/dataset/85432?lang=no">http://data.ssb.no/api/v0/dataset/85432?lang=no</a></p>
-      <p>Data kan inneholde feil.</p>
-    </div>
+      <nav>
+        <button class="nav" onclick="velgSynlighet('int','introduksjon')"  >Introduksjon</button>
+        <button class="nav" onclick="velgSynlighet('over','oversikt');" >Oversikt</button>
+        <button class="nav" onclick="velgSynlighet('detal','detaljer')" >Detaljer</button>
+        <button class="nav" onclick="velgSynlighet('sammen','sammenligning')" >Sammenligning</button>
+      </nav>
 
-    <div id="over" class="hidden">
-
-
-    </div>
-
-    <div id="detal" class="hidden">
-      <input type="text" value="" id="kommuneNr">
-      <br>
-      <button onclick="displayDetaljer()" id="getKommune"> Få informasjon </button>
-
-        <div id="overskriftID" class="overskrift">
-        </div>
-        <div id="info">
-
-        </div>
-
-        <h2 id="tabellover" class="hidden">Historisk utvikling av data i tabeller:</h2>
-
-        <div id="detalBef" class="sammenhh">
-
-        </div>
-
-        <div id="detalSyss" class="sammenhh">
-
-        </div>
-
-        <div id="utdan" class="utdanning">
-
-        </div>
+      <div id="int" class="introduksjon">
+        <h3>Introduksjon</h3>
+        <section class="beskrivelse">
+          <p>Denne siden gir deg en beskrivelser av Norges kommuner.</p>
+          <p>Du kan få en oversikt over alle kommunene med idnummer og total befolkning</p>
+          <p>På detaljer kan du skrive inn idnummer til den kommunen du ønsker og få ut en oversikt
+          over befolkning, sysselsetting og utdanning i denne kommunen. vist årlig og i kjønn.</p>
+          <p>Du kan også sameligne to kommunere for å se hvem som har hatt høyest veskt i sysselsetning for menn og kvinner</p>
+        </section>
+        <h3>Lenker til SSB offisielle sider</h3>
+        <p>Befolkning Datasett nummer 104857: <a href="http://data.ssb.no/api/v0/dataset/104857?lang=no">http://data.ssb.no/api/v0/dataset/104857?lang=no</a><br>
+          Sysselsatte Datasett nummer 100145: <a href ="http://data.ssb.no/api/v0/dataset/100145?lang=no">http://data.ssb.no/api/v0/dataset/100145?lang=no</a><br>
+          Utdanning Datasett nummer 85432: <a href ="http://data.ssb.no/api/v0/dataset/85432?lang=no">http://data.ssb.no/api/v0/dataset/85432?lang=no</a></p>
+        <p>Data kan inneholde feil.</p>
       </div>
 
-
-    <div id="sammen" class="hidden">
-      Kommune nummer 1:
-      <input id="i1"  type="text" name="" value=""><br>
-      Kommune nummer 2:
-      <input id="i2" type="text" name="" value="1122">
-      <button onclick="sammenLigning()" id="getKommune">Sammenlign</button>
-
-      <div class="komunetitler">
-        <div id="tabellover2" class="hidden">
-          <h2>Historisk sammenligning av sysselsetting i tabell:</h2>
-          <p>Celler markert med grønn farge viser hvilke kommune som har hatt størst vekst i prosentpoeng for gitt årstall</p>
-
-        </div>
-        <h2 id="k1"></h2>
-        <h2 id="k2"></h2>
+      <div id="over" class="hidden">
       </div>
-      <!-- <div id="data" class="datah"> -->
-      <div class="datah">
-        <div id="kom1" class="sammenhh">
-          <div id="tab1" class="tabell">
+
+      <div id="detal" class="hidden">
+        <input type="text" value="" id="kommuneNr">
+        <br>
+        <button onclick="displayDetaljer()" id="getKommune"> Få informasjon </button>
+
+          <div id="overskriftID" class="overskrift">
           </div>
-        </div>
-        <div id="kom2" class="sammenhh">
-          <div id="tab2" class="tabell">
+          <div id="info">
+
+          </div>
+
+          <h2 id="tabellover" class="hidden">Historisk utvikling av data i tabeller:</h2>
+
+          <div id="detalBef" class="sammenhh">
+
+          </div>
+
+          <div id="detalSyss" class="sammenhh">
+
+          </div>
+
+          <div id="utdan" class="utdanning">
+
           </div>
         </div>
 
+      <div id="sammen" class="hidden">
+        Kommune nummer 1:
+        <input id="i1"  type="text" name="" value=""><br>
+        Kommune nummer 2:
+        <input id="i2" type="text" name="" value="">
+        <button onclick="sammenLigning()" id="getKommune">Sammenlign</button>
+        <div class="komunetitler">
+          <div id="tabellover2" class="hidden">
+            <h2>Historisk sammenligning av sysselsetting i tabell:</h2>
+            <p>Celler markert med grønn farge viser hvilke kommune som har hatt størst vekst i prosentpoeng for gitt årstall</p>
+          </div>
+          <h2 id="k1"></h2>
+          <h2 id="k2"></h2>
+        </div>
+        <div class="datah">
+          <div id="kom1" class="sammenhh">
+            <div id="tab1" class="tabell">
+            </div>
+          </div>
+          <div id="kom2" class="sammenhh">
+            <div id="tab2" class="tabell">
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
+
     </div>
     <footer>
       <p>Dette er en oppgavebesvarelse i INFO134</p>
