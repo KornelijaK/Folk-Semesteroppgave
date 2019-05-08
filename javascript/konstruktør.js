@@ -14,7 +14,8 @@ function getData(url,obj) {
       if(!(obj.onload === null)){
         obj.onload()
       }
-      return obj.data
+      // motattData();
+      return obj.data;
 
     }
   }
