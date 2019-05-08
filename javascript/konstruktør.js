@@ -3,7 +3,7 @@
 
 function getData(url,obj) {
   var xhr = new XMLHttpRequest();
-  xhr.open("GET",url);
+  xhr.open("GET",url,true);
   xhr.onreadystatechange = function() {
     if(xhr.readyState === 4 && xhr.status === 200 ) {
       var jtext = JSON.parse(xhr.responseText);
@@ -11,9 +11,12 @@ function getData(url,obj) {
       if(!(obj.onload === null)){
         obj.onload()
       }
+      datasetReady.push("1");
+      console.log(datasetReady);
       return obj.data;
     }
   }
+
   xhr.send(null);
 }
 
