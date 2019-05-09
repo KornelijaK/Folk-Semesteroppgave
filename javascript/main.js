@@ -1,15 +1,10 @@
 // // ------------------Globale Variabler----------------
-// let bef;
-// let syss;
-// let utdan;
 var urlBef = "http://wildboy.uib.no/~tpe056/folk/104857.json"
 var urlSyss = "http://wildboy.uib.no/~tpe056/folk/100145.json"
 var urlUtdann = "http://wildboy.uib.no/~tpe056/folk/85432.json"
 let input;
 let datasetReady = []
 let myVar;
-// let runTracker;
-// let dataLaster = [];
 
 // --------------------------------- ved load --------------
 
@@ -19,16 +14,11 @@ window.setTimeout(function(){
   oversikt();                      // Laster inn her ,fordi det er en tidkrevnde prosess å generere oversikt.
 },2000);
 
-// window.setInterval(function(){
-//     sjekkOmKlar()
-//   },1000);
-
 
 function lagerKonstruktør(){
-  myVar = setInterval(function(){
+  myVar = setInterval(function(){    //Her sjekker den i intervaller om alle datsett er hentet inn.
       sjekkOmKlar()
       },1000);
-  console.log(myVar);
   bef = new Konstruktør(urlBef);
   syss = new Konstruktør(urlSyss);
   utdan = new Konstruktør(urlUtdann);
@@ -39,8 +29,6 @@ function lagerKonstruktør(){
   syss.load();
   bef.load();
 }
-
-
 
 
 function sjekkOmKlar() {
@@ -58,6 +46,15 @@ function stopIntervall() {
 }
 
 // --------------------------------------Felles hjelpefunksjoner------------------------------
+
+function lagKonteiner(idP,idC,klasse){
+  var ele = document.getElementById(idP);
+  var div = document.createElement("div")
+  div.setAttribute("id",idC)
+  div.setAttribute("class",klasse)
+  ele.appendChild(div)
+}
+
 
 function getValgtKommune(obj,input){
   for(var i=0; i<obj.getIDs().length;i++){
@@ -140,6 +137,11 @@ function makeFlexbox(id1,dataListe,titel){
 }
 
 
+function removeEle(id){
+  document.getElementById(id).innerHTML = "";
+}
+
+
 // -----------------------------------Avvik Sjekk av Datsett--------------
 
 function dataSjekker(liste,liste2) {
@@ -180,6 +182,7 @@ function runSjekk() {
 
 function oversikt(){
     stopIntervall();
+<<<<<<< HEAD
     displayData(bef.getNames(),"over","Kommune");
     displayData(bef.getIDs(),"over","Nummer");
     var befolkningTotalList = totalBefolkninger(bef);
@@ -188,28 +191,68 @@ function oversikt(){
     lastSide();
 
 
+=======
+    // displayData(bef.getNames(),"over","Kommune")
+    // displayData(bef.getIDs(),"over","Nummer")
+    // var befolkningTotalList = totalBefolkninger(bef)
+    // displayData(befolkningTotalList,"over","Befolkning")
+    // console.log("ferdig");
+    lastSide()
+>>>>>>> Live
   }
 
 // ------------------------------------ Detaljer main --------------
+
 
 function displayDetaljer() {
   var overskrift = document.getElementById("tabellover").style.display = "block";
   if(checkInput("kommuneNr") === null){
     return null;
   }
+<<<<<<< HEAD
   var getKommune = document.getElementById("getKommune");
   var kommuneNr = document.getElementById("kommuneNr").value;
   input = kommuneNr;
   syss.getInfo();
+=======
+  if (!(document.getElementById("kom1").innerHTML === "")){
+    removeEle("info");
+    removeEle("overskriftID");
+    removeEle("detalBef");
+    removeEle("tabellover");
+    removeEle("detalSyss");
+    removeEle("utdan");
+  }
+  var getKommune = document.getElementById("getKommune")
+  var kommuneNr = document.getElementById("kommuneNr").value;
+  input = kommuneNr
+  // syss.getInfo();
+>>>>>>> Live
   getSisteSyssel(syss);
-  utdan.getInfo();
+  // utdan.getInfo();
   getHøyereUtdannning(utdan);
+<<<<<<< HEAD
   bef.getInfo();
   infoDetaljer(input);
   makeHeader("overskriftID",getValgtKommune(syss,input));
   makeall(utdan,titler,skoleNavn);
   detaljeTabll(syss,"detalSyss","tabsyss","Sysselsatte (%)");
   detaljeTabll(bef,"detalBef","tabBef","Befokning");
+=======
+
+  // bef.getInfo()
+  // lagKonteiner(idP,idC,klasse)
+  // lagKonteiner(idP,idC,klasse)
+  // lagKonteiner(idP,idC,klasse)
+  // lagKonteiner(idP,idC,klasse)
+  // lagKonteiner(idP,idC,klasse)
+
+  infoDetaljer(input)
+  makeHeader("overskriftID",getValgtKommune(syss,input))
+  makeall(utdan,titler,skoleNavn)
+  detaljeTabll(syss,"detalSyss","tabsyss","Sysselsatte (%)")
+  detaljeTabll(bef,"detalBef","tabBef","Befokning")
+>>>>>>> Live
 }
 
 //-------------------------------Sammenligning main-------------------------------------
@@ -217,6 +260,11 @@ function displayDetaljer() {
 function sammenLigning() {
   if(checkInput("i1") === null || checkInput("i2") === null ){
     return null;
+  }
+  // Dette er for å hindre duplisering av tabeller på siden, slik at man kan samenligne på ny.
+  if (!(document.getElementById("kom1").innerHTML === "")){
+    removeEle("kom1");
+    removeEle("kom2");
   }
   sysselSettingBegge(syss);
 }

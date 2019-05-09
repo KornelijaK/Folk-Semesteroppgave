@@ -1,5 +1,8 @@
 
 
+
+
+
 function sysselSettingBegge(obj){
   var kategori = ["År","Kvinner","Vekst","Menn","Vekst"];
   var kommune1 = document.getElementById("i1").value;
@@ -14,7 +17,11 @@ function sysselSettingBegge(obj){
   var vekstMenn = prosentPoeng(sysselMenn);
   var vekstKvinner = prosentPoeng(sysselKvinner);
   input = kommune2;
+<<<<<<< HEAD
   syss.getInfo();
+=======
+  // syss.getInfo()
+>>>>>>> Live
   var navn2 = getValgtKommune(obj,input);
   var sysselMenn2 = Object.values(obj.getInfo(input)["Menn"]);
   var sysselKvinner2 = Object.values(obj.getInfo(input)["Kvinner"]);
@@ -23,6 +30,7 @@ function sysselSettingBegge(obj){
 
   var over = document.getElementById("tabellover2").style.display = "block";
 
+<<<<<<< HEAD
   makeHeader("kom1",navn + " sysselsetting(%)");
   makeFlexbox("tab1",år,"År");
   makeFlexbox("tab1",sysselKvinner,"Kvinner");
@@ -37,6 +45,25 @@ function sysselSettingBegge(obj){
   makeFlexbox("tab2",sysselMenn2,"Menn");
   makeFlexboxProsent("tab2",vekstMenn2,vekstMenn,"Vekst");
 
+=======
+  /////////------ create tab1 div i tilegg.
+  lagKonteiner("kom1","tab1","tabell")
+  lagKonteiner("kom2","tab2","tabell")
+
+  makeHeader("kom1",navn + " sysselsetting(%)")
+  makeFlexbox("tab1",år,"År")
+  makeFlexbox("tab1",sysselKvinner,"Kvinner")
+  makeFlexboxProsent("tab1",vekstKvinner,vekstKvinner2,"Vekst")
+  makeFlexbox("tab1",sysselMenn,"Menn")
+  makeFlexboxProsent("tab1",vekstMenn,vekstMenn2,"Vekst")
+
+  makeHeader("kom2",navn2 + " sysselsetting(%)")
+  makeFlexbox("tab2",år,"År")
+  makeFlexbox("tab2",sysselKvinner2,"Kvinner")
+  makeFlexboxProsent("tab2",vekstKvinner2,vekstKvinner,"Vekst")
+  makeFlexbox("tab2",sysselMenn2,"Menn")
+  makeFlexboxProsent("tab2",vekstMenn2,vekstMenn,"Vekst")
+>>>>>>> Live
 }
 
   function makeFlexboxProsent(id1,liste1,liste2,titel){

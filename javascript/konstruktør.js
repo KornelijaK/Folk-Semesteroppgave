@@ -12,7 +12,6 @@ function getData(url,obj) {
         obj.onload();
       }
       datasetReady.push("1");
-      console.log(datasetReady);
       return obj.data;
     }
   }
