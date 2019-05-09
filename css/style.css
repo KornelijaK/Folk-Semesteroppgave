@@ -14,16 +14,21 @@ input{
 }
 
 nav {
+  padding-top: 5vw;
   display: flex;
-  background-color: black;
+  flex-direction: row;
   color: white;
+  flex-wrap: wrap;
 }
 
 .nav{
-  margin-top: 2vw;
-  margin-bottom: 2vw;
+  flex-grow:1;
+  color: white;
   padding: 2vw;
-  width: 25%
+  margin: 1vw;
+  width: auto;
+  background-color: #217FA7;
+  border-radius: 20px;
 }
 
 /* må fikse like variable navn */
@@ -54,7 +59,7 @@ nav {
 
 .oversikt li {
   padding: 3vw;
-  border-style: double;
+  border-bottom: double;
 }
 
 .oversikt {
@@ -64,6 +69,10 @@ nav {
 
 .oversikt li {
   list-style: none;
+}
+
+.header{
+  text-align: center;
 }
 
 /* ---------------------------------- */
@@ -128,7 +137,7 @@ ul.rad {
 
 li.kategori {
   padding: 1vw;
-  background: black;
+  background: #17536d;
   color: white;
   text-align: center;
   width: 4vw;

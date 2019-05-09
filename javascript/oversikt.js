@@ -4,6 +4,7 @@ function displayData(liste,id,text){
   var div = document.createElement("div");
   var lis = document.createElement("ul");
   var header = document.createElement("h2");
+  header.setAttribute("class","header")
   var headerText = document.createTextNode(text);
   header.appendChild(headerText);
   div.appendChild(header);
