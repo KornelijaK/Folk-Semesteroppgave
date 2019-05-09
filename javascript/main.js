@@ -182,11 +182,11 @@ function runSjekk() {
 
 function oversikt(){
     stopIntervall();
-    // displayData(bef.getNames(),"over","Kommune")
-    // displayData(bef.getIDs(),"over","Nummer")
-    // var befolkningTotalList = totalBefolkninger(bef)
-    // displayData(befolkningTotalList,"over","Befolkning")
-    // console.log("ferdig");
+    displayData(bef.getNames(),"over","Kommune")
+    displayData(bef.getIDs(),"over","Nummer")
+    var befolkningTotalList = totalBefolkninger(bef)
+    displayData(befolkningTotalList,"over","Befolkning")
+    console.log("ferdig");
     lastSide()
   }
 
