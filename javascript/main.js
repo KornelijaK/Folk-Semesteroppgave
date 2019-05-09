@@ -209,18 +209,8 @@ function displayDetaljer() {
   var getKommune = document.getElementById("getKommune")
   var kommuneNr = document.getElementById("kommuneNr").value;
   input = kommuneNr
-  // syss.getInfo();
   getSisteSyssel(syss);
-  // utdan.getInfo();
   getHøyereUtdannning(utdan);
-
-  // bef.getInfo()
-  // lagKonteiner(idP,idC,klasse)
-  // lagKonteiner(idP,idC,klasse)
-  // lagKonteiner(idP,idC,klasse)
-  // lagKonteiner(idP,idC,klasse)
-  // lagKonteiner(idP,idC,klasse)
-
   infoDetaljer(input)
   makeHeader("overskriftID",getValgtKommune(syss,input))
   makeall(utdan,titler,skoleNavn)
