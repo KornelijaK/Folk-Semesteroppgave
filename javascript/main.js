@@ -47,6 +47,15 @@ function stopIntervall() {
 
 // --------------------------------------Felles hjelpefunksjoner------------------------------
 
+function lagKonteiner(idP,idC,klasse){
+  var ele = document.getElementById(idP);
+  var div = document.createElement("div")
+  div.setAttribute("id",idC)
+  div.setAttribute("class",klasse)
+  ele.appendChild(div)
+}
+
+
 function getValgtKommune(obj,input){
   for(var i=0; i<obj.getIDs().length;i++){
     if(input === obj.getIDs()[i]){
@@ -173,15 +182,16 @@ function runSjekk() {
 
 function oversikt(){
     stopIntervall();
-    displayData(bef.getNames(),"over","Kommune")
-    displayData(bef.getIDs(),"over","Nummer")
-    var befolkningTotalList = totalBefolkninger(bef)
-    displayData(befolkningTotalList,"over","Befolkning")
-    console.log("ferdig");
+    // displayData(bef.getNames(),"over","Kommune")
+    // displayData(bef.getIDs(),"over","Nummer")
+    // var befolkningTotalList = totalBefolkninger(bef)
+    // displayData(befolkningTotalList,"over","Befolkning")
+    // console.log("ferdig");
     lastSide()
   }
 
 // ------------------------------------ Detaljer main --------------
+
 
 function displayDetaljer() {
   var overskrift = document.getElementById("tabellover").style.display = "block";
@@ -189,17 +199,28 @@ function displayDetaljer() {
     return null
   }
   if (!(document.getElementById("kom1").innerHTML === "")){
-    removeEle("kom1");
-    removeEle("kom2");
+    removeEle("info");
+    removeEle("overskriftID");
+    removeEle("detalBef");
+    removeEle("tabellover");
+    removeEle("detalSyss");
+    removeEle("utdan");
   }
   var getKommune = document.getElementById("getKommune")
   var kommuneNr = document.getElementById("kommuneNr").value;
   input = kommuneNr
-  syss.getInfo();
+  // syss.getInfo();
   getSisteSyssel(syss);
-  utdan.getInfo();
+  // utdan.getInfo();
   getHøyereUtdannning(utdan);
-  bef.getInfo()
+
+  // bef.getInfo()
+  // lagKonteiner(idP,idC,klasse)
+  // lagKonteiner(idP,idC,klasse)
+  // lagKonteiner(idP,idC,klasse)
+  // lagKonteiner(idP,idC,klasse)
+  // lagKonteiner(idP,idC,klasse)
+
   infoDetaljer(input)
   makeHeader("overskriftID",getValgtKommune(syss,input))
   makeall(utdan,titler,skoleNavn)

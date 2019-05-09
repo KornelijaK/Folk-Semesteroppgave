@@ -45,10 +45,11 @@ function infoDetaljer(input){
 function detaljeTabll(obj,id,idnavn,headernavn) {
   var kategori = ["År","Kvinner","Menn","Begge Kjønn"]
   var ele = document.getElementById(id);
-  var div = document.createElement("div");
-  div.setAttribute("class","tabell")
-  div.setAttribute("id",idnavn)
-  ele.appendChild(div);
+  lagKonteiner(id,idnavn,"tabell");
+  // var div = document.createElement("div");
+  // div.setAttribute("class","tabell")
+  // div.setAttribute("id",idnavn)
+  // ele.appendChild(div);
   var kommune1 = document.getElementById("kommuneNr").value;
   input = kommune1;
   syss.getInfo()
