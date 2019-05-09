@@ -21,7 +21,7 @@ nav {
   flex-wrap: wrap;
 }
 
-.nav{
+.navBtn{
   flex-grow:1;
   color: white;
   padding: 2vw;
@@ -37,10 +37,15 @@ nav {
   display: none;
 }
 
+.vis{
+  display: block;
+}
+
 #lastInn {
   text-align: center;
   padding: 3vw;
 }
+
 
 /* ---------------------------------- */
 
@@ -101,6 +106,7 @@ nav {
 
 
 .sammenligning {
+
 }
 
 /* ------------- tabell------------- */
