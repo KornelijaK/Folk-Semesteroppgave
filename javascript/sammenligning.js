@@ -1,4 +1,13 @@
 
+function lagKonteiner(idP,idC,klasse){
+  var ele = document.getElementById(idP);
+  var div = document.createElement("div")
+  div.setAttribute("id",idC)
+  div.setAttribute("class",klasse)
+  ele.appendChild(div)
+}
+
+
 
 function sysselSettingBegge(obj){
   var kategori = ["År","Kvinner","Vekst","Menn","Vekst"]
@@ -8,20 +17,24 @@ function sysselSettingBegge(obj){
   obj.getInfo(input)
   var navn = getValgtKommune(obj,input);
 
-  var år = Object.keys(obj.getInfo(input)["Menn"])
-  var sysselMenn = Object.values(obj.getInfo(input)["Menn"])
-  var sysselKvinner = Object.values(obj.getInfo(input)["Kvinner"])
+  var år = Object.keys(obj.getInfo(input)["Menn"]);
+  var sysselMenn = Object.values(obj.getInfo(input)["Menn"]);
+  var sysselKvinner = Object.values(obj.getInfo(input)["Kvinner"]);
   var vekstMenn = prosentPoeng(sysselMenn);
   var vekstKvinner = prosentPoeng(sysselKvinner);
   input = kommune2;
-  syss.getInfo()
+  // syss.getInfo()
   var navn2 = getValgtKommune(obj,input);
-  var sysselMenn2 = Object.values(obj.getInfo(input)["Menn"])
-  var sysselKvinner2 = Object.values(obj.getInfo(input)["Kvinner"])
+  var sysselMenn2 = Object.values(obj.getInfo(input)["Menn"]);
+  var sysselKvinner2 = Object.values(obj.getInfo(input)["Kvinner"]);
   var vekstMenn2 = prosentPoeng(sysselMenn2);
   var vekstKvinner2 = prosentPoeng(sysselKvinner2);
 
   var over = document.getElementById("tabellover2").style.display = "block";
+
+  /////////------ create tab1 div i tilegg.
+  lagKonteiner("kom1","tab1","tabell")
+  lagKonteiner("kom2","tab2","tabell")
 
   makeHeader("kom1",navn + " sysselsetting(%)")
   makeFlexbox("tab1",år,"År")
@@ -36,7 +49,6 @@ function sysselSettingBegge(obj){
   makeFlexboxProsent("tab2",vekstKvinner2,vekstKvinner,"Vekst")
   makeFlexbox("tab2",sysselMenn2,"Menn")
   makeFlexboxProsent("tab2",vekstMenn2,vekstMenn,"Vekst")
-
 }
 
   function makeFlexboxProsent(id1,liste1,liste2,titel){

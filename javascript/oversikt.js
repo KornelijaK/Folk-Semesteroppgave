@@ -20,7 +20,7 @@ function displayData(liste,id,text){
 
 function totalBefolkninger(obj) {
     totalBefolknign = []
-    var ids = obj.getIDs(); // Lagrer listen til variabler for å spare tid, slik at den ikke må lage lister omigjen.
+    var ids = obj.getIDs();    // Lagrer listen til variabler for å spare tid, slik at den ikke må lage lister omigjen.
     for(var i=0;i<ids.length;i++){
       var komuneINfo = obj.getInfo(ids[i])
       total = totalBefolkning2(komuneINfo)
