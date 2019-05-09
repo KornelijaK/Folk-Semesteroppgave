@@ -180,12 +180,12 @@ function runSjekk() {
 
 function oversikt(){
     stopIntervall();
-    displayData(bef.getNames(),"over","Kommune")
-    displayData(bef.getIDs(),"over","Nummer")
-    var befolkningTotalList = totalBefolkninger(bef)
-    displayData(befolkningTotalList,"over","Befolkning")
+    displayData(bef.getNames(),"over","Kommune");
+    displayData(bef.getIDs(),"over","Nummer");
+    var befolkningTotalList = totalBefolkninger(bef);
+    displayData(befolkningTotalList,"over","Befolkning");
     console.log("ferdig");
-    lastSide()
+    lastSide();
 
 
   }
@@ -195,28 +195,28 @@ function oversikt(){
 function displayDetaljer() {
   var overskrift = document.getElementById("tabellover").style.display = "block";
   if(checkInput("kommuneNr") === null){
-    return null
+    return null;
   }
-  var getKommune = document.getElementById("getKommune")
+  var getKommune = document.getElementById("getKommune");
   var kommuneNr = document.getElementById("kommuneNr").value;
-  input = kommuneNr
+  input = kommuneNr;
   syss.getInfo();
   getSisteSyssel(syss);
   utdan.getInfo();
   getHøyereUtdannning(utdan);
-  bef.getInfo()
-  infoDetaljer(input)
-  makeHeader("overskriftID",getValgtKommune(syss,input))
-  makeall(utdan,titler,skoleNavn)
-  detaljeTabll(syss,"detalSyss","tabsyss","Sysselsatte (%)")
-  detaljeTabll(bef,"detalBef","tabBef","Befokning")
+  bef.getInfo();
+  infoDetaljer(input);
+  makeHeader("overskriftID",getValgtKommune(syss,input));
+  makeall(utdan,titler,skoleNavn);
+  detaljeTabll(syss,"detalSyss","tabsyss","Sysselsatte (%)");
+  detaljeTabll(bef,"detalBef","tabBef","Befokning");
 }
 
 //-------------------------------Sammenligning main-------------------------------------
 
 function sammenLigning() {
   if(checkInput("i1") === null || checkInput("i2") === null ){
-    return null
+    return null;
   }
   sysselSettingBegge(syss);
 }

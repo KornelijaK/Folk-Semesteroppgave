@@ -1,9 +1,10 @@
 
 function displayData(liste,id,text){
-  var ele = document.getElementById(id)
+  var ele = document.getElementById(id);
   var div = document.createElement("div");
   var lis = document.createElement("ul");
   var header = document.createElement("h2");
+  header.setAttribute("class","header")
   var headerText = document.createTextNode(text);
   header.appendChild(headerText);
   div.appendChild(header);
@@ -11,20 +12,20 @@ function displayData(liste,id,text){
     var text = document.createTextNode(liste[i]);
     var lisItem = document.createElement("li");
     lisItem.appendChild(text);
-    lis.appendChild(lisItem)
+    lis.appendChild(lisItem);
   }
-  div.appendChild(lis)
+  div.appendChild(lis);
   ele.appendChild(div);
 }
 
 
 function totalBefolkninger(obj) {
-    totalBefolknign = []
+    totalBefolknign = [];
     var ids = obj.getIDs(); // Lagrer listen til variabler for å spare tid, slik at den ikke må lage lister omigjen.
     for(var i=0;i<ids.length;i++){
-      var komuneINfo = obj.getInfo(ids[i])
-      total = totalBefolkning2(komuneINfo)
-      totalBefolknign.push(total)
+      var komuneINfo = obj.getInfo(ids[i]);
+      total = totalBefolkning2(komuneINfo);
+      totalBefolknign.push(total);
   }
   return totalBefolknign;
 }

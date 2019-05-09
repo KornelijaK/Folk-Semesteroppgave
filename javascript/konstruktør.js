@@ -9,7 +9,7 @@ function getData(url,obj) {
       var jtext = JSON.parse(xhr.responseText);
       obj.data = jtext;
       if(!(obj.onload === null)){
-        obj.onload()
+        obj.onload();
       }
       datasetReady.push("1");
       console.log(datasetReady);
@@ -26,11 +26,11 @@ function getNames() {
 
 
 function getIDs(){
-  var idList = []
-  var list = Object.values(this.data["elementer"])
+  var idList = [];
+  var list = Object.values(this.data["elementer"]);
   for(var i = 0;i<list.length;i++){
     var id = list[i]["kommunenummer"];
-    idList.push(id)
+    idList.push(id);
   }
    return idList;
 }
