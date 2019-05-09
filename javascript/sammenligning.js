@@ -1,11 +1,5 @@
 
-function lagKonteiner(idP,idC,klasse){
-  var ele = document.getElementById(idP);
-  var div = document.createElement("div")
-  div.setAttribute("id",idC)
-  div.setAttribute("class",klasse)
-  ele.appendChild(div)
-}
+
 
 
 

@@ -47,6 +47,15 @@ function stopIntervall() {
 
 // --------------------------------------Felles hjelpefunksjoner------------------------------
 
+function lagKonteiner(idP,idC,klasse){
+  var ele = document.getElementById(idP);
+  var div = document.createElement("div")
+  div.setAttribute("id",idC)
+  div.setAttribute("class",klasse)
+  ele.appendChild(div)
+}
+
+
 function getValgtKommune(obj,input){
   for(var i=0; i<obj.getIDs().length;i++){
     if(input === obj.getIDs()[i]){
@@ -183,23 +192,25 @@ function oversikt(){
 
 // ------------------------------------ Detaljer main --------------
 
+
 function displayDetaljer() {
   var overskrift = document.getElementById("tabellover").style.display = "block";
   if(checkInput("kommuneNr") === null){
     return null
   }
   if (!(document.getElementById("kom1").innerHTML === "")){
-    removeEle("kom1");
-    removeEle("kom2");
+    removeEle("info");
+    removeEle("overskriftID");
+    removeEle("detalBef");
+    removeEle("tabellover");
+    removeEle("detalSyss");
+    removeEle("utdan");
   }
   var getKommune = document.getElementById("getKommune")
   var kommuneNr = document.getElementById("kommuneNr").value;
   input = kommuneNr
-  syss.getInfo();
   getSisteSyssel(syss);
-  utdan.getInfo();
   getHøyereUtdannning(utdan);
-  bef.getInfo()
   infoDetaljer(input)
   makeHeader("overskriftID",getValgtKommune(syss,input))
   makeall(utdan,titler,skoleNavn)
