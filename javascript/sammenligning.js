@@ -1,6 +1,5 @@
 
 function sysselSettingBegge(obj){
-  var kategori = ["År","Kvinner","Vekst","Menn","Vekst"];
   var kommune1 = document.getElementById("i1").value;
   var kommune2 = document.getElementById("i2").value;
   input = kommune1;
@@ -23,16 +22,16 @@ function sysselSettingBegge(obj){
   makeHeader("kom1",navn + " sysselsetting(%)");
   makeFlexbox("tab1",år,"År");
   makeFlexbox("tab1",sysselKvinner,"Kvinner");
-  makeFlexboxVekst("tab1",vekstKvinner,vekstKvinner2,"Vekst");
+  makeFlexboxVekst("tab1",vekstKvinner,vekstKvinner2,"K-Vekst");
   makeFlexbox("tab1",sysselMenn,"Menn");
-  makeFlexboxVekst("tab1",vekstMenn,vekstMenn2,"Vekst");
+  makeFlexboxVekst("tab1",vekstMenn,vekstMenn2,"M-Vekst");
 
   makeHeader("kom2",navn2 + " sysselsetting(%)");
   makeFlexbox("tab2",år,"År");
   makeFlexbox("tab2",sysselKvinner2,"Kvinner");
-  makeFlexboxVekst("tab2",vekstKvinner2,vekstKvinner,"Vekst");
+  makeFlexboxVekst("tab2",vekstKvinner2,vekstKvinner,"K-Vekst");
   makeFlexbox("tab2",sysselMenn2,"Menn");
-  makeFlexboxVekst("tab2",vekstMenn2,vekstMenn,"Vekst");
+  makeFlexboxVekst("tab2",vekstMenn2,vekstMenn,"M-Vekst");
 }
 
 

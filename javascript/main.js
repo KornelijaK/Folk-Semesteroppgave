@@ -11,7 +11,7 @@ let intervallID;
 window.onload = oppstart;
 window.setTimeout(function(){
   console.log("Genererer siden");     //Timer fordi datasettene må lastes inn først
-  oversikt();                      // Laster inn her ,fordi det er en tidkrevnde prosess å generere oversikt.
+  last();                      // Laster inn her ,fordi det er en tidkrevnde prosess å generere oversikt.
 },2000);
 
 
@@ -29,6 +29,15 @@ function oppstart(){
   syss.load();
   bef.load();
 }
+
+
+function last() {
+  stopIntervall()
+  oversikt()
+  console.log("ferdig");
+  lastSide();
+}
+
 
 
 function sjekkOmKlar(){
@@ -150,6 +159,15 @@ function checkInput(id){
   }
 }
 
+function totalBefolkning(obj) {
+  var befolkningMenn = Object.values(obj["Menn"]);
+  var befolkningKvinner = Object.values(obj["Kvinner"]);
+  var sisteMålingM = befolkningMenn.pop();
+  var sisteMålingK = befolkningKvinner.pop();
+  var total = sisteMålingM + sisteMålingK;
+  return total;
+}
+
 // -----------------------------------Avvik Sjekk av Datsett--------------
 
 function dataSjekker(liste,liste2) {
@@ -160,7 +178,6 @@ function dataSjekker(liste,liste2) {
     }
   }
 }
-
 
 function runSjekk() {
   var b = bef.getNames();
@@ -186,25 +203,14 @@ function runSjekk() {
   console.log(dataSjekker(u,s));
 }
 
-// ----------------Oversikt main---------------------
+
+// ------------------------------------ Oversikt main --------------
 
 function oversikt(){
-    stopIntervall();
     displayData(bef.getNames(),"over","Kommune");
     displayData(bef.getIDs(),"over","ID");
     var befolkningTotalList = alleTotalBef(bef);
     displayData(befolkningTotalList,"over","Befolkning");
-    console.log("ferdig");
-    lastSide();
-  }
-
-  function totalBefolkning(obj) {
-    var befolkningMenn = Object.values(obj["Menn"]);
-    var befolkningKvinner = Object.values(obj["Kvinner"]);
-    var sisteMålingM = befolkningMenn.pop();
-    var sisteMålingK = befolkningKvinner.pop();
-    var total = sisteMålingM + sisteMålingK;
-    return total;
   }
 
 // ------------------------------------ Detaljer main --------------

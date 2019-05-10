@@ -102,7 +102,7 @@ nav {
 
 /* Vi bruker mediaquery på oversikt ettersom vi merket at enkelte kommunenavn tok mer plass og gjorde tabellen ustrukturert */
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
   .oversikt li{
     height: 15vw;
   }
@@ -179,7 +179,7 @@ li.kategori {
   background: #17536d;
   color: white;
   text-align: center;
-  width: 4vw;
+  width: 4.5vw;
 }
 
 li.cell {
@@ -216,7 +216,7 @@ li.cellHøgestP {
 }
 
 
-@media screen and (max-width: 400px){
+@media screen and (max-width: 600px){
 
   .utdanning h2 {
   }

@@ -1,10 +1,6 @@
 
-
-
 function lagliste(parentID,innholdLis){
-  console.log(innholdLis);
   var ele = document.getElementById(parentID);
-  console.log(ele);
   var list = document.createElement("ul");
   for (var i = 0; i < innholdLis.length; i++){
     var li = document.createElement("li");
@@ -16,16 +12,16 @@ function lagliste(parentID,innholdLis){
 }
 
 
-//Lager informasjons listen
 function infoDetaljer(input){
   lagKonteiner("info","infoInhold","vis");
+  //både oversik og detaljer bruker totalbefolkning ,derfor lager vi en variabel slik  at den kan gjenbrukes
   var befInfoObj = bef.getInfo(input);
   var kommuneNavn = "Kommunenavn: "+getValgtKommune(syss,input);
   var idNummer = "KommuneId: "+input;
   var syssMåling = "Siste sysselmåling: "+getSisteSyssel(syss);
   var utdanMåling = "Siste målte høyere utdanning: "+(getHøyereUtdannning(utdan));
   var befolkningMåling ="Siste befolkningmåling: "+totalBefolkning(befInfoObj);
-  var innhold = [kommuneNavn,idNummer,syssMåling,utdanMåling,befolkningMåling]
+  var innhold = [kommuneNavn,idNummer,syssMåling,utdanMåling,befolkningMåling];
   lagliste("infoInhold",innhold);
 }
 
