@@ -1,46 +1,34 @@
-var titler = ["År","Kvinner","Menn"];
-var skoleNavn = ["Grunnskolenivå (%)","Vidergående skole-nivå (%)","Fagskole nivå (%)","Universitets- og høgskolenivå kort (%)",
-"Universitets- og høgskolenivå lang (%)","Uoppgitt eller ingen fullført utdanning (%)"
-];
 
-function infoDetaljer(input){
-  var div = document.createElement("div");
-  var ele = document.getElementById('info');
+
+
+function lagliste(parentID,innholdLis){
+  console.log(innholdLis);
+  var ele = document.getElementById(parentID);
+  console.log(ele);
   var list = document.createElement("ul");
-  var kommuneNavn = document.createTextNode(getValgtKommune(syss,input));
-  var idNummer = document.createTextNode(input);
-  var sysMåling = document.createTextNode(getSisteSyssel(syss));
-  var utdanMåling = document.createTextNode(getHøyereUtdannning(utdan));
-  // Lager en variabel her for at at det ikke skal behøves å regenere lister så mye, og fordi funksjonen kan gjenbrukes i oversikt.
-  var befInfoObj = bef.getInfo(input);
-  var befolkningMåling = document.createTextNode(totalBefolkning(befInfoObj));
-  var kNavnList = document.createElement("li");
-  var idNavnList = document.createElement("li");
-  var sysList = document.createElement("li");
-  var utdanList = document.createElement("li");
-  var beflist = document.createElement("li");
-
-  kNavnList.innerHTML = "Kommunenavn: ";
-  idNavnList.innerHTML = "KommuneId: ";
-  sysList.innerHTML = "Siste sysselmåling: ";
-  utdanList.innerHTML = "Siste målte høyere utdanning: ";
-  beflist.innerHTML = "Siste befolkningmåling: ";
-
-  kNavnList.appendChild(kommuneNavn);
-  idNavnList.appendChild(idNummer);
-  sysList.appendChild(sysMåling);
-  utdanList.appendChild(utdanMåling);
-  beflist.appendChild(befolkningMåling);
-
-  list.appendChild(kNavnList);
-  list.appendChild(idNavnList);
-  list.appendChild(sysList);
-  list.appendChild(utdanList);
-  list.appendChild(beflist);
-
-  div.appendChild(list);
-  ele.appendChild(div);
+  for (var i = 0; i < innholdLis.length; i++){
+    var li = document.createElement("li");
+    var text = document.createTextNode(innholdLis[i]);
+    li.appendChild(text);
+    list.appendChild(li);
+  }
+  ele.appendChild(list);
 }
+
+
+//Lager informasjons listen
+function infoDetaljer(input){
+  lagKonteiner("info","infoInhold","vis");
+  var befInfoObj = bef.getInfo(input);
+  var kommuneNavn = "Kommunenavn: "+getValgtKommune(syss,input);
+  var idNummer = "KommuneId: "+input;
+  var syssMåling = "Siste sysselmåling: "+getSisteSyssel(syss);
+  var utdanMåling = "Siste målte høyere utdanning: "+(getHøyereUtdannning(utdan));
+  var befolkningMåling ="Siste befolkningmåling: "+totalBefolkning(befInfoObj);
+  var innhold = [kommuneNavn,idNummer,syssMåling,utdanMåling,befolkningMåling]
+  lagliste("infoInhold",innhold);
+}
+
 
 function tabellDetaljer(obj,id,idnavn,headernavn) {
   var kategori = ["År","Kvinner","Menn","Begge Kjønn"];
@@ -76,8 +64,10 @@ function getHøyereUtdannning(obj){
   var sisteMålingK = kortUtdaningKvinner.pop();
   var sisteMålingL = langUtdaningMenn.pop();
   var sisteMålingKL = langUtdaningKvinner.pop();
-  var totalUtdanningProsent = Number(sisteMåling + sisteMålingK + sisteMålingL + sisteMålingKL)+"%";
-  return totalUtdanningProsent;
+  var totalUtdanningProsent = Number(sisteMåling + sisteMålingK + sisteMålingL + sisteMålingKL);
+  //runder opp med en desimal
+  totalUtdanningProsent =Math.round(totalUtdanningProsent*10)/10;
+  return totalUtdanningProsent+"%";
 }
 
 
@@ -92,7 +82,11 @@ function getSisteSyssel(obj){
 }
 
 
-function tabellUtdan(obj,titler,skoleNavn){
+function tabellUtdan(obj){
+  var titler = ["År","Kvinner","Menn"];
+  var skoleNavn = ["Grunnskolenivå (%)","Vidergående skole-nivå (%)","Fagskole nivå (%)","Universitets- og høgskolenivå kort (%)",
+  "Universitets- og høgskolenivå lang (%)","Uoppgitt eller ingen fullført utdanning (%)"
+  ];
   var skoleID = ["01","02a","11","03a","04a","09a"];
   var ele = document.getElementById('utdan');
   for (var i = 0; i < skoleID.length; i++) {

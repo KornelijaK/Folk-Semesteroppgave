@@ -229,7 +229,7 @@ function displayDetaljer() {
   getHøyereUtdannning(utdan);
   infoDetaljer(input);
   makeHeader("overskriftID",getValgtKommune(syss,input));
-  tabellUtdan(utdan,titler,skoleNavn);
+  tabellUtdan(utdan);
   tabellDetaljer(syss,"detalSyss","tabsyss","Sysselsatte (%)");
   tabellDetaljer(bef,"detalBef","tabBef","Befokning");
 }
