@@ -5,6 +5,8 @@ function displayData(liste,id,text){
   var ul = document.createElement("ul");
   var header = document.createElement("h2");
   header.setAttribute("class","header");
+  div.setAttribute("class", "oversiktListe");
+  ul.setAttribute("class","ulList");
   var headerText = document.createTextNode(text);
   header.appendChild(headerText);
   div.appendChild(header);

@@ -23,14 +23,18 @@ nav {
 
 .navBtn{
   flex-grow:1;
-  color: white;
+  color: black;
   padding: 2vw;
   margin: 1vw;
   width: auto;
-  background-color: #217FA7;
+  background-color: #87a7b5;
   border-radius: 20px;
 }
 
+.navBtn:hover{
+  background-color: #78929e;
+
+}
 /* må fikse like variable navn */
 
 .hidden {
@@ -63,22 +67,51 @@ nav {
 /* ---------------------------------- */
 
 .oversikt li {
-  padding: 3vw;
-  border-bottom: double;
+  padding: 1vw;
+  border: 0.1vw solid;
+  flex-grow: 1;
+  height: 3vw;
+  list-style: none;
+  background-color: #DAE5EA;
 }
 
 .oversikt {
   display: flex;
   justify-content: center;
-}
-
-.oversikt li {
-  list-style: none;
+  margin: 0;
 }
 
 .header{
-  text-align: center;
+  font-size: 19px;
+  background-color: #17536D;
+  color: white;
+  border: 0.1vw solid;
+  margin-bottom: 1vw;
+  padding: 1vw;
 }
+
+.oversiktListe{
+  margin: 0;
+  padding: 0;
+}
+
+.ulList{
+  padding: 0;
+  margin: 0;
+}
+
+/* Vi bruker mediaquery på oversikt ettersom vi merket at enkelte kommunenavn tok mer plass og gjorde tabellen ustrukturert */
+
+@media screen and (max-width: 500px){
+  .oversikt li{
+    height: 15vw;
+  }
+  .header{
+    font-size: 5vw;
+  }
+}
+
+
 
 /* ---------------------------------- */
 

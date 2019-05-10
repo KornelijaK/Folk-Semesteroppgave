@@ -191,7 +191,7 @@ function runSjekk() {
 function oversikt(){
     stopIntervall();
     displayData(bef.getNames(),"over","Kommune");
-    displayData(bef.getIDs(),"over","Nummer");
+    displayData(bef.getIDs(),"over","ID");
     var befolkningTotalList = alleTotalBef(bef);
     displayData(befolkningTotalList,"over","Befolkning");
     console.log("ferdig");

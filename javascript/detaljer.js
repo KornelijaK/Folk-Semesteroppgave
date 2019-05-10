@@ -20,16 +20,16 @@ function infoDetaljer(input){
   var utdanList = document.createElement("li");
   var beflist = document.createElement("li");
 
-  sysList.innerHTML = "Siste sysselmåling: ";
   kNavnList.innerHTML = "Kommunenavn: ";
   idNavnList.innerHTML = "KommuneId: ";
+  sysList.innerHTML = "Siste sysselmåling: ";
   utdanList.innerHTML = "Siste målte høyere utdanning: ";
   beflist.innerHTML = "Siste befolkningmåling: ";
 
-  sysList.appendChild(sysMåling);
-  utdanList.appendChild(utdanMåling);
   kNavnList.appendChild(kommuneNavn);
   idNavnList.appendChild(idNummer);
+  sysList.appendChild(sysMåling);
+  utdanList.appendChild(utdanMåling);
   beflist.appendChild(befolkningMåling);
 
   list.appendChild(kNavnList);
