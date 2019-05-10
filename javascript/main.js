@@ -190,11 +190,11 @@ function runSjekk() {
 
 function oversikt(){
     stopIntervall();
-    displayData(bef.getNames(),"over","Kommune");
-    displayData(bef.getIDs(),"over","Nummer");
-    var befolkningTotalList = alleTotalBef(bef);
-    displayData(befolkningTotalList,"over","Befolkning");
-    console.log("ferdig");
+    // displayData(bef.getNames(),"over","Kommune");
+    // displayData(bef.getIDs(),"over","Nummer");
+    // var befolkningTotalList = alleTotalBef(bef);
+    // displayData(befolkningTotalList,"over","Befolkning");
+    // console.log("ferdig");
     lastSide();
   }
 
@@ -229,7 +229,7 @@ function displayDetaljer() {
   getHøyereUtdannning(utdan);
   infoDetaljer(input);
   makeHeader("overskriftID",getValgtKommune(syss,input));
-  tabellUtdan(utdan,titler,skoleNavn);
+  tabellUtdan(utdan);
   tabellDetaljer(syss,"detalSyss","tabsyss","Sysselsatte (%)");
   tabellDetaljer(bef,"detalBef","tabBef","Befokning");
 }

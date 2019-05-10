@@ -4,7 +4,6 @@ function sysselSettingBegge(obj){
   var kommune1 = document.getElementById("i1").value;
   var kommune2 = document.getElementById("i2").value;
   input = kommune1;
-  obj.getInfo(input);
   var navn = getValgtKommune(obj,input);
   var år = Object.keys(obj.getInfo(input)["Menn"]);
   var sysselMenn = Object.values(obj.getInfo(input)["Menn"]);
@@ -35,6 +34,7 @@ function sysselSettingBegge(obj){
   makeFlexbox("tab2",sysselMenn2,"Menn");
   makeFlexboxVekst("tab2",vekstMenn2,vekstMenn,"Vekst");
 }
+
 
 //Denne lager egne celler for de med høyest vekst i prosentpoeng
   function makeFlexboxVekst(id1,liste1,liste2,titel){
